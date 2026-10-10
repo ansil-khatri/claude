@@ -2,7 +2,11 @@
 import { useEffect, useRef } from "react";
 
 const VS = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
-const FS = `precision mediump float;
+const FS = `#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
 uniform vec2 r;uniform float t;uniform vec2 m;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
@@ -14,17 +18,17 @@ void main(){
   float f=fbm(p*1.25+2.1*q+mo);
   float mask=smoothstep(.15,1.05,uv.x*.85+(1.-uv.y)*.55);
   vec3 base=vec3(.043,.043,.047);
-  vec3 ember=vec3(1.,.34,.1);
-  vec3 hot=vec3(1.,.74,.5);
+  vec3 ember=vec3(.30,1.,.12);
+  vec3 hot=vec3(.80,1.,.55);
   float g=smoothstep(.42,.92,f)*mask;
-  vec3 col=base+ember*g*.62+hot*pow(smoothstep(.62,1.,f),2.)*mask*.5;
+  vec3 col=base+ember*g*.5+hot*pow(smoothstep(.62,1.,f),2.)*mask*.5;
   float vig=smoothstep(1.25,.25,length(uv-vec2(.5,.45)));
   col*=.55+.45*vig;
-  col+=(h(gl_FragCoord.xy+t)-.5)*.018;
-  gl_FragColor=vec4(col,1.);
+  col+=(h(gl_FragCoord.xy+fract(t))-.5)*.018;
+  gl_FragColor=vec4(clamp(col,0.,1.),1.);
 }`;
 
-/** Slow warm light field behind the hero. Renders at reduced resolution, pauses when off-screen, falls back to CSS. */
+/** Slow parrot light field behind the hero. Renders at reduced resolution, pauses when off-screen, falls back to CSS. */
 export function GlowCanvas({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -55,7 +59,7 @@ export function GlowCanvas({ className = "" }: { className?: string }) {
     };
     raf = requestAnimationFrame(frame);
     c.dataset.live = "1";
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); window.removeEventListener("pointermove", move); gl.getExtension("WEBGL_lose_context")?.loseContext(); };
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); window.removeEventListener("pointermove", move); };
   }, []);
   return <canvas ref={ref} className={`glow-canvas ${className}`} aria-hidden />;
 }
