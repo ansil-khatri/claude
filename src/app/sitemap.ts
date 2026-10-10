@@ -3,6 +3,7 @@ import { allRoutes } from "@/lib/routes";
 import { url } from "@/config/site";
 
 const money = new Set(["/", "/pricing", "/services", "/industries", "/agencies"]);
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return allRoutes().map((p) => ({
     url: url(p === "/" ? "" : p),
