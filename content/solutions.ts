@@ -182,13 +182,83 @@ const EXTRA: Record<string, Extra> = {
   },
 };
 
+type PV = { bv: VizSpec; av: VizSpec };
+const wa = (name: string, color: string, day: string, msgs: { w: "in" | "out"; t: string; time?: string; ar?: boolean; link?: string }[]): VizSpec => ({ t: "chat", name, color, day, msgs });
+/** Before/after mockups for each "Sound familiar?" pain, in pain order (base pains, then the EXTRA one). */
+const SOL_VIZ: Record<string, PV[]> = {
+  "restaurants/whatsapp-ordering": [
+    { bv: wa("Ember Kitchen", "#d9480f", "Fri", [{ w: "in", t: "2 shawarma plates, 1 hummus, no onion pls. Also 1 fattoush. Same address", time: "8:02 PM" }, { w: "in", t: "sorry 3 shawarma", time: "8:03 PM" }, { w: "in", t: "did I pay already?", time: "8:40 PM" }]),
+      av: { t: "dash", title: "Kitchen tickets", sub: "WhatsApp orders · Fri 8:02 PM", kpis: [["Open", "14"], ["Paid", "14"], ["Typed wrong", "0"]], rows: [["#112 Omar", "3 shawarma, hummus", "g|Paid"], ["#113 Sara", "Fattoush, 2 juices", "g|Paid"]], head: ["TICKET", "ITEMS", "STATUS"] } },
+    { bv: wa("Ember Kitchen", "#d9480f", "Today", [{ w: "in", t: "Send menu pls", time: "7:11 PM" }, { w: "out", t: "(photo of PDF menu)", time: "7:20 PM" }, { w: "in", t: "ممكن سعر الميكس جريل؟", time: "7:21 PM", ar: true }]),
+      av: wa("Ember Kitchen", "#d9480f", "Today", [{ w: "out", t: "قائمة اليوم · Today's menu and specials", time: "7:11 PM", link: "Browse menu · AED" }, { w: "in", t: "Mixed grill for 2", time: "7:12 PM" }]) },
+    { bv: wa("Customer", "#25d366", "Fri", [{ w: "in", t: "🎤 0:24  (voice note, background noise)", time: "8:11 PM" }, { w: "in", t: "📷 photo of the menu, circled items", time: "8:12 PM" }]),
+      av: { t: "doc", title: "Order #118 · structured ticket", sub: "WhatsApp", lines: [["Mixed grill × 1", "AED 89.00"], ["Option: no onion", "AED 0.00"], ["Payment", "Paid · Apple Pay"]], total: ["Total", "AED 89.00"] } },
+  ],
+  "restaurants/online-ordering": [
+    { bv: { t: "dash", title: "Talabat · payout statement", sub: "Ember Kitchen · weekly", kpis: [["Gross", "AED 17,700"], ["Commission", "−AED 5,310"], ["Deposited", "AED 11,730"]], rows: [["Orders", "128", "y|Settled"], ["Promos", "−AED 660", "r|Deducted"]] },
+      av: { t: "store", k: "ember" } },
+    { bv: { t: "dash", title: "Guest list", sub: "Platform-owned data", kpis: [["Orders", "412"], ["Names you see", "0"], ["Phone numbers", "0"]], rows: [["Customer 8841", "Hidden", "r|No contact"], ["Customer 9012", "Hidden", "r|No contact"]], head: ["GUEST", "DETAILS", "STATE"] },
+      av: { t: "dash", title: "Your guests · direct orders", sub: "Ember Kitchen", kpis: [["Guests", "1,204"], ["Repeat", "46%"], ["WhatsApp opt-in", "812"]], rows: [["Omar R.", "7 orders · AED 1,260", "g|Regular"], ["Hind A.", "3 orders", "b|Offer sent"]], head: ["GUEST", "SPEND", "NEXT"] } },
+    { bv: { t: "bars", title: "Apps · one week", sub: "Promo + commission", rows: [["Commission", 30, "AED 5,310", "#c0392b"], ["Promos", 4, "AED 660", "#c0392b"], ["Repeat guests kept", 2, "0 contacts"]] },
+      av: { t: "doc", title: "Offer on your own site", sub: "Ember Kitchen · WhatsApp to regulars", lines: [["Free dessert on orders over AED 120", "Your margin"], ["Sent to", "812 opted-in guests"], ["Platform fee", "AED 0"]], total: ["Offer cost", "AED 3 / redemption"] } },
+  ],
+  "restaurants/ordering-app": [
+    { bv: { t: "doc", title: "Instagram story · weekend offer", sub: "Ember Kitchen", lines: [["Followers", "9,400"], ["Story views", "312"], ["Regulars reached", "of 2,000: unknown"]], total: ["Orders from it", "4"] },
+      av: { t: "phone", k: "ember", kind: "lock" } },
+    { bv: { t: "bars", title: "Orders by channel · October", sub: "Commission paid", rows: [["Talabat", 70, "−30%", "#c0392b"], ["Deliveroo", 22, "−28%", "#c0392b"], ["Direct", 8, "0%"]] },
+      av: { t: "phone", k: "ember", kind: "loyalty" } },
+    { bv: { t: "doc", title: "App budget · unsure", sub: "Ember Kitchen", lines: [["Build", "AED 35,000–49,000"], ["Regulars ordering weekly", "?"], ["App opened twice", "?"]], total: ["Pays back", "Unknown"] },
+      av: { t: "steps", title: "Honest check before we build", sub: "Free call", steps: [["Regulars order weekly?", "Yes: app wins", "p"], ["Order once a month?", "Website from AED 7,900"], ["Revisit in 6 months", "No wasted budget"]] } },
+  ],
+  "salons/booking-app": [
+    { bv: wa("Noor (client)", "#25d366", "Sat", [{ w: "in", t: "So sorry, can't make the balayage anymore", time: "9:58 AM" }, { w: "out", t: "Mia blocked the whole morning", time: "9:59 AM" }]),
+      av: { t: "phone", k: "maisonrose", kind: "checkout" } },
+    { bv: { t: "serp", query: "salon jumeirah booking", items: [["Fresha · Salons in Jumeirah", "fresha.com", "Maison Rose + 3 competitors · Book now"], ["Mia Hair Studio", "fresha.com", "★ 4.6 · from AED 90"], ["Maison Rose", "", "★ 4.9 · listing fee per new client"]] },
+      av: { t: "site", k: "maisonrose" } },
+    { bv: { t: "dash", title: "Colour clients · last visit", sub: "Maison Rose", kpis: [["No next visit", "64"], ["Over 10 weeks", "38"], ["Empty Tues chairs", "15"]], rows: [["Dina K.", "Balayage · 12 weeks ago", "r|Lapsed"], ["Hala S.", "Root touch-up · 11 weeks", "y|Drifting"]], head: ["CLIENT", "LAST VISIT", "STATE"] },
+      av: wa("Maison Rose", "#c76a8a", "6 weeks later", [{ w: "out", t: "Hi Dina, time for a root touch-up? Mia has Tue 3:30 PM", time: "10:00 AM", link: "Tap to rebook" }, { w: "in", t: "Yes book it", time: "10:02 AM" }]) },
+  ],
+  "laundry/pickup-delivery-app": [
+    { bv: wa("FreshFold · inbox", "#0f7fb5", "9:02 AM", [{ w: "in", t: "When are you coming?", time: "7:48 AM" }, { w: "in", t: "Tower B, concierge", time: "8:15 AM" }, { w: "in", t: "Hello?? 23 unread", time: "9:00 AM" }]),
+      av: { t: "phone", k: "freshfold", kind: "tracking" } },
+    { bv: wa("Layla (customer)", "#25d366", "Sun", [{ w: "in", t: "A shirt is missing from my order", time: "6:10 PM" }, { w: "out", t: "Sorry. We refund the whole order", time: "6:25 PM" }]),
+      av: { t: "doc", title: "Intake · Order #4821", sub: "Photo per item", lines: [["White shirt", "photo ✓"], ["Abaya", "photo ✓"], ["Lost-item refunds", "AED 0"]], total: ["Sent to customer", "before washing"] } },
+    { bv: { t: "doc", title: "Paper ticket · re-typed at night", sub: "FreshFold · van 2", lines: [["Bag 1", "6.4 kg ?"], ["Bag 2", "illegible"], ["Owed", "?"]], total: ["Complaint", "AED 28 overcharge"] },
+      av: { t: "dash", title: "Orders · live", sub: "Scale → order", kpis: [["In van", "12"], ["Washing", "31"], ["Delivered", "44"]], rows: [["#4821 · 6.4 kg", "AED 96", "b|Out for delivery"], ["#4822 · 3.1 kg", "AED 47", "y|Washing"]], head: ["ORDER", "TOTAL", "STATUS"] } },
+  ],
+  "auto-repair/website": [
+    { bv: { t: "dash", title: "Front desk · phone", sub: "Apex Auto Works · yesterday", kpis: [["Calls", "41"], ["Missed", "17"], ["Asking for a price", "26"]], rows: [["Brake pads?", "9 calls", "y|No price online"], ["Oil change?", "8 calls", "y|No price online"]] },
+      av: { t: "phone", k: "apex", kind: "detail" } },
+    { bv: { t: "serp", query: "apex auto works al quoz", items: [["Apex Auto Works", "google.com › maps", "Closed Friday · Hours may differ"], ["Reviews", "", "★ 4.8 · 3 unanswered 1-star replies"]] },
+      av: { t: "serp", query: "apex auto works al quoz", items: [["Apex Auto Works", "apexautoworks.ae", "Open Friday 9 AM–6 PM · ★ 4.8"], ["Services", "", "Oil change from AED 190 · Brake pads from AED 390"]] } },
+    { bv: wa("Apex Auto Works", "#c8102e", "Tue", [{ w: "out", t: "Front pads need replacing: AED 1,390", time: "11:02 AM" }, { w: "in", t: "Let me think about it", time: "11:30 AM" }]),
+      av: { t: "doc", title: "Inspection report", sub: "Photos + video on WhatsApp", lines: [["Front pads · 2 mm", "photo + video"], ["Brake job", "AED 1,390.00"], ["Approve", "one tap"]], total: ["Customer", "Approved ✓"] } },
+  ],
+  "home-services/website": [
+    { bv: { t: "dash", title: "Phone · overnight", sub: "Peak Cooling · 12–7 AM", kpis: [["Missed", "7"], ["AC failures", "2"], ["Booked elsewhere", "2"]], rows: [["1:02 AM · Marina", "AC not cooling", "r|Missed"], ["2:40 AM · JLT", "AC leaking", "r|Missed"]], head: ["TIME", "ISSUE", "STATUS"] },
+      av: wa("Peak Cooling", "#0b6fb0", "1:02 AM", [{ w: "out", t: "Sorry we missed you! Book the first slot at 8 AM now", time: "1:02 AM", link: "peakcooling.ae/book" }, { w: "in", t: "8 AM please", time: "1:03 AM" }]) },
+    { bv: wa("Mrs. Hind", "#25d366", "Mon", [{ w: "out", t: "New 2-ton split: AED 4,200", time: "4:10 PM" }, { w: "in", t: "I'll think about it", time: "4:35 PM" }]),
+      av: { t: "doc", title: "Quote · signed on site", sub: "Peak Cooling", lines: [["1.5-ton split", "AED 2,950"], ["2-ton inverter", "AED 4,200"], ["Pay in instalments", "Tabby or Tamara"]], total: ["Accepted", "Better ✓"] } },
+    { bv: { t: "dash", title: "AMC contracts", sub: "Peak Cooling · renewals", kpis: [["Expired this month", "9"], ["Contacted", "2"], ["Lost", "4"]], rows: [["Villa 12 · Arabian Ranches", "Expired 3 weeks ago", "r|Lapsed"], ["Marina Heights", "Expires in 6 days", "y|No reminder"]], head: ["CONTRACT", "STATUS", ""] },
+      av: { t: "steps", title: "AMC · automatic", sub: "Villa 12", steps: [["30 days before", "WhatsApp renewal reminder", "p"], ["Pay by card", "AED 960 / year", "p"], ["Booked", "Two services before summer"]] } },
+  ],
+  "phone-repair/website": [
+    { bv: wa("Instagram DMs", "#c13584", "This week", [{ w: "in", t: "كم سعر شاشة ايفون 13؟", time: "9:20 PM", ar: true }, { w: "in", t: "how much for iPhone 13 screen?", time: "9:41 PM" }]),
+      av: { t: "phone", k: "fixpoint", kind: "detail" } },
+    { bv: { t: "dash", title: "Saturday · counter", sub: "FixPoint Karama", kpis: [["\"Is it ready?\"", "23"], ["Interrupted", "23"], ["Finished", "19"]], rows: [["iPhone 13 · Luis", "4 calls", "y|Testing"], ["Galaxy S22", "3 calls", "y|Waiting part"]], head: ["DEVICE", "CALLS", "STATE"] },
+      av: wa("FixPoint Karama", "#e8590c", "Sat", [{ w: "out", t: "Your iPhone 13 is ready and tested. Pay AED 449 at the counter", time: "2:18 PM", link: "fixpoint.ae/t/48213" }]) },
+    { bv: wa("FixPoint stores (3)", "#25d366", "Mon", [{ w: "in", t: "Customer wants iPhone 13 screen, do we have?", time: "11:02 AM" }, { w: "in", t: "no, Deira has 9, call them", time: "11:20 AM" }]),
+      av: { t: "dash", title: "Store pages · live stock", sub: "fixpoint.ae", kpis: [["Deira", "9 in stock"], ["Karama", "1"], ["City Centre", "2"]], rows: [["iPhone 13 screen", "Book at Deira", "g|~15 min wait"]], head: ["REPAIR", "ACTION", "WAIT"] } },
+  ],
+};
+
 function enrich(s: Solution): Solution {
   const x = EXTRA[`${s.ind}/${s.slug}`];
   if (!x) return s;
   return {
     ...s, plain: x.plain,
     stage: { ...s.stage, cards: [...s.stage.cards, x.card] },
-    pains: [...s.pains, x.pain],
+    pains: [...s.pains, x.pain].map((p, i) => ({ ...p, ...SOL_VIZ[`${s.ind}/${s.slug}`]?.[i] })),
     tabs: s.tabs.map((t, i) => ({ ...t, p: x.tabs[i][0], fine: x.tabs[i][1] })),
     faq: x.faq, miniCase: x.miniCase,
   };

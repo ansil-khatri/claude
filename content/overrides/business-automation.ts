@@ -1,10 +1,26 @@
 import type { Page } from "../types";
+import type { VizSpec } from "@/components/mock/Viz";
 import { automation } from "../services/automation";
 
 const rows = automation.techRows;
 const fitsIdx = rows.findIndex((r) => r[0].startsWith("Fits your process"));
 
+const PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  {
+    bv: { t: "doc", title: "Inventory_MASTER_v12_SHARE (3).xlsx", sub: "Last edited Sun 11:48 PM", lines: [["Octopus (kg)", "#REF!"], ["Short rib (kg)", "ORDER!!"], ["Walk-in · Luigi's copy says", "10"]], total: ["Counted by hand", "4 h / week"] },
+    av: { t: "bars", title: "Ember Kitchen · Stock", sub: "Counts drop with every Foodics sale", rows: [["Octopus", 72, "18 kg"], ["Short rib", 45, "26 kg"], ["Burrata", 14, "PO-1182 ✓", "#f59e0b"]] },
+  },
+  {
+    bv: { t: "dash", title: "A/R Aging · FreshFold Laundry LLC", sub: "Over 30 days · AED 67,600", kpis: [["Over 30 days", "AED 67,600", "14 accounts"], ["Process", "Ask Nina"]], rows: [["Marina Gate Hotel", "AED 14,200", "r|47 days"], ["JBR Fitness Club", "AED 9,850", "r|38 days"], ["Bay View Suites", "AED 7,300", "r|33 days"]], head: ["ACCOUNT", "OWED", "LATE"] },
+    av: { t: "steps", title: "Invoices & reminders · business accounts", sub: "Over 30 days late: AED 4,200 (was AED 67,600)", steps: [["Invoice sent on delivery day", "Marina Gate Hotel · AED 14,200"], ["WhatsApp reminder", "Day 7, 14 and 21"], ["14 payments matched in Zoho Books", "Bank transfers reconciled"], ["Still late at 20 days", "Sent to Nina's inbox", "x"]] },
+  },
+  {
+    bv: { t: "chat", name: "V&W Crew 🔌", sub: "Mohammed, Omar, Raj, Carlos, Erin", color: "#facc15", day: "Today", msgs: [{ w: "in", t: "which Khalifa City villa was it again?", time: "7:02 AM" }, { w: "in", t: "who has the 200A breaker?", time: "7:04 AM" }, { w: "in", t: "I'm at the Al Reem job too, who sent me here?", time: "7:11 AM" }, { w: "in", t: "did anyone call the Park lady back??", time: "7:15 AM" }] },
+    av: { t: "dash", title: "Dispatch · Tue 13 Oct", sub: "4 vans · 7 AM–3 PM", kpis: [["Jobs", "9"], ["Double-booked", "0"], ["Callbacks", "1"]], rows: [["Omar · Khalifa City villa 14", "200A kit loaded", "g|7:30"], ["Raj · Al Reem Island", "Photos required", "b|10:00"], ["Callback: Linda Park", "Scheduled", "y|1:00"]], head: ["TECH · JOB", "NOTES", "TIME"] },
+  },
+];
 export const PATCH: Partial<Page> = {
+  pains: automation.pains.map((p, i) => ({ ...p, ...PAIN_VIZ[i] })),
   techRows: [
     ...rows.slice(0, fitsIdx + 1),
     ["As you grow", "Add what you need", "Gets messy past about 40 automations", "Only where the vendor goes", "Yes, at a price"],

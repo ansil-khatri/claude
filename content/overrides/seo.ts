@@ -1,10 +1,26 @@
 import type { Page } from "../types";
+import type { VizSpec } from "@/components/mock/Viz";
 import { seo as base } from "../services/seo";
 
+const PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  {
+    bv: { t: "serp", query: "ac repair near me", items: [["Desert Breeze AC · 4.4 ★ (96)", "desertbreezeac.ae", "Map result 1 · open now"], ["CoolPro AC Services · 4.1 ★ (58)", "coolproac.ae", "Map result 2 · from AED 299"], ["Peak Cooling · result #27, page 3", "peakcooling.ae", "0 calls from this search"]] },
+    av: { t: "serp", query: "ac repair near me", items: [["Peak Cooling · 4.9 ★ (640) · Open 24 hours", "peakcooling.ae › ac-repair › jvc", "Same-day AC repair from AED 249"], ["#1 in JVC, Al Barsha, Dubai Marina", "Google Maps", "118 calls this month (was 31)"]] },
+  },
+  {
+    bv: { t: "dash", title: "Search Console · maisonrose.ae/bridal", sub: "Last 28 days", kpis: [["Visits", "4"], ["Avg position", "34"], ["Bookings", "0"]], rows: [["bridal hair dubai", "Directory ranks first", "r|Pos 34"], ["bridal makeup jbr", "Not shown", "r|Pos 52"], ["maison rose", "Brand search", "g|Pos 1"]], head: ["QUERY", "NOTE", "POSITION"] },
+    av: { t: "serp", query: "bridal hair dubai", items: [["Bridal Hair Dubai · from AED 1,950 · Maison Rose", "maisonrose.ae › bridal", "Real weddings, trial price and a Book a trial button. English + العربية."], ["Bridal hair trial · JBR", "maisonrose.ae › ar › bridal", "ستايل العروس · احجزي تجربة"]] },
+  },
+  {
+    bv: { t: "dash", title: "Apex Auto Works · Google profile", sub: "What customers see", kpis: [["Rating", "3.9", "23 reviews"], ["Website", "Page not found"]], rows: [["Closes 6 PM · Closed Friday", "Hours", "r|Wrong"], ["★ Called Friday at 3 PM, nobody answered", "No reply for 7 months", "r|1 star"]], head: ["LISTING", "NOTE", "STATE"] },
+    av: { t: "doc", title: "Apex Auto Works · 4.9 ★ (860)", sub: "Al Quoz · Google profile", lines: [["Sat–Thu", "8 AM–7 PM"], ["Friday", "8 AM–12 PM, 2–7 PM"], ["Owner reply", "\"Sorry about the Friday hours, fixed. — Rashid\""]], total: ["Brake service", "From AED 890"] },
+  },
+];
 /** Gap-audit patch for /services/seo (spec 2026-10-07-service-seo-design.md, UAE values per localization spec §5/§8.11). Merge as {...page, ...PATCH}. */
 const tabFine = ["", "Written with you from real jobs; no AI-spun pages.", "Works on WordPress, Shopify, Webflow, Wix or custom; no forced rebuild.", "", "Monthly 30-min call; Search Console and Analytics in your name."];
 
 export const PATCH: Partial<Page> = {
+  pains: base.pains.map((p, i) => ({ ...p, ...PAIN_VIZ[i] })),
   tabs: base.tabs.map((t, i) => (tabFine[i] ? { ...t, fine: tabFine[i] } : t)),
   techRows: [
     base.techRows[0],

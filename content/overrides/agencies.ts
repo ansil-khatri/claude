@@ -1,5 +1,15 @@
 import type { Page } from "../types";
+import type { VizSpec } from "../../src/components/mock/Viz";
 import { whitelabel as base } from "../services/whitelabel";
+
+const AGENCY_PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  { bv: { t: "chat", name: "Jake (freelance dev)", sub: "last seen 9 days ago", color: "#9aa0a6", day: "Mon to Thu", msgs: [{ w: "out", t: "Hey Jake, any update on the Maison Rose build?", time: "Mon 10:15" }, { w: "out", t: "Staging link is down. Can you check?", time: "Tue 4:40 PM" }, { w: "out", t: "Demo in 6 hours. Please call me!!", time: "Thu 8:05 AM" }] },
+    av: { t: "chat", name: "#maison-rose-build", sub: "Slack · 4 members", color: "#4a154b", day: "Thursday", msgs: [{ w: "in", t: "Sam: Nightly update. Booking flow and Apple Pay shipped. Sprint 4: 11 of 13 done.", time: "6:10 PM" }, { w: "in", t: "Demo Thursday 2 PM is on track. Staging is green.", time: "6:11 PM" }, { w: "out", t: "Brilliant, thank you Sam.", time: "6:20 PM" }] } },
+  { bv: { t: "doc", title: "Gmail · Drafts (1)", sub: "Re: Ordering app, Ember Kitchen", lines: [["From", "Marco, Ember Kitchen"], ["Budget", "~AED 150,000"], ["Draft age", "6 days"]], total: ["Reply sent", "Not yet"] },
+    av: { t: "doc", title: "Proposal CL-118 · Copperline Digital", sub: "Signed by Marco · 7 Oct", lines: [["Ordering app", "AED 80,800"], ["Foodics + Stripe", "AED 34,900"], ["Loyalty", "AED 25,700"]], total: ["Client price", "AED 141,400"] } },
+  { bv: { t: "dash", title: "Capacity_Q4_REAL_v3.xlsx", sub: "Dubai · Q4", kpis: [["Chris", "150%"], ["Waiting", "AED 352,600"], ["Free dev", "0"]], rows: [["Chris", "Peak Plumbing site", "r|130-160%"], ["Ember app", "NO ONE", "r|Unstaffed"], ["Volt & Wire", "March??", "y|Waiting"]], head: ["WHO", "PROJECT", "LOAD"] },
+    av: { t: "dash", title: "Team capacity · Q4", sub: "White-label team started Monday", kpis: [["Waiting", "0"], ["Started", "AED 352,600"], ["Chris", "90%"]], rows: [["Ember app", "Sam, Priya", "g|Building"], ["Volt & Wire Shopify", "Leo", "g|Building"], ["Apex shop system", "Sam, Priya, Dana", "g|Building"]], head: ["PROJECT", "TEAM", "STATUS"] } },
+];
 
 /** Gap-audit patch for /agencies (spec 2026-10-07-service-white-label-design.md, UAE values per localization spec §5/§8.13). Merge as {...page, ...PATCH}. */
 export const PATCH: Partial<Page> = {
@@ -7,7 +17,7 @@ export const PATCH: Partial<Page> = {
     { q: "\"Our freelancer went quiet two weeks before launch.\"", cost: "Launch pushed five weeks and AED 22,800 refunded to keep the account after a dev disappeared mid-project.", fix: "A team, not one person: nightly updates, a staging site that always works, a named backup developer and a project manager who answers in your Slack the same working day." },
     { q: "\"Our client asked for an app. We've never built one.\"", cost: "The reply sat in Drafts for 6 days and the client nearly went to another agency. Copperline proposal CL-118: app AED 80,800 + Foodics/Stripe AED 34,900 + loyalty AED 25,700 = AED 141,400.", fix: "A fixed wholesale price within 48 hours (here AED 87,400, margin AED 54,000, 38%). You add your margin and send it as your own." },
     { q: "\"Our only developer is booked until March.\"", cost: "AED 352,600 of signed work waiting on one person, who is working weekends.", fix: "A white-label team in five working days, under your name, starting Monday. It scales with your pipeline, month to month." },
-  ],
+  ].map((p, i) => ({ ...p, ...AGENCY_PAIN_VIZ[i] })),
   tabs: base.tabs.map((t, i) => {
     if (i === 0) return { ...t, fine: "No logo, credits or links from us in anything we build." };
     if (i === 3) return { ...t, fine: "Change requests in 24 h. We invoice you, never your client. Monthly, Net 15, AED. Partners keep 35–45% on average." };

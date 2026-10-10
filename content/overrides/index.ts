@@ -10,10 +10,11 @@ import { PATCH as agencies } from "./agencies";
 import { PATCH as webapp } from "./web-app-development";
 import { PATCH as saas } from "./saas-development";
 import { PATCH as landing } from "./landing-pages";
+import { PATCH as einvoice } from "./e-invoicing-integration";
 
 /** Spec-accurate replacements for whole fields, applied last (after showcases.ts and cases). Keyed by page slug. */
 export const PATCHES: Record<string, Partial<Page>> = {
   "shopify-development": shopify, "website-design": website, "payment-integration": payments, "ai-whatsapp-automation": ai,
   "business-automation": automation, seo, "vibe-code-rescue": rescue, agencies,
-  "web-app-development": webapp, "saas-development": saas, "landing-pages": landing,
+  "web-app-development": webapp, "saas-development": saas, "landing-pages": landing, "e-invoicing-integration": einvoice,
 };

@@ -220,5 +220,62 @@ const phoneRepair: Ind = {
   guides: [],
 } as Ind;
 
-export const INDUSTRY_PAGES: Ind[] = [restaurants, salons, laundry, autoRepair, homeServices, phoneRepair].map(scrubPage);
+const INDUSTRY_PAGES_RAW: Ind[] = [restaurants, salons, laundry, autoRepair, homeServices, phoneRepair];
+
+/* ---------- "Sound familiar?" before/after mockups, one pair per pain ---------- */
+type PV = { bv: VizSpec; av: VizSpec };
+const wa = (name: string, color: string, day: string, msgs: { w: "in" | "out"; t: string; time?: string; ar?: boolean; link?: string }[]): VizSpec => ({ t: "chat", name, color, day, msgs });
+const PAIN_VIZ: Record<string, PV[]> = {
+  restaurants: [
+    { bv: { t: "dash", title: "Talabat · weekly payout statement", sub: "Ember Kitchen · 5–11 Oct", kpis: [["Orders", "128"], ["Gross", "AED 17,700"], ["Commission", "−AED 5,310"]], rows: [["Promos funded", "−AED 660", "r|Deducted"], ["Deposited", "AED 11,730", "y|Paid"], ["Guest contacts", "0", "r|None"]] },
+      av: { t: "bars", title: "Ember Kitchen · orders by channel", sub: "This week", rows: [["Direct site + app", 72, "AED 14,470 · 0%", "#1f9d6a"], ["Talabat", 40, "AED 8,100 · −30%"], ["Guests you can message", 68, "1,204"]] } },
+    { bv: wa("Sara (guest)", "#25d366", "Fri 16 Oct", [{ w: "in", t: "Hi, we were 4 tonight at 9. Sorry, plans changed, we can't make it", time: "9:14 PM" }, { w: "out", t: "No problem, thanks for letting us know", time: "9:15 PM" }, { w: "in", t: "(table for 4 empty since 8:45)", time: "9:30 PM" }]),
+      av: { t: "doc", title: "Reservation · Fri 9:00 PM", sub: "Ember Kitchen · JLT", lines: [["Table for 4", "Fri 16 Oct"], ["Deposit AED 40 × 4", "AED 160.00"], ["Reminder", "WhatsApp, Thu 6 PM"]], total: ["Credited to the bill", "−AED 160"] } },
+    { bv: { t: "steps", title: "Fri 16 Oct · short rib", sub: "Talabat still selling", steps: [["8:00 PM", "Short rib sold out, 86'd in kitchen", "p"], ["8:40 PM", "Talabat order #305 accepted", "x"], ["9:55 PM", "Refund AED 780 + 1-star review", "x"]] },
+      av: { t: "dash", title: "Menu & 86", sub: "One switch, every channel", kpis: [["Items live", "46"], ["86'd", "1"]], rows: [["Short rib", "86'd 8:00 PM", "r|Sold out"], ["Site + app", "Hidden", "g|Synced"], ["Talabat · Deliveroo", "Hidden in seconds", "g|Synced"]], head: ["ITEM", "WHERE", "STATE"] } },
+  ],
+  salons: [
+    { bv: { t: "bars", title: "Maison Rose · Tuesday 14 Oct", sub: "Chair utilisation", rows: [["10 AM–1 PM", 85, "booked"], ["1–4 PM", 20, "2 of 6 chairs", "#c0392b"], ["4–7 PM", 12, "empty", "#c0392b"], ["Lost", 100, "AED 4,950", "#c0392b"]] },
+      av: wa("Maison Rose", "#c76a8a", "Tue 14 Oct", [{ w: "out", t: "A 3:30 PM opened up with Mia today: blow-dry + treatment, AED 330. Want it?", time: "1:12 PM" }, { w: "in", t: "Yes please!", time: "1:13 PM" }, { w: "out", t: "Booked. AED 80 deposit paid. See you at 3:30", time: "1:13 PM" }]) },
+    { bv: wa("Noor (client)", "#25d366", "Sat 10 Oct", [{ w: "in", t: "So sorry, I can't make my 10 AM balayage anymore", time: "9:58 AM" }, { w: "out", t: "Mia blocked the whole morning for you 😔", time: "9:59 AM" }]),
+      av: { t: "doc", title: "No-show · Sat 10:00 AM", sub: "Maison Rose · Mia", lines: [["Balayage", "AED 650.00"], ["Deposit kept", "AED 150.00"], ["Slot offered to waitlist", "Filled 10:20"]], total: ["Lost to no-show", "AED 0"] } },
+    { bv: wa("Instagram DMs", "#c13584", "12:04 AM", [{ w: "in", t: "هل عندكم موعد بكرة للشعر؟", time: "11:52 PM", ar: true }, { w: "in", t: "Anything free Thursday for a colour?", time: "11:58 PM" }, { w: "in", t: "Hello? 😒", time: "12:20 AM" }]),
+      av: { t: "phone", k: "maisonrose", kind: "detail" } },
+  ],
+  laundry: [
+    { bv: wa("FreshFold · inbox", "#0f7fb5", "Thu 9:02 AM", [{ w: "in", t: "When are you coming?", time: "7:48 AM" }, { w: "in", t: "Marina Gate 2, tower B, leave with concierge", time: "8:15 AM" }, { w: "in", t: "Hello?? 23 unread", time: "9:00 AM" }]),
+      av: { t: "phone", k: "freshfold", kind: "tracking" } },
+    { bv: wa("Imran (driver)", "#25d366", "Thu", [{ w: "in", t: "Boss which tower is Layla in?", time: "10:02 AM" }, { w: "in", t: "Concierge says no bag. Who is the number?", time: "10:41 AM" }, { w: "in", t: "Where is Marina Heights?", time: "11:20 AM" }]),
+      av: { t: "dash", title: "Driver stops · Imran", sub: "Thu · Marina & JLT", kpis: [["Stops", "18"], ["Done", "7"], ["Missed", "0"]], rows: [["Marina Gate 2 · Tower B", "Concierge desk", "g|Photo ✓"], ["JLT Cluster D", "Call on arrival", "b|Next"], ["Marina Heights", "Leave at door", "y|11:40"]], head: ["STOP", "NOTE", "STATUS"] } },
+    { bv: wa("Layla (customer)", "#25d366", "Sun", [{ w: "in", t: "You lost my white shirt. It was in the bag!", time: "6:10 PM" }, { w: "out", t: "Sorry, we have no record of it. Refund whole order?", time: "6:25 PM" }]),
+      av: { t: "doc", title: "Intake · Order #4821", sub: "Photos taken before washing", lines: [["White shirt × 2", "photo ✓"], ["Abaya × 1", "photo ✓"], ["Bag weight", "6.4 kg"]], total: ["List sent on WhatsApp", "AED 0 lost"] } },
+  ],
+  "auto-repair": [
+    { bv: { t: "dash", title: "Front desk · phone log", sub: "Apex Auto Works · yesterday", kpis: [["Calls", "41"], ["Missed", "17"], ["\"Is it ready?\"", "29"]], rows: [["Land Cruiser", "4 calls", "y|Still on lift"], ["Nissan Patrol", "3 calls", "r|2 missed"]] },
+      av: { t: "phone", k: "apex", kind: "status" } },
+    { bv: wa("Apex Auto Works", "#c8102e", "Tue", [{ w: "out", t: "Your front brake pads need replacing: AED 1,390", time: "11:02 AM" }, { w: "in", t: "Is that really needed? Let me think about it", time: "11:30 AM" }]),
+      av: { t: "doc", title: "Digital inspection · Land Cruiser", sub: "Photos + video on WhatsApp", lines: [["Front pads · 2 mm left", "photo + video"], ["Brake fluid", "OK"], ["Brake job", "AED 1,390.00"]], total: ["Customer taps", "Approve"] } },
+    { bv: { t: "serp", query: "car service near me al quoz", items: [["Quick Lube Express", "quicklubeexpress.ae", "★ 4.1 · Open · Call now"], ["Al Quoz Auto Care", "alquozautocare.ae", "★ 4.2 · Open"], ["Apex Auto Works · #7", "apexautoworks.ae", "★ 4.8 · no prices listed"]] },
+      av: { t: "serp", query: "car service near me al quoz", items: [["Apex Auto Works · #1", "apexautoworks.ae › brake-pads", "★ 4.8 (212) · brake pads from AED 390"], ["Quick Lube Express", "", "★ 4.1"], ["Al Quoz Auto Care", "", "★ 4.2"]] } },
+  ],
+  "home-services": [
+    { bv: { t: "dash", title: "Phone · missed calls", sub: "Peak Cooling · 12 AM–7 AM", kpis: [["Missed", "7"], ["AC failures", "2"], ["Booked elsewhere", "2"]], rows: [["1:02 AM · Marina", "AC not cooling", "r|Missed"], ["2:40 AM · JLT", "AC leaking", "r|Missed"], ["5:15 AM · Ranches", "Quote", "y|Missed"]], head: ["TIME", "ISSUE", "STATUS"] },
+      av: wa("Peak Cooling", "#0b6fb0", "1:02 AM", [{ w: "out", t: "Sorry we missed your call! Book the first slot tomorrow, 8 AM, or pay the AED 100 call-out deposit now", time: "1:02 AM", link: "peakcooling.ae/book" }, { w: "in", t: "8 AM please", time: "1:03 AM" }]) },
+    { bv: wa("Mrs. Hind", "#25d366", "Mon", [{ w: "out", t: "Quote for new 2-ton split AC: AED 4,200", time: "4:10 PM" }, { w: "in", t: "Thanks, I'll think about it", time: "4:35 PM" }, { w: "in", t: "(booked another company)", time: "Fri" }]),
+      av: { t: "doc", title: "Quote on the tech's phone", sub: "Signed on site", lines: [["Good · 1.5-ton split", "AED 2,950"], ["Better · 2-ton inverter", "AED 4,200"], ["Pay in instalments", "Tabby or Tamara"]], total: ["Signed on site", "Better ✓"] } },
+    { bv: { t: "dash", title: "Unpaid invoices", sub: "Peak Cooling · Monday chase list", kpis: [["Outstanding", "AED 67,650"], ["Avg. days to pay", "34"], ["Invoices", "21"]], rows: [["INV-5481 · Villa 12", "AED 8,400", "r|34 days"], ["INV-5502 · Marina", "AED 5,150", "y|18 days"]], head: ["INVOICE", "AMOUNT", "AGE"] },
+      av: { t: "phone", k: "peakcooling", kind: "checkout" } },
+  ],
+  "phone-repair": [
+    { bv: wa("Instagram DMs", "#c13584", "This week", [{ w: "in", t: "كم سعر شاشة ايفون 13؟", time: "9:20 PM", ar: true }, { w: "in", t: "how much for iPhone 13 screen?", time: "9:41 PM" }, { w: "in", t: "dm price pls", time: "10:05 PM" }]),
+      av: { t: "phone", k: "fixpoint", kind: "detail" } },
+    { bv: { t: "dash", title: "Saturday · counter call log", sub: "FixPoint Karama", kpis: [["\"Is it ready?\"", "23"], ["Tech interrupted", "23"], ["Repairs finished", "19"]], rows: [["iPhone 13 · Luis", "4 calls", "y|Testing"], ["Galaxy S22 · Aisha", "3 calls", "y|Waiting part"]], head: ["DEVICE", "CALLS", "STATE"] },
+      av: wa("FixPoint Karama", "#e8590c", "Sat", [{ w: "out", t: "Your iPhone 13 is ready and tested. Pay AED 449 with Apple Pay at the counter", time: "2:18 PM", link: "fixpoint.ae/t/48213" }]) },
+    { bv: wa("FixPoint stores (3)", "#25d366", "Mon", [{ w: "in", t: "just ordered 4 iPhone 13 screens from PartsHub, AED 1,600", time: "11:02 AM" }, { w: "in", t: "bro Deira has 9 on the shelf 😐", time: "11:20 AM" }]),
+      av: { t: "dash", title: "Stock · iPhone 13 screens", sub: "All 3 stores", kpis: [["Deira", "9"], ["Karama", "1"], ["City Centre", "2"]], rows: [["Transfer T-208", "Deira → Karama · 4", "g|AED 1,600 saved"]], head: ["ACTION", "ROUTE", "RESULT"] } },
+  ],
+};
+for (const p of INDUSTRY_PAGES_RAW) PAIN_VIZ[p.slug].forEach((v, i) => { p.pains[i] = { ...p.pains[i], ...v }; });
+
+export const INDUSTRY_PAGES: Ind[] = INDUSTRY_PAGES_RAW.map(scrubPage);
 export const industryPage = (slug: string) => INDUSTRY_PAGES.find((p) => p.slug === slug);

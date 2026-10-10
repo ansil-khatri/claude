@@ -1,9 +1,25 @@
 import type { Page } from "../types";
+import type { VizSpec } from "@/components/mock/Viz";
 import { ai } from "../services/ai";
 
 // Spec AI7 values converted at about AED 3.67/USD: +$26k booked work/month -> +AED 96k.
 
+const PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  {
+    bv: { t: "dash", title: "Ember Kitchen · main line call log", sub: "Fri 7:00–10:00 PM", kpis: [["Missed", "23"], ["Voicemails", "9"], ["Answered", "31"]], rows: [["7:42 PM · +971 55 210 4417", "Voicemail: \"Table for 6 tonight?\"", "r|Missed"], ["8:05 PM · +971 50 884 1092", "No voicemail", "r|Missed"], ["8:19 PM · +971 52 330 7761", "Voicemail: \"Takeout, 2 mains\"", "r|Missed"]], head: ["CALL", "DETAIL", "STATE"] },
+    av: { t: "dash", title: "Ember Kitchen · AI host", sub: "Same evening", kpis: [["Missed", "0"], ["Orders", "34", "AED 9,100"], ["To staff", "3"]], rows: [["#5840 Takeout · octopus + short rib", "AED 205", "g|Paid"], ["Table for 6 · 8:30 PM", "Reserved", "g|AI"], ["Catering for 40", "Sent to Marco", "y|Handoff"]], head: ["CALL", "RESULT", "BY"] },
+  },
+  {
+    bv: { t: "chat", name: "maisonrose.dxb · Instagram", sub: "47 unread", color: "#e1306c", day: "Mon", msgs: [{ w: "in", t: "Hi, how much is long hair balayage?", time: "Mon 4:12 PM" }, { w: "in", t: "Hello??", time: "Wed 6:30 PM" }, { w: "in", t: "nvm found somewhere else", time: "Thu 9:05 PM" }] },
+    av: { t: "dash", title: "maisonrose.dxb · Inbox", sub: "Needs you 3 · Answered 44", kpis: [["Needs you", "3"], ["Answered", "44"], ["Reply time", "6 sec"]], rows: [["Long-hair balayage?", "From AED 790", "g|AI"], ["Men's cut?", "AED 120", "g|AI"], ["Bridal group of 6", "Sent to Sarah", "y|Needs you"]], head: ["MESSAGE", "REPLY", "BY"] },
+  },
+  {
+    bv: { t: "dash", title: "parts@apexautoworks.ae · Inbox", sub: "38 unread supplier PDFs", kpis: [["Unread", "38"], ["Typing a week", "6 h"], ["Due", "Thursday"]], rows: [["INV-8821 · Sharjah Parts Trading", "PDF", "y|Unread"], ["INV-3307 · Al Quoz Brake Supply", "PDF", "y|Unread"], ["📝 ENTER ALL INTO ZOHO BY THURSDAY!! — Rashid", "Sticky note", "r|Late"]], head: ["FROM", "TYPE", ""] },
+    av: { t: "steps", title: "Agent run · Parts invoices to Zoho Books", sub: "Saved 5 h 40 min", steps: [["Read 14 invoices", "Matched 41 lines to repair orders"], ["Drafted 13 bills", "AED 22,850 in Zoho Books"], ["Rotor AED 250 → AED 298 (+19%)", "Flagged · Ask Rashid", "x"]] },
+  },
+];
 export const PATCH: Partial<Page> = {
+  pains: ai.pains.map((p, i) => ({ ...p, ...PAIN_VIZ[i] })),
   tech: ["Arabic + English", "WhatsApp Business API", "OpenAI", "Claude", "Gemini", "Twilio Voice", "Your docs & data"],
   stage: {
     ...ai.stage,

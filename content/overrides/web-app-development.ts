@@ -1,6 +1,23 @@
 import type { Page } from "../types";
+import { webapp } from "../services/apps";
+
+const WEB_PAIN_VIZ: Pick<Page["pains"][number], "bv" | "av">[] = [
+  {
+    bv: { t: "doc", title: "Orders_FINAL_v7 (2).xlsx", sub: "Copy of Orders · OLD - DONT USE", lines: [["Order 2231 · Al Barsha", "??? ask Sam"], ["Order 2232 · Al Quoz", "#REF!"], ["Order 2233 · Jumeirah", "NO (unpaid)"], ["Order 2234 · Business Bay", "#REF!"]], total: ["3 copies, which is right?", "???"] },
+    av: { t: "dash", title: "FreshFold · Orders", sub: "app.freshfold.com/orders", kpis: [["All", "64"], ["New", "6"], ["In progress", "21"], ["Unpaid", "0"]], rows: [["#2231 Al Barsha", "Mike", "g|Paid"], ["#2232 Al Quoz", "Sara", "b|Delivering"], ["#2233 Jumeirah", "Mike", "y|Packing"]], head: ["ORDER", "DRIVER", "STATUS"] },
+  },
+  {
+    bv: { t: "doc", title: "Business card statement", sub: "Oct · 7 subscriptions", lines: [["HubSpot", "AED 1,650"], ["Zoho CRM", "AED 1,060"], ["Trello · Zoho Books · Zapier", "AED 1,075"], ["Calendly · Jotform", "AED 380"]], total: ["Per month", "AED 4,165"] },
+    av: { t: "dash", title: "Today at Apex", sub: "shop.apexautoworks.ae", kpis: [["Booked", "14"], ["Quotes", "AED 1,339"], ["Paid", "AED 6,240"], ["Auto texts", "38"]], rows: [["Bay 1 · Land Cruiser", "Brakes", "b|Working"], ["Bay 4 · Nissan Patrol", "Service", "g|Ready"], ["Bay 6 · Camry", "Quote", "y|Approval"]], head: ["BAY", "JOB", "STATUS"] },
+  },
+  {
+    bv: { t: "chat", name: "Inbox · 47 unread", sub: "info@voltwire.ae", color: "#ea4335", msgs: [{ w: "in", t: "Is the electrician still coming Thursday?", time: "7:48 AM" }, { w: "in", t: "Where do I pay??", time: "8:15 AM" }, { w: "in", t: "Breaker tripping AGAIN", time: "9:02 AM" }] },
+    av: { t: "dash", title: "Volt & Wire · My portal", sub: "Tom Reynolds · Khalifa City · UAE Pass", kpis: [["Next visit", "Thu 9 to 11 AM", "Carlos M."], ["Estimate E-1042", "AED 4,550", "e-signed"], ["Balance due", "AED 3,450"]], rows: [["EV charger install", "Step 3 of 4", "b|On track"], ["Estimate E-1042", "AED 4,550", "g|Approved"], ["Pay balance", "AED 3,450", "y|Pay now"]], head: ["ITEM", "AMOUNT", "STATUS"] },
+  },
+];
 
 export const PATCH: Partial<Page> = {
+  pains: webapp.pains.map((p, i) => ({ ...p, ...(i === 1 ? { cost: "AED 4,165 a month in subscriptions, and someone still copies data between them every night at 9 PM." } : {}), ...WEB_PAIN_VIZ[i] })),
   stage: {
     main: { t: "dash", title: "Good morning, Nina · FreshFold Today", sub: "app.freshfold.com/today", kpis: [["Orders", "64", "▲ 12%"], ["Out for delivery", "9"], ["Paid today", "AED 2,418"], ["Late", "0"]], rows: [["#2231 Al Barsha · Wash & fold", "Mike", "g|Paid"], ["#2232 Al Quoz · Dry clean", "Sara", "b|Out for delivery"], ["#2233 Jumeirah · Bedding", "Mike", "y|Packing"], ["#2234 Business Bay · Suits", "Imran", "b|Out for delivery"]], head: ["ORDER", "DRIVER", "STATUS"] },
     side: { t: "phone", k: "freshfold", kind: "tracking" },

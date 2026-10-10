@@ -9,6 +9,7 @@ import { AppInPhone, SiteInBrowser } from "@/components/mock/BrandMocks";
 import { BRANDS } from "@content/brands";
 import { published } from "@content/guides";
 import { PinnedChapters } from "@/components/scenes/PinnedChapters";
+import { StackCards } from "@/components/scenes/StackCards";
 
 export const Eyebrow = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
 export const Head = ({ eyebrow, title, lead, dark }: { eyebrow: string; title: React.ReactNode; lead?: string; dark?: boolean }) => (
@@ -28,21 +29,29 @@ export function Plain({ text, facts }: { text: string; facts: [string, string][]
 function PainCard({ p, i }: { p: Pain; i: number }) {
   const num = p.cost.match(/(AED\s?[\d,.]+[kKM]?|\d[\d,.]*\s?(?:%|hours?|seconds?|s|min)|\d[\d,.]*)/)?.[0] ?? "";
   return (
-    <div className="pain" tabIndex={0} data-cursor="See fix">
-      <div className={`pain-vis ${p.bv ? "has-v" : ""}`} data-nosnippet>
-        <div className="pain-before"><span className="tg">BEFORE</span>{p.bv ? <div className="pv"><Viz spec={p.bv} /></div> : <div className="pain-num">{num}</div>}<p>{p.cost}</p></div>
-        <div className="pain-after"><span className="tg">AFTER</span>{p.av && <div className="pv"><Viz spec={p.av} /></div>}<p>{p.fix}</p></div>
-        <span className="hint">Hover or tap to see the fix</span>
+    <article className="pn-card" style={{ ["--i" as string]: i } as React.CSSProperties}>
+      <header className="pn-h"><span className="pn-i">{String(i + 1).padStart(2, "0")}</span><blockquote>{p.q}</blockquote></header>
+      <div className="pn-grid">
+        <div className="pn-col bef">
+          <span className="tg">BEFORE</span>
+          <div className="pn-vis" data-nosnippet>{p.bv ? <Viz spec={p.bv} /> : <div className="pn-num">{num}</div>}</div>
+          <p>{p.cost}</p>
+        </div>
+        <div className="pn-arrow" aria-hidden><i /></div>
+        <div className="pn-col aft">
+          <span className="tg">AFTER</span>
+          <div className="pn-vis" data-nosnippet>{p.av ? <Viz spec={p.av} /> : <div className="pn-num ok">✓</div>}</div>
+          <p>{p.fix}</p>
+        </div>
       </div>
-      <blockquote>{p.q}</blockquote>
-    </div>
+    </article>
   );
 }
 export function Pains({ head, pains, title }: { head: string; pains: Pain[]; title?: string }) {
   return (
-    <section className="sec"><div className="w">
-      <Head eyebrow="Sound familiar?" title={head} lead="Hover over each card (or tap it) to see what changes." />
-      <div className="pgrid3" data-stagger="up">{pains.map((p, i) => <PainCard key={i} p={p} i={i} />)}</div>
+    <section className="sec pn"><div className="w">
+      <Head eyebrow="Sound familiar?" title={head} lead="What it looks like today, and what it looks like after we fix it." />
+      <StackCards>{pains.map((p, i) => <PainCard key={i} p={p} i={i} />)}</StackCards>
     </div></section>
   );
 }

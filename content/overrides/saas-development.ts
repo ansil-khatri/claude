@@ -2,7 +2,10 @@ import type { Page } from "../types";
 
 export const PATCH: Partial<Page> = {
   pains: [
-    { q: "\"Other owners keep asking for the spreadsheet we built.\"", cost: "You've emailed it to 11 restaurants. Every copy is different, it breaks when they edit it, and nobody pays you.", fix: "A real product: sign up, pay monthly, and every customer gets their own account." },
+    { q: "\"Other owners keep asking for the spreadsheet we built.\"", cost: "You've emailed it to 11 restaurants. Every copy is different, it breaks when they edit it, and nobody pays you.", fix: "A real product: sign up, pay monthly, and every customer gets their own account.",
+      bv: { t: "doc", title: "Inventory_MASTER_v12_SHARE (3).xlsx", sub: "Copy for Luigi's · Brookside v3 · OLD", lines: [["Tomatoes (kg)", "ORDER!!"], ["Chicken (kg)", "#REF!"], ["Olive oil (L)", "Luigi's copy says 10"], ["Saffron", "???"]], total: ["Stock value", "#REF!"] },
+      av: { t: "dash", title: "Shelfwise · Inventory", sub: "Dubai Marina kitchen", kpis: [["Food cost", "28.4%"], ["On hand", "AED 14,820"], ["Below par", "7"]], rows: [["Tomatoes · Al Aweer Fresh Co.", "4 kg left", "y|Below par"], ["Chicken · Al Aweer Fresh Co.", "6 kg left", "y|Below par"], ["Draft order", "AED 1,102", "g|Send"]], head: ["ITEM", "STOCK", "STATUS"] },
+    },
     {
       q: "\"Our MVP falls over every time a big customer signs up.\"", cost: "Reports take 14 seconds, there were 3 outages last month, and one customer saw another company's invoices.", fix: "Rebuilt to keep every customer's data apart, tested under 10,000 companies' worth of load.",
       bv: { t: "code", file: "routeline-api · error tracker", lines: ["// 3 outages this month", "- TimeoutError 30 s on /reports", "- Customer saw another company's invoices (missing tenant filter)", "- DB connections exhausted 100/100"] },
@@ -11,7 +14,7 @@ export const PATCH: Partial<Page> = {
     {
       q: "\"We still invoice our customers by hand.\"", cost: "23 customers paying late, AED 8,400 outstanding, and no warning before someone cancels.", fix: "Subscriptions that charge, retry failed cards and show you MRR and churn every morning.",
       bv: { t: "chat", name: "Founder inbox", sub: "61 unread", color: "#6366f1", msgs: [{ w: "in", t: "We paid this already?", time: "9:12 AM" }, { w: "in", t: "Card declined, can you resend the link?", time: "9:40 AM" }, { w: "in", t: "Wrong amount? We have 4 techs, not 6", time: "10:05 AM" }] },
-      av: { t: "dash", title: "Routeline · System Health + Subscriptions", sub: "Admin", kpis: [["MRR", "AED 22,860"], ["Recovered", "AED 11,530"], ["Late invoices", "0", "was 23"]], rows: [["Tenant isolation", "412 tests", "g|Passing"], ["Load test", "10,000 companies · p95 180 ms", "g|Passed"], ["At-risk customers", "3", "y|Nudge"]], head: ["CHECK", "RESULT", "STATUS"] },
+      av: { t: "dash", title: "Routeline · Subscriptions", sub: "Admin · per-seat plans", kpis: [["MRR", "AED 22,860"], ["Recovered", "AED 3,140"], ["Late invoices", "0", "was 23"]], rows: [["Pro · 6 techs", "AED 294/mo", "g|Active"], ["Brightline Plumbing", "Card retried", "g|Recovered"], ["Al Qusais Cooling", "Usage down", "y|At risk"]], head: ["ACCOUNT", "PLAN", "STATE"] },
     },
   ],
   tabs: [

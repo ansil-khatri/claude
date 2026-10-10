@@ -10,6 +10,7 @@ import { GlowCanvas } from "@/components/scenes/GlowCanvas";
 import { PinnedChapters } from "@/components/scenes/PinnedChapters";
 import { StackCards } from "@/components/scenes/StackCards";
 import { DubaiClock } from "./HomeClient";
+export { Rebuilder } from "./Rebuilder";
 
 export function HomeHero() {
   return (
@@ -24,7 +25,7 @@ export function HomeHero() {
         </h1>
         <div className="hx-row">
           <p className="hx-sub" data-intro data-reveal="up">{HOME.sub}</p>
-          <div className="hx-ctas" data-intro data-reveal="up"><BookBtn /><WaBtn text="Hi, I'm on your homepage" /><LineBtn href="/process">See how it works</LineBtn></div>
+          <div className="hx-ctas" data-intro data-reveal="up"><BookBtn /><WaBtn text="Hi, I'm on your homepage" /><LineBtn href="#try">See your business rebuilt</LineBtn></div>
         </div>
       </div>
       <div className="hx-stage" data-nosnippet aria-hidden>
@@ -149,6 +150,24 @@ export function ResultsSection() {
           </div>
         ))}
       </div>
+    </div></section>
+  );
+}
+
+const SAFE: [string, string][] = [
+  ["Price in writing", "A fixed AED price within 48 hours of the call. It doesn't change unless you change the scope."],
+  ["Pay in stages", "Under AED 20,000: 50% to start, 50% at launch. You never pay for the whole project up front."],
+  ["See it before it's built", "Every screen is designed in Figma, in English and Arabic. Nothing is coded until you approve."],
+  ["A demo every Friday", "A live link to click through, so you see progress weekly instead of at the end."],
+  ["You own everything", "Code, designs and accounts are yours from the first payment. You can take it to anyone."],
+  ["Start small", "A payment link, a WhatsApp assistant or a landing page starts from AED 2,900 to AED 5,900, so you can test us on a small job."],
+];
+export function Assurance() {
+  return (
+    <section className="sec as"><div className="w">
+      <Head eyebrow="Why it's safe to start" title="Six things that make a first project low-risk." lead="Most owners have been burned by a freelancer who disappeared or an agency that over-promised. These are the terms that stop that from happening." />
+      <ol className="as-list" data-stagger="up">{SAFE.map(([h, p], i) => <li key={h}><span>{String(i + 1).padStart(2, "0")}</span><h3>{h}</h3><p>{p}</p></li>)}</ol>
+      <p className="note">Full payment terms are on the <Link href="/pricing" style={{ textDecoration: "underline" }}>pricing page</Link>.</p>
     </div></section>
   );
 }

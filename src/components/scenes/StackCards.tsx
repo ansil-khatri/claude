@@ -13,7 +13,7 @@ export function StackCards({ children }: { children: React.ReactNode }) {
       const cards = gsap.utils.toArray<HTMLElement>(el.children);
       cards.forEach((card, i) => {
         if (i === cards.length - 1) return;
-        gsap.to(card, { scale: 0.9, filter: "brightness(.45)", ease: "none", scrollTrigger: { trigger: cards[i + 1], start: "top 95%", end: "top 12%", scrub: true } });
+        gsap.to(card, { scale: 0.9, filter: "brightness(.45)", ease: "none", scrollTrigger: { trigger: cards[i + 1], start: "top 62%", end: "top 14%", scrub: true } });
       });
       return () => { gsap.set(cards, { clearProps: "all" }); };
     });

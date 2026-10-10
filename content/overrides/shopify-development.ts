@@ -11,9 +11,15 @@ export const PATCH: Partial<Page> = {
     ],
   },
   pains: [
-    { q: "\"Plenty of visitors. Hardly anyone buys.\"", cost: "2,840 visits last week, 31 orders. On a phone the page takes 9.8 seconds, then a popup covers it.", fix: "A fast, clean mobile store with a sticky Add to cart and one-tap Apple Pay." },
-    { q: "\"We have 23 apps and the theme breaks every update.\"", cost: "AED 2,250 a month in apps, and AED 1,500 to a freelancer just to move a banner.", fix: "A custom theme with the features built in, and sections your team edits in minutes." },
-    { q: "\"Wholesale orders still come in as PDFs.\"", cost: "40 shops reorder by email. Someone retypes every line, and mistakes ship.", fix: "A wholesale portal on your store with their prices, terms and one-click reorder." },
+    { q: "\"Plenty of visitors. Hardly anyone buys.\"", cost: "2,840 visits last week, 31 orders. On a phone the page takes 9.8 seconds, then a popup covers it.", fix: "A fast, clean mobile store with a sticky Add to cart and one-tap Apple Pay.",
+      bv: { t: "dash", title: "WHITE FRIDAY MEGA SALE!!! 🔥", sub: "Loading… 9.8s", kpis: [["Visits", "2,840"], ["Orders", "31", "1.1%"], ["Bounce", "78%"]], rows: [["Someone in Sharjah just bought this", "y|Popup"], ["WAIT!! 10% OFF · No thanks, I hate saving money", "r|Covers page"], ["We use cookies (Accept all)", "r|Banner"]] },
+      av: { t: "phone", k: "maisonrose", kind: "detail" } },
+    { q: "\"We have 23 apps and the theme breaks every update.\"", cost: "AED 2,250 a month in apps, and AED 1,500 to a freelancer just to move a banner.", fix: "A custom theme with the features built in, and sections your team edits in minutes.",
+      bv: { t: "dash", title: "Shopify admin · Apps", sub: "23 apps · AED 2,250/mo", kpis: [["Apps", "23"], ["Cost", "AED 2,250/mo"], ["Load added", "+4.1 s"]], rows: [["Popup Pro", "r|+1.2 s load"], ["Sticky Cart Drawer", "y|Conflicts"], ["Countdown Timer", "y|Unused since 2023"], ["Bundle Builder X", "r|Breaks on update"]], head: ["APP", "ISSUE", ""] },
+      av: { t: "dash", title: "Theme editor · Home", sub: "Online Store 2.0", kpis: [["Apps", "7", "was 23"], ["Saved", "AED 1,800/mo"]], rows: [["Hero banner", "g|Edited by your team"], ["Subscribe & save block", "g|Live"], ["Ramadan collection", "b|Scheduled"]], head: ["SECTION", "STATUS", ""] } },
+    { q: "\"Wholesale orders still come in as PDFs.\"", cost: "40 shops reorder by email. Someone retypes every line, and mistakes ship.", fix: "A wholesale portal on your store with their prices, terms and one-click reorder.",
+      bv: { t: "dash", title: "Inbox · orders@emberkitchen.ae", sub: "61 unread", kpis: [["Retyped lines", "~300/wk"], ["Wrong shipments", "4 this month"]], rows: [["Ras Al Khor Market", "order_final_v3.pdf", "y|Old prices?"], ["Al Satwa Co-op", "photo of notes.jpg", "r|Wrong flavor"], ["Al Quoz Cheese Co.", "reorder.xlsx", "y|Check"], ["Business Bay Provisions", "same as last time pls", "y|Which one?"]] },
+      av: { t: "doc", title: "Wholesale portal · Al Barsha Deli", sub: "Gold tier −30% · Net 30", lines: [["Hot Honey × 6", "AED 504.00"], ["Chili Crisp × 4", "AED 396.00"], ["Hearth Gift Box × 4", "AED 544.80"]], total: ["14 cases · Reorder last order", "AED 1,444.80"] } },
   ],
   showcase: {
     eyebrow: "Stores we've built", head: "Shops that fit what you sell.",

@@ -29,8 +29,8 @@ function Art({ b }: { b: Brand }) {
 }
 
 /** Complete small-business website at real size (1280×800). */
-export function SiteMock({ k }: { k: string }) {
-  const b = BRANDS[k];
+export function SiteMock({ k, b: bo }: { k: string; b?: Brand }) {
+  const b = bo ?? BRANDS[k];
   return (
     <div className="bm" style={theme(b)}>
       <div className="bm-page">
@@ -70,8 +70,8 @@ type Kind = "home" | "detail" | "status" | "checkout" | "tracking" | "lock" | "l
 const Bar = () => <div className="am-bar"><span>9:41</span><span>5G ▮▮▮</span></div>;
 const Tab = () => <div className="am-tab"><span className="on"><i />Home</span><span><i />Book</span><span><i />Orders</span><span><i />Profile</span></div>;
 
-export function AppScreen({ k, kind }: { k: string; kind: Kind }) {
-  const b = BRANDS[k];
+export function AppScreen({ k, kind, b: bo }: { k: string; kind: Kind; b?: Brand }) {
+  const b = bo ?? BRANDS[k];
   const s = theme(b);
   if (kind === "home")
     return (
@@ -171,12 +171,12 @@ export function AppScreen({ k, kind }: { k: string; kind: Kind }) {
   );
 }
 
-export function SiteInBrowser({ k, className = "" }: { k: string; className?: string }) {
-  const b = BRANDS[k];
-  return <Browser url={b.domain} className={className} dark={b.dark}><SiteMock k={k} /></Browser>;
+export function SiteInBrowser({ k, className = "", b: bo }: { k: string; className?: string; b?: Brand }) {
+  const b = bo ?? BRANDS[k];
+  return <Browser url={b.domain} className={className} dark={b.dark}><SiteMock k={k} b={b} /></Browser>;
 }
-export function AppInPhone({ k, kind, className = "", style, tilt }: { k: string; kind: Kind; className?: string; style?: CSSProperties; tilt?: number }) {
-  return <Phone className={className} style={style} tilt={tilt}><AppScreen k={k} kind={kind} /></Phone>;
+export function AppInPhone({ k, kind, className = "", style, tilt, b }: { k: string; kind: Kind; className?: string; style?: CSSProperties; tilt?: number; b?: Brand }) {
+  return <Phone className={className} style={style} tilt={tilt}><AppScreen k={k} kind={kind} b={b} /></Phone>;
 }
 
 /** E-commerce storefront at real size (1280×800): used for Shopify pages. */

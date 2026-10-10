@@ -10,6 +10,17 @@ export const PATCH: Partial<Page> = {
       { icon: "🔌", title: "Plugins 47→12", sub: "Every update tested first", style: { right: "-2%", bottom: "28%" } },
     ],
   },
+  pains: [
+    { q: "\"I can't even change our Saturday hours without calling someone.\"", cost: "The hours are copied in 3 places for desktop, tablet and phone. AED 550 and 4 days for a freelancer to change one line.", fix: "One \"Business hours\" block. Change it once, and it updates on every page.",
+      bv: { t: "steps", title: "Page-builder editor · Hours", sub: "Heading ×3 (desktop / tablet / mobile)", steps: [["Hours heading (desktop)", "Mon–Sat 8–6", "p"], ["Hours heading (tablet)", "Mon–Fri 8–7", "x"], ["Hours heading (mobile)", "Open daily 9–5", "x"], ["Sorry, the content area was not found in your page.", "Navigator: 14 levels deep", "x"]] },
+      av: { t: "dash", title: "Business hours block", sub: "Apex Auto Works · Al Quoz", kpis: [["Used on", "14 pages"], ["Google profile", "Synced"]], rows: [["Mon–Sat", "8–7"], ["Friday", "8–12 & 2–7"], ["✓ Saturday hours updated on 14 pages", "g|Done in 20 s"]], head: ["DAYS", "HOURS", ""] } },
+    { q: "\"Every plugin update breaks something. Then we got hacked.\"", cost: "47 plugins, 23 out of date. The site was down 2 days during Dubai Shopping Festival, the busiest week of the year.", fix: "A lean theme with 12 trusted plugins, and every update tested on a copy of the site before it goes live.",
+      bv: { t: "dash", title: "wp-admin · Plugins", sub: "Ember Kitchen", kpis: [["Plugins", "47"], ["Updates", "23"], ["Site", "Down"]], rows: [["Slider Pro", "r|Security hole"], ["Form Magic", "r|Being exploited. Remove now."], ["There has been a critical error on this website.", "r|Fatal"]] },
+      av: { t: "dash", title: "Care report · October", sub: "Ember Kitchen", dark: true, kpis: [["Uptime", "99.99%"], ["Backups", "31 / 31"], ["Attacks blocked", "1,284"]], rows: [["Updates tested on a copy", "g|12 applied"], ["Restore test", "g|Passed in 6 min"], ["Team changes", "g|2 done"]] } },
+    { q: "\"Customers get to checkout and then just leave.\"", cost: "11 seconds to load on a phone, a card error at the last step, and 64% of carts never paid.", fix: "A WooCommerce checkout that loads in about a second, with Apple Pay and Google Pay up top.",
+      bv: { t: "doc", title: "FreshFold checkout · iPhone", sub: "Still loading… 11.2 s", lines: [["Wash & fold · 8 kg", "AED 96.00"], ["Card number", "•••• 4021"], ["Error", "Your card was declined. Try again."]], total: ["Carts never paid", "64%"] },
+      av: { t: "phone", k: "freshfold", kind: "checkout" } },
+  ],
   showcase: {
     eyebrow: "Sites we've built", head: "WordPress sites that fit your business.", lead: "Each one in English and Arabic, edited by the owners themselves.",
     brands: ["voltwire", "apex", "maisonrose", "peakcooling"], phone: "home",

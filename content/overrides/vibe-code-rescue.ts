@@ -1,5 +1,17 @@
 import type { Page } from "../types";
+import type { VizSpec } from "../../src/components/mock/Viz";
 import { rescue as base } from "../services/rescue";
+
+const RESCUE_PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  { bv: { t: "chat", name: "Lovable · freshfold-app", sub: "12 of 500 credits left", color: "#7c5cff", day: "Try #23", msgs: [{ w: "out", t: "Login is broken AGAIN. Fix it and don't touch anything else.", time: "9:02 PM" }, { w: "in", t: "I apologize for the confusion! Fixed the login. (BookingPage now throws a TypeError.)", time: "9:03 PM" }, { w: "out", t: "Now the booking page is blank!!", time: "9:04 PM" }] },
+    av: { t: "steps", title: "PR #48 · Fix blank booking page", sub: "Merged · live since 11:42 AM", steps: [["142 unit tests", "Passed", "p"], ["18 flow tests", "Passed", "p"], ["Security scan", "0 secrets found", "p"], ["Vercel preview", "Approved · 0 errors", "p"]] } },
+  { bv: { t: "doc", title: "OpenAI usage alert · Today 6:12 AM", sub: "promptpilot-prod", lines: [["Monthly limit", "AED 185"], ["Spent so far", "AED 7,020"], ["Key found in", "Browser bundle"]], total: ["Over limit by", "AED 6,835"] },
+    av: { t: "dash", title: "AI spend · PromptPilot", sub: "Key on server · rate limits on", kpis: [["Spend", "AED 140"], ["Limit", "AED 440"], ["Alerts", "At 80%"]], rows: [["Key location", "Server only", "g|Safe"], ["Per-user limit", "50 calls / day", "g|On"], ["Surprise bills", "0 since", "g|OK"]], head: ["CHECK", "NOW", ""] } },
+  { bv: { t: "code", file: "security-scan · book.maisonrose.ae", lines: ["// 4 findings · 2 critical", "- CRITICAL GET /rest/v1/clients?select=*", "- 2,310 rows with phones, no login needed", "- CRITICAL OpenAI key found in browser bundle", "- HIGH /admin open to everyone"] },
+    av: { t: "dash", title: "Security check · book.maisonrose.ae", sub: "Scanned nightly · last 2:00 AM", kpis: [["Critical", "0"], ["Public records", "0"], ["Fixed", "4 / 4"]], rows: [["Client list", "Row-level rules", "g|FIXED"], ["AI key", "Moved to server", "g|FIXED"], ["/admin", "Staff login only", "g|FIXED"]], head: ["FINDING", "NOW", "STATUS"] } },
+  { bv: { t: "code", file: "hosting log · apex-quotes", lines: ["// 8:00 AM · Dubai", "- 502 Bad Gateway  /quote  11.2 s", "- Error: too many connections", "- FATAL heap out of memory", "- 3 crashes today · 9.4 s average"] },
+    av: { t: "bars", title: "Apex quotes · health", sub: "Load test: 5,000 users passed", rows: [["Quote page", 6, "0.6 s", "#c8f542"], ["Before", 94, "9.4 s"], ["Crashes a day", 0, "0 (was 3)", "#c8f542"], ["Quotes approved", 71, "46 · 71% by text", "#c8f542"]] } },
+];
 
 /** Gap-audit patch for /services/vibe-code-rescue (spec 2026-10-07-service-vibe-rescue-design.md, UAE values per localization spec §5/§8.12). Merge as {...page, ...PATCH}. */
 export const PATCH: Partial<Page> = {
@@ -7,7 +19,7 @@ export const PATCH: Partial<Page> = {
   pains: [
     ...base.pains,
     { q: "\"It worked with 20 customers. With 400, it crashes every morning.\"", cost: "Apex's quote page took 9 seconds and the app crashed at 8 AM. About one customer in three gave up, and a 1-star review followed.", fix: "Queries fixed, caching and proper hosting. Apex's quote page now loads in 0.6 s (was 9.4 s) and held a 5,000-user load test." },
-  ],
+  ].map((p, i) => ({ ...p, ...RESCUE_PAIN_VIZ[i] })),
   tabs: base.tabs.map((t, i) => {
     if (i === 1) return { ...t, h: "Customers only ever see their own data.", fine: "A short security summary you can send to customers." };
     if (i === 2) return { ...t, h: "When a card is charged, the account changes. Every time." };
