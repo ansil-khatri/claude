@@ -14,7 +14,7 @@ function nextWeekdays(n: number) {
 }
 
 /** Mon–Fri, 10:00 AM–5:00 PM Dubai time (GST). Posts to /api/lead (forwarded when LEAD_WEBHOOK_URL is set). */
-export function Booking() {
+export function Booking({ title = "Book a free 30-minute call" }: { title?: string }) {
   const days = useMemo(() => nextWeekdays(5), []);
   const [d, setD] = useState(0);
   const [t, setT] = useState<number | null>(null);
@@ -40,7 +40,7 @@ export function Booking() {
   }
   return (
     <div className="book" id="book-box">
-      <h4>Book a free 30-minute call</h4>
+      <h4>{title}</h4>
       <p className="sub">Pick a time that works for you.</p>
       <div className="book-days" role="group" aria-label="Day">
         {days.map((x, k) => (

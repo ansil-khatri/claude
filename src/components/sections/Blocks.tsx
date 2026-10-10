@@ -225,7 +225,7 @@ export function CaseStudy({ c }: { c: NonNullable<Page["caseStudy"]> }) {
   );
 }
 
-export function CtaSection({ h, lead, steps, wa }: { h: string; lead: string; steps: string[]; wa: string }) {
+export function CtaSection({ h, lead, steps, wa, bookTitle }: { h: string; lead: string; steps: string[]; wa: string; bookTitle?: string }) {
   const [a, b] = h.split(/\s(?=\d+ minutes)/);
   return (
     <section className="sec-tight" id="book"><div className="panel"><div className="w cta-panel">
@@ -235,7 +235,7 @@ export function CtaSection({ h, lead, steps, wa }: { h: string; lead: string; st
         <ol className="cta-steps">{steps.map((s) => <li key={s}>{s}</li>)}</ol>
         <WaBtn text={wa} />
       </div>
-      <div className="rv"><Booking /></div>
+      <div className="rv"><Booking title={bookTitle} /></div>
     </div></div></section>
   );
 }
