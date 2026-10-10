@@ -1,6 +1,6 @@
 import type { VizSpec } from "@/components/mock/Viz";
 
-export type Pain = { q: string; cost: string; fix: string };
+export type Pain = { q: string; cost: string; fix: string; bv?: VizSpec; av?: VizSpec };
 export type Tier = { k: string; name: string; desc: string; amt: string; unit?: string; hot?: boolean; items: string[] };
 export type Tab = { tab: string; chip: string; h: string; p: string; fine: string; viz: VizSpec };
 export type Float = { icon?: string; title: string; sub?: string; style: React.CSSProperties; dark?: boolean };

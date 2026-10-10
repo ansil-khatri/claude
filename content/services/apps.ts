@@ -11,6 +11,11 @@ const mobileViz: VizSpec[] = [
   { t: "dash", title: "Admin · Bookings", sub: "Today", kpis: [["Bookings", "42"], ["Deposits", "AED 4,200"], ["Push campaign", "31% opened"]], rows: [["Layla K. · Balayage", "AED 100", "g|Deposit paid"], ["Mona A. · Cut", "AED 100", "g|Deposit paid"], ["Dana S. · Bridal", "AED 100", "y|Pending"]], head: ["BOOKING", "DEPOSIT", "STATUS"] },
 ];
 const mb = fromMockup("service-mobile-apps", mobileViz);
+const MOBILE_PAIN_VIZ: { bv: VizSpec; av: VizSpec }[] = [
+  { bv: { t: "chat", name: "Dina (customer)", color: "#25d366", msgs: [{ w: "in", t: "Hi! Do you have an app? Shams Salon has one 😅", time: "6:41 PM" }, { w: "out", t: "Not yet, sorry. You can message us here to book.", time: "6:52 PM" }] }, av: { t: "phone", k: "maisonrose", kind: "home" } },
+  { bv: { t: "dash", title: "Delivery platform · weekly payout", sub: "Ember Kitchen", kpis: [["Orders", "412"], ["Commission", "−AED 1,446"], ["Customer contacts", "0"]] }, av: { t: "phone", k: "ember", kind: "home" } },
+  { bv: { t: "doc", title: "Booking form · desktop site on a phone", sub: "Pinch to zoom", lines: [["Date", "DD/MM/YYYY"], ["Time", "Select…"], ["Error", "Enter a valid date"]], total: ["Booked", "0"] }, av: { t: "phone", k: "maisonrose", kind: "detail" } },
+];
 export const mobile: Page = {
   ...mb, slug: "mobile-app-development", name: "Mobile apps", waText: "Hi, I'm on your mobile apps page",
   seo: { title: "Mobile App Development in Dubai for Small Business", desc: "iPhone and Android apps for ordering, bookings, delivery and loyalty, with Apple Pay, Tabby and WhatsApp updates. Arabic + English. From AED 35,000." },
@@ -22,6 +27,7 @@ export const mobile: Page = {
     ],
   },
   showcase: { eyebrow: "Apps we've shipped", head: "Built for businesses like yours.", lead: "Pick an industry to see the home screen, the booking or ordering flow, and the moment after.", brands: ["maisonrose", "freshfold", "apex", "ember", "peakcooling", "fixpoint"], phone: "home" },
+  pains: mb.pains.map((p, i) => ({ ...p, ...MOBILE_PAIN_VIZ[i] })),
   ddEyebrow: "What your app can do", techEyebrow: "The honest tech choice", procEyebrow: "From idea to both app stores", priceEyebrow: "App pricing", faqEyebrow: "App FAQ", faqHead: "Questions before you build an app.",
   relEyebrow: "Often paired with", relHead: "Make the app work even harder.",
   guides: [{ slug: "app-development-cost-dubai", title: "How much does an app cost in Dubai?" }, { slug: "do-i-need-an-app", title: "Do I need an app, or a better website?" }, { slug: "app-like-talabat-cost", title: "What does an app like Talabat cost?" }],

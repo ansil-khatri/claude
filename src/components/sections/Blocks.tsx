@@ -8,6 +8,7 @@ import { Viz } from "@/components/mock/Viz";
 import { AppInPhone, SiteInBrowser } from "@/components/mock/BrandMocks";
 import { BRANDS } from "@content/brands";
 import { published } from "@content/guides";
+import { HScroll } from "./HScroll";
 
 export const Eyebrow = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
 export const Head = ({ eyebrow, title, lead, dark }: { eyebrow: string; title: React.ReactNode; lead?: string; dark?: boolean }) => (
@@ -28,9 +29,9 @@ function PainCard({ p, i }: { p: Pain; i: number }) {
   const num = p.cost.match(/(AED\s?[\d,.]+[kKM]?|\d[\d,.]*\s?(?:%|hours?|seconds?|s|min)|\d[\d,.]*)/)?.[0] ?? "";
   return (
     <div className="pain rv" tabIndex={0} data-cursor="See fix" style={{ transitionDelay: `${i * 80}ms` }}>
-      <div className="pain-vis" data-nosnippet>
-        <div className="pain-before"><span className="tg">BEFORE</span><div className="pain-num">{num}</div><p>{p.cost}</p></div>
-        <div className="pain-after"><span className="tg">AFTER</span><p>{p.fix}</p></div>
+      <div className={`pain-vis ${p.bv ? "has-v" : ""}`} data-nosnippet>
+        <div className="pain-before"><span className="tg">BEFORE</span>{p.bv ? <div className="pv"><Viz spec={p.bv} /></div> : <div className="pain-num">{num}</div>}<p>{p.cost}</p></div>
+        <div className="pain-after"><span className="tg">AFTER</span>{p.av && <div className="pv"><Viz spec={p.av} /></div>}<p>{p.fix}</p></div>
         <span className="hint">Hover or tap to see the fix</span>
       </div>
       <blockquote>{p.q}</blockquote>
@@ -128,16 +129,16 @@ export function Compare({ eyebrow, head, lead, rows, note }: { eyebrow: string; 
 
 export function Process({ eyebrow, head, steps }: { eyebrow: string; head: string; steps: Page["proc"] }) {
   return (
-    <section className="sec"><div className="w">
+    <section className="sec proc-sec"><div className="w">
       <Head eyebrow={eyebrow} title={head} />
-      <ol className="proc-track">
+      <HScroll>
         {steps.map((s, i) => (
-          <li key={i} className={`proc-card rv ${i === 2 ? "dark" : ""}`} style={{ transitionDelay: `${i * 70}ms` }}>
+          <li key={i} className={`proc-card ${i === 2 ? "dark" : ""}`}>
             <div className="proc-wk"><span>{s.wk}</span><b>{s.when}</b></div>
             <h4>{s.title}</h4><p>{s.p}</p>
           </li>
         ))}
-      </ol>
+      </HScroll>
     </div></section>
   );
 }
