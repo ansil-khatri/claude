@@ -8,15 +8,16 @@ npm run dev        # http://localhost:3000
 npm run build && npm start
 npm test           # calculator unit tests
 npm run audit      # BASE=http://localhost:3000, checks title/desc/H1/canonical/JSON-LD on every sitemap URL
-npm run links      # internal link crawl
+npm run links      # internal link crawl, broken links and orphans
 ```
 
 ## Where things live
 | Path | What |
 |---|---|
 | `src/config/site.ts` | Brand, domain, WhatsApp, email, licence. Placeholders until `NEXT_PUBLIC_*` env vars are set |
-| `content/v3/pages/*.ts` | 14 money pages, one per target keyword, served at `/<slug>` |
-| `content/v3/posts/*.ts` | 15 journal posts in 4 clusters, served at `/blog/<slug>` |
+| `content/v3/pages/*.ts` | 21 money pages, one per target keyword, served at `/<slug>` |
+| `content/v3/industries/*.ts` | 10 industry pages at `/industries/<slug>` |
+| `content/v3/posts/*.ts` | 36 journal posts in 4 clusters, served at `/blog/<slug>` |
 | `content/v3/cases/*.ts` | 6 concept builds at `/work/<slug>` (labelled concept, not clients) |
 | `content/v3/site.ts` | About, process, pricing rows, FAQs |
 | `src/components/mock/` | Mockup library: store, admin, code, WordPress, ERP, WhatsApp, AI, reports |
@@ -38,3 +39,7 @@ The code makes the site eligible to rank and be cited. It cannot guarantee posit
 7. Set `LEAD_WEBHOOK_URL` so the booking form reaches you (`/api/lead`).
 
 The v2 broad-agency site is preserved at tag `v2-broad-agency` (commit `7828915`). Full plan: `docs/PLAN-V3.md`.
+
+
+## SEO and conversion plan
+Full UAE plan (keyword research, architecture, linking, on-page rules, content calendar, pricing, authority and AI): `docs/seo-v3/`. Writers' brief for new content: `docs/seo-v3/WRITING-BRIEF.md`. Conversion pieces: sticky bar (`ConvertBar`), quote form, `/free-website-audit`, four calculators under `/tools`. Set `LEAD_WEBHOOK_URL` or leads only reach WhatsApp.

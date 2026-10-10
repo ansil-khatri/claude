@@ -27,7 +27,7 @@ for (const p of urls) {
     const text = body.replace(/<[^>]+>/g, " ");
     if (/\u2014/.test(text)) e.push("em dash in copy");
     const bad = text.match(/\b(leverage|synergy|cutting-edge|seamless(ly)?|game-changer|unlock the power)\b/i); if (bad) e.push(`banned word "${bad[0]}"`);
-    if (/\b(No\.? ?1|number one|top-rated|award-winning|best agency in)\b/i.test(text) && !p.includes("choose-shopify-agency")) e.push("superlative claim");
+    if (/\b(No\.? ?1|number one (agency|studio|choice|company)|top-rated|award-winning|best agency in)\b/i.test(text) && !p.includes("choose-shopify-agency")) e.push("superlative claim");
   }
   if (/\[owner to confirm|\[lawyer to write/.test(html) && !p.startsWith("/legal") && p !== "/about") e.push("placeholder text");
   if (titles.has(t)) e.push("dup title " + titles.get(t)); titles.set(t, p);
