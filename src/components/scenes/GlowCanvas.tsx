@@ -6,7 +6,7 @@ const FS = `precision mediump float;
 uniform vec2 r;uniform float t;uniform vec2 m;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
 void main(){
   vec2 uv=gl_FragCoord.xy/r;vec2 p=uv*vec2(r.x/r.y,1.);
   vec2 mo=(m-.5)*.35;
@@ -38,7 +38,7 @@ export function GlowCanvas({ className = "" }: { className?: string }) {
     const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const uR = gl.getUniformLocation(pr, "r"), uT = gl.getUniformLocation(pr, "t"), uM = gl.getUniformLocation(pr, "m");
-    const scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.55;
+    const scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.42;
     const fit = () => { c.width = Math.max(2, Math.floor(c.clientWidth * scale)); c.height = Math.max(2, Math.floor(c.clientHeight * scale)); gl.viewport(0, 0, c.width, c.height); };
     fit(); const ro = new ResizeObserver(fit); ro.observe(c);
     let mx = 0.5, my = 0.5, tx = 0.5, ty = 0.5, raf = 0, vis = true, last = 0;

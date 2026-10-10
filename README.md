@@ -43,3 +43,11 @@ npm run audit        # UAE audit on the built HTML (run after `next build`)
 ## Placeholders to replace before launch
 
 `src/config/site.ts`: domain, email, WhatsApp number, trade licence, free zone · About page team · guide authors · legal pages · `NEXT_PUBLIC_GA_ID` · hosting with a Gulf edge.
+
+
+## Design and motion system (v2)
+
+- **Look:** cinematic ink + warm paper, one accent (signal orange), Inter at large sizes, hairlines instead of soft cards, no serif. Tokens and component overrides live in `src/styles/v2.css` (loaded last).
+- **Motion engine:** `src/components/shell/Motion.tsx` (GSAP + ScrollTrigger + SplitText + Lenis). Pages stay server-rendered and describe intent with data attributes: `data-split` (masked lines/chars, or `scrub` words that light up), `data-reveal`, `data-stagger`, `data-parallax`, `data-count`, `data-marquee`, `data-hscroll` (pinned horizontal track), `data-magnetic`, `data-tilt`, `data-intro` (runs after the loader). It rebuilds on every route change, plays a loader once per session, a curtain page transition, a custom cursor and smooth anchors.
+- **Scenes:** `src/components/scenes/` (`GlowCanvas` WebGL hero light, `PinnedChapters` Apple-style pinned product scene, `StackCards` stacked sticky cards). Mobile and reduced-motion fall back to plain stacked content; with JavaScript off everything is visible (the hiding classes are only ever added by an inline script).
+- **Rules to keep:** a pinned element must sit inside a plain wrapper (`.pin-wrap`) so React can unmount it; never put state classes that contain `lenis` on `<html>`; animate transform and opacity only.
