@@ -1,0 +1,48 @@
+# [Brand]
+
+> [Brand] is a remote software studio that builds apps, websites, online stores, payments, AI assistants and automation for small and mid-sized businesses across the United States, and white-label development for US agencies. Fixed prices agreed before work starts, US working hours, and clients own their code. Websites from $3,900 (2–4 weeks), web + mobile app from $14,900 (about 12 weeks), add-ons from $990, care plans from $290/month.
+
+We work best with owner-run service businesses (restaurants, salons and spas, laundries and dry cleaners, auto repair shops, plumbers/electricians/HVAC, phone repair shops), startup founders building SaaS, ecommerce brands on Shopify, and marketing agencies that need a development partner. All prices are starting prices in USD; the final fixed price is set after a free 30-minute call.
+
+## Services
+
+- [Mobile app development](https://[domain]/services/mobile-app-development.md): iPhone and Android apps for bookings, ordering, delivery tracking and loyalty, built in Flutter and published to both stores. From $9,900; business app from $14,900 (10–12 weeks).
+- [Custom web apps and business software](https://[domain]/services/web-app-development.md): replace spreadsheets with customer portals, staff dashboards and internal tools. From $7,900.
+- [SaaS development](https://[domain]/services/saas-development.md): prototype in 2–3 weeks from $6,900; launch-ready SaaS with Stripe billing from $34,000 (10–14 weeks).
+- [Shopify development](https://[domain]/services/shopify-development.md): new stores, custom themes, migrations from WooCommerce, Wix or Squarespace without losing Google rankings. From $4,900.
+- [WordPress development](https://[domain]/services/wordpress-development.md): fast business websites that bring in calls, plus fixes for slow or hacked sites. From $3,900.
+- [Landing pages for ads](https://[domain]/services/landing-pages.md): one page per Google/Meta ad campaign with call tracking. From $1,900.
+- [Payment integration](https://[domain]/services/payment-integration.md): Stripe, Apple Pay, text-to-pay, deposits, subscriptions, Klarna/Affirm, QuickBooks sync. From $990.
+- [AI chatbots, receptionists and agents](https://[domain]/services/ai-integration.md): AI that answers customers from real prices and calendars, answers missed calls and enters invoices. From $990 plus $40–300/month running cost.
+- [Business automation and ERP](https://[domain]/services/business-automation.md): connect QuickBooks, Shopify, Square, Gusto and more with n8n/Zapier, or one custom system for jobs, stock and invoices. From $2,500.
+- [Local SEO](https://[domain]/services/seo.md): Google profile, reviews, pages, speed and AI-search visibility for service businesses. From $1,200/month.
+- [Fix AI-built apps (vibe-code rescue)](https://[domain]/services/vibe-code-rescue.md): free 48-hour audit, then fixed-price fixes for apps built with Lovable, Bolt, Replit or Cursor (security, Supabase data rules, payments, speed, deployment). From $990.
+- [White-label development for agencies](https://[domain]/agencies.md): websites, Shopify, WordPress and apps built under NDA in the agency's own tools. Per project from $6,000.
+
+## Industries
+
+- [Restaurants](https://[domain]/industries/restaurants.md): commission-free online ordering, own ordering app, loyalty, stock and food-cost tracking.
+- [Salons and spas](https://[domain]/industries/salons.md): own branded booking app, deposits, rebooking, memberships, commissions.
+- [Laundry and dry cleaning](https://[domain]/industries/laundry.md): pickup and delivery apps, driver routes, per-pound billing, commercial accounts.
+- [Auto repair shops](https://[domain]/industries/auto-repair.md): photo inspections approved by text, text-to-pay, shop board, website.
+- [Home services](https://[domain]/industries/home-services.md): websites for plumbers, electricians and HVAC, AI call answering, dispatch.
+- [Phone repair shops](https://[domain]/industries/phone-repair.md): instant quotes by model, repair tracking, trade-ins, inventory.
+
+## Pricing and process
+
+- [Pricing](https://[domain]/pricing.md): every package, typical totals, care plans and payment terms.
+- [How we work](https://[domain]/process.md): fixed price, weekly demos, client owns code and accounts.
+- [About](https://[domain]/about.md): team, location, working hours.
+- [Contact and booking](https://[domain]/contact.md): book a free 30-minute call.
+
+## Guides
+
+- [How much does an app cost?](https://[domain]/guides/app-development-cost.md)
+- [How much does a small business website cost?](https://[domain]/guides/website-cost-small-business.md)
+- [How much does custom software cost?](https://[domain]/guides/custom-software-cost.md)
+- [Taking a Lovable app to production](https://[domain]/guides/lovable-app-to-production.md)
+
+## Optional
+
+- [Full site summary for AI systems](https://[domain]/llms-full.txt)
+- [All guides](https://[domain]/guides)

@@ -1,0 +1,79 @@
+# [Brand] · full site summary (UAE)
+
+> [Brand] is a software studio based in Dubai, United Arab Emirates (licence no. [number], [free zone]). We build Shopify stores, bilingual websites, mobile apps, WhatsApp chatbots and AI assistants, payment and e-invoicing integrations, and business automation for UAE businesses, plus white-label development for agencies. Prices are fixed in AED before work starts and exclude 5% VAT. Clients own their code, designs and accounts. Website: https://[domain] · WhatsApp: [+971 number] · Email: [email] · Hours: [Sun–Fri / Mon–Fri], 9:00–18:00 GST (UTC+4) · Languages: English, Arabic.
+
+Generated from the website content. Prices last updated October 2026.
+
+## Who we help
+
+- Restaurants and cloud kitchens paying 15–30% commission to delivery apps (Talabat, Deliveroo, Careem, Noon Food).
+- Salons, spas and home beauty services.
+- Laundries, garages and car service, AC/cleaning/maintenance companies, phone repair shops.
+- Ecommerce brands (fashion, abayas, perfume and oud, beauty) selling in the UAE and GCC.
+- SMEs that must adopt UAE e-invoicing (businesses under AED 50 million revenue: mandatory from 1 July 2027).
+- Startup founders in Dubai and Abu Dhabi (in5, Hub71, DIFC), including those with apps built using AI tools.
+- Marketing and design agencies needing a white-label development team.
+
+## Main packages
+
+| Package | From | Typical total | Time |
+|---|---|---|---|
+| Add-on: payments, WhatsApp/AI assistant, AI-built app fix | AED 2,900 | AED 2,900–12,000 | Days |
+| Launch: bilingual website or Shopify store | AED 7,900 | AED 7,900–24,000 | 2–4 weeks |
+| Build: website + iPhone/Android app | AED 49,000 | AED 49,000–120,000 | About 12 weeks |
+| Care: hosting, updates, backups, changes | AED 790/month | AED 790–4,900/month | Ongoing |
+
+Payment terms: under AED 20,000, 50% to start and 50% at launch; above that, 30% / 40% / 30%. Monthly plans cancel with 30 days' notice; no 6-month lock-in.
+
+## How a project works
+
+1. Free 30-minute call or WhatsApp chat; price range on the call.
+2. Written scope and fixed AED price.
+3. Design in Figma, in English and Arabic; the client approves screens before code.
+4. Build with weekly demos.
+5. Testing on real phones; launch (including App Store and Google Play publishing).
+6. Optional care plan.
+
+## Services
+
+### Shopify (Dubai & UAE)
+New stores, custom Arabic + English themes, Tabby and Tamara, AED checkout, Apple Pay, shipping with UAE carriers, migrations from WooCommerce, Wix or Salla with redirects to keep Google rankings. Launch store from AED 9,900 (3–4 weeks); custom theme from AED 29,000 (6–8 weeks); Shopify Plus, headless or custom apps from AED 69,000.
+
+### Website design
+Bilingual WordPress websites that bring calls, bookings and WhatsApp chats; editable blocks; speed and SEO basics. Business site from AED 7,900 (2–4 weeks); custom site from AED 19,900; WooCommerce/bookings from AED 44,000.
+
+### Mobile apps
+iPhone and Android apps (usually Flutter) for ordering, booking, delivery tracking, loyalty and payments (Apple Pay, cards, Tabby), with WhatsApp and push notifications. MVP from AED 35,000 (6–8 weeks); business app from AED 49,000 (10–12 weeks); platform from AED 105,000.
+
+### WhatsApp chatbots and AI assistants
+Assistants on the WhatsApp Business API and website that reply in Arabic and English from real prices, menus and calendars, take orders and bookings, and hand over to staff under rules the owner sets. From AED 2,900; assistants that take actions from AED 29,000; back-office agents (invoice reading, approvals) from AED 59,000. WhatsApp and AI usage are billed at cost, usually AED 150–1,100/month.
+
+### UAE e-invoicing integration
+Timeline (Ministry of Finance, as last checked October 2026): pilot from 1 July 2026; businesses with revenue of AED 50 million or more mandatory from 1 January 2027; businesses below AED 50 million must appoint an Accredited Service Provider by 31 March 2027 and go live 1 July 2027; government entities from 1 October 2027. We connect Zoho Books, Odoo, QuickBooks, Tally or custom systems to the client's chosen ASP. We are not an ASP. Readiness and setup from AED 9,900; custom systems from AED 24,000.
+
+### Business automation and ERP
+Up to 10 automations (Foodics, Zoho, Shopify, Google Sheets, WhatsApp) from AED 7,900; an operations system for jobs, stock and invoices from AED 59,000; multi-branch ERP from AED 150,000.
+
+### Payment integration
+Stripe, Telr, Network International (N-Genius), Tap, Checkout.com, Tabby, Tamara, Apple Pay, WhatsApp payment links, subscriptions, Zoho/QuickBooks sync. From AED 2,900; complete payments from AED 19,900; marketplaces from AED 49,000.
+
+### Web apps, MVPs and SaaS
+Customer portals, dashboards and internal tools from AED 29,000; clickable prototypes from AED 24,000; launch-ready SaaS from AED 120,000.
+
+### Landing pages and SEO
+Landing pages for Google/Meta ads from AED 5,900. Bilingual local SEO from AED 3,500/month (English) or AED 6,500/month (English + Arabic), no long contract.
+
+### Fix AI-built apps
+Free 48-hour audit of apps built with Lovable, Bolt, Replit or Cursor (security, Supabase rules, payments, speed, deployment); fixed-price fixes from AED 2,900, most AED 9,000–27,000.
+
+### White-label for agencies
+Shopify, WordPress, apps and Arabic sites built under NDA in the agency's tools. Per project from AED 18,000; dedicated team from AED 59,000/month; hour blocks AED 220/hour.
+
+## Frequently asked questions
+
+- Where are you based? Dubai, UAE ([free zone], licence [number]). We work with clients across all emirates and meet in person in Dubai on request.
+- Can the website or app be in Arabic and English? Yes, both are included in website and app packages.
+- Do prices include VAT? Prices exclude 5% VAT.
+- Who owns the code and accounts? The client, from the first payment.
+- Do you work with free-zone and mainland companies? Yes.
+- How fast can you start? Usually within 1–2 weeks.

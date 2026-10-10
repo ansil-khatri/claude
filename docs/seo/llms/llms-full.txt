@@ -1,0 +1,89 @@
+# [Brand] · full site summary
+
+> [Brand] is a remote software studio building apps, websites, Shopify stores, payments, AI assistants and business automation for US small and mid-sized businesses, plus white-label development for US agencies. Fixed prices agreed before work starts. Clients own their code, designs and accounts. We work US business hours (Eastern to Pacific overlap). Website: https://[domain] · Contact: [email] · Book a call: https://[domain]/contact
+
+This file is generated from the same content as the website. Prices are starting prices in USD and were last updated October 2026.
+
+## Who we help
+
+- Owner-run service businesses: restaurants, salons and spas, laundromats and dry cleaners, auto repair shops, home services (plumbing, electrical, HVAC), phone repair shops.
+- Founders and industry experts building SaaS products.
+- Ecommerce brands on Shopify or WooCommerce.
+- People who built an app with AI tools (Lovable, Bolt, Replit, Cursor) and need it fixed and launched safely.
+- Marketing and design agencies that need a white-label development team.
+
+## Main packages
+
+| Package | From | Typical total | Time |
+|---|---|---|---|
+| Add-on: payments, AI chat on an existing site, or fixing an AI-built app | $990 | $990–3,500 | Live in days |
+| Launch: business website | $3,900 | $3,900–9,500 | 2–4 weeks |
+| Build: website + iPhone/Android app (most chosen) | $14,900 | $14,900–35,000 | About 12 weeks |
+| Care: hosting, updates, backups, small changes | $290/month | $290–1,490/month | Ongoing |
+
+Payment terms: projects under $5,000 are 50% to start and 50% at launch; larger projects are 30% / 40% / 30% across start, mid-build demo and launch. Monthly plans cancel with 30 days' notice.
+
+## How a project works
+
+1. Free 30-minute call: we learn how the business runs today and give a price range.
+2. Written scope and fixed price.
+3. Design in Figma; the client approves real screens before any code.
+4. Build with a demo every week.
+5. Testing on real phones and browsers, then launch (including App Store and Google Play publishing).
+6. Optional care plan. The client owns the code, the accounts and the designs.
+
+## Services
+
+### Mobile app development
+For businesses whose customers keep asking "do you have an app?", restaurants paying 30% to delivery apps, and businesses whose booking is painful on phones. We build iPhone and Android apps (usually in Flutter, one codebase for both) for booking and payments, push notifications, live order and driver tracking, loyalty cards with Apple Wallet, and an admin dashboard. Tiers: MVP app from $9,900 (6–8 weeks); business app from $14,900 (10–12 weeks); custom platform from $29,000 (14–20 weeks). We publish to both stores under the client's own developer accounts. Yearly upkeep is usually 15–20% of the build cost or a care plan.
+
+### Custom web apps and business software
+For teams running on spreadsheets, group chats and paper. Customer portals, staff dashboards, scheduling, invoicing and internal tools with logins and roles, data moved in from Excel or Google Sheets. Tiers: internal tool from $7,900 (5–7 weeks); business web app from $16,900 (9–12 weeks); multi-location platform from $34,000 (14–20 weeks). No per-user fees; hosting usually $50–200/month.
+
+### SaaS development
+For founders and industry experts with a software idea. Clickable prototype and waitlist page from $6,900 (2–3 weeks). Launch-ready SaaS with sign-up, teams, Stripe plans and trials, admin and metrics, security review and backups from $34,000 (10–14 weeks). Platform features (API, SSO, mobile app, AI) from $70,000. We also take over and stabilize MVPs built by other teams or with AI tools.
+
+### Shopify development
+New Shopify stores, custom themes, subscriptions and bundles, wholesale/B2B pricing, and migrations from WooCommerce, Wix, Squarespace or Etsy with a full redirect plan so Google rankings are kept. Tiers: launch store from $4,900 (3–4 weeks); custom theme from $11,900 (6–8 weeks), mobile PageSpeed 90+; Shopify Plus, headless or custom apps from $24,000.
+
+### WordPress development
+Business websites that bring in calls and bookings, with custom blocks the owner can edit, service and city pages, and speed and SEO basics. Also fixes for slow, broken or hacked WordPress sites, and WooCommerce stores. Tiers: business site from $3,900 (2–4 weeks); custom site from $8,900 (5–6 weeks); WooCommerce or custom plugin from $16,000.
+
+### Landing pages for ads
+For businesses paying for Google or Meta ads that send everyone to the homepage. One page per campaign, one offer, one button, call tracking and fast text-back. Tiers: single landing page from $1,900 (7–10 days); campaign pack of up to 4 pages from $4,900; ongoing testing from $1,500/month.
+
+### Payment integration
+Online checkout, Apple Pay and Google Pay, pay-by-text links, deposits for appointments, saved cards, subscriptions and memberships, Klarna/Afterpay/Affirm, QuickBooks or Xero sync, fraud rules. Providers: Stripe, Square, PayPal and others; accounts are in the client's name. Tiers: checkout and pay links from $990 (live in days); complete payments from $6,500 (3–4 weeks); marketplaces, split payouts and multi-currency from $14,000.
+
+### AI chatbots, receptionists and agents
+AI that answers customer messages from the business's real prices, hours and calendar; an AI receptionist that answers missed phone calls and books jobs; back-office agents that read supplier invoices into QuickBooks and flag price changes. The owner sets the rules (what it may promise, when to hand over to a person). Tiers: assistant from $990; assistant that takes actions (phone, orders, bookings, CRM) from $9,500 (4–6 weeks); back-office agents from $18,000. AI usage is billed by the provider at cost, usually $40–300/month.
+
+### Business automation and ERP
+Stop typing the same data twice. Up to 10 automations connecting QuickBooks/Xero, Shopify, Square, Gusto, Google and Slack (n8n, Zapier or Make, with run logs and alerts) from $2,500 (1–3 weeks). One operations system for jobs, dispatch, invoices, stock and purchasing from $18,000 (8–12 weeks). Multi-location ERP from $45,000, delivered in phases.
+
+### Local SEO
+For service businesses that lose "near me" searches to competitors. Technical and speed fixes, Google Business Profile, schema, directory listings, review requests, service pages, and visibility in AI answers. Setup from $1,500; monthly local SEO from $1,200/month; multi-location and content from $3,000/month. No long contracts.
+
+### Fix AI-built apps (vibe-code rescue)
+For apps built with Lovable, Bolt, Replit, Cursor or similar that break when changed, fail after deployment, expose data (for example missing Supabase row-level security) or have broken payments. Free audit within 48 hours under NDA, with a written report and a fixed price for each fix. Rescue and launch from $990 (most rescues $2,500–7,500); ongoing rescue plus new features from $3,000/month. Usually no full rebuild is needed, and the owner can keep using their AI tool afterwards.
+
+### White-label development for agencies
+Websites, WordPress, Shopify, web and mobile apps built under the agency's brand and NDA, in the agency's own GitHub, staging and project tools. Per project from $6,000; dedicated team (lead, two developers, QA) monthly; hour blocks for care and small changes from $65/hour. The agency owns all code and sets its own client price.
+
+## Industries
+
+- Restaurants: commission-free online ordering on the restaurant's own site and app, loyalty, stock and purchase orders, food-cost tracking, connected to Toast or Square.
+- Salons and spas: own branded booking app with deposits, rebooking reminders, memberships and gift cards, commission and payroll reports.
+- Laundry and dry cleaning: pickup and delivery app, driver route app, per-pound weighing and billing, bag tracking, commercial accounts, connected to CleanCloud, Cents or SPOT.
+- Auto repair: digital inspections with photos approved by text, text-to-pay and pay-later, shop board, parts margins, connected to Tekmetric or Shopmonkey.
+- Home services: websites that book jobs, AI call answering, "technician on the way" texts, dispatch, quotes to invoices.
+- Phone repair: instant quotes by device model, online booking, repair status texts, trade-ins, parts inventory.
+
+## Frequently asked questions
+
+- Do you work with businesses outside the US? Our focus is US businesses and agencies; Arabic/UAE support is planned.
+- Who owns the code? The client (or the agency, for white-label), from the first payment.
+- Is the price fixed? Yes. We agree on scope and a fixed price before work starts; changes are priced before they're made.
+- Do you work hourly? Only for agency hour blocks and care plans.
+- How fast can you start? Usually within 1–2 weeks of signing.
+- Can you take over a project another developer started? Yes, after a code review.

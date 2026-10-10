@@ -1,0 +1,44 @@
+# [Brand]
+
+> [Brand] is a software studio based in Dubai that builds Shopify stores, bilingual (Arabic + English) websites, mobile apps, WhatsApp chatbots and AI assistants, payment integrations (Tabby, Tamara, Stripe, Telr), e-invoicing integrations and business automation for small and mid-sized businesses across the UAE, plus white-label development for agencies. Fixed prices in AED agreed before work starts (+5% VAT); clients own their code and accounts. Websites from AED 7,900, Shopify stores from AED 9,900, apps from AED 35,000, website + app from AED 49,000, care plans from AED 790/month.
+
+We work with restaurants and cloud kitchens, salons and spas, laundries, garages and car service companies, AC/cleaning/maintenance companies, phone repair shops, ecommerce brands, startup founders and marketing agencies in Dubai, Abu Dhabi, Sharjah and across the UAE. Contact by WhatsApp ([+971 number]) or book a free 30-minute call.
+
+## Services
+
+- [Shopify agency in Dubai & UAE](https://[domain]/services/shopify-development.md): new stores, Arabic + English themes, Tabby/Tamara, migrations. From AED 9,900.
+- [Website design](https://[domain]/services/website-design.md): fast bilingual business websites on WordPress. From AED 7,900.
+- [Mobile app development](https://[domain]/services/mobile-app-development.md): iPhone and Android apps for ordering, bookings, delivery and loyalty. From AED 35,000.
+- [WhatsApp chatbots and AI assistants](https://[domain]/services/ai-whatsapp-automation.md): answers customers on WhatsApp in Arabic and English, takes orders and bookings. From AED 2,900 plus running costs.
+- [UAE e-invoicing integration](https://[domain]/services/e-invoicing-integration.md): connects Zoho Books, Odoo, QuickBooks or custom systems to an accredited provider before the 2027 deadlines. From AED 9,900. We are an integration partner, not an Accredited Service Provider.
+- [Business automation and ERP](https://[domain]/services/business-automation.md): connect Foodics, Zoho, Shopify and spreadsheets, or one system for jobs, stock and invoices. From AED 7,900.
+- [Payment gateway integration](https://[domain]/services/payment-integration.md): Stripe, Telr, Network International, Tabby, Tamara, Apple Pay, WhatsApp payment links. From AED 2,900.
+- [Custom web apps](https://[domain]/services/web-app-development.md): portals, dashboards and internal tools. From AED 29,000.
+- [MVP and SaaS development](https://[domain]/services/saas-development.md): prototype from AED 24,000; launch-ready SaaS from AED 120,000.
+- [Landing pages for ads](https://[domain]/services/landing-pages.md): from AED 5,900.
+- [Bilingual local SEO](https://[domain]/services/seo.md): from AED 3,500/month, no long contract.
+- [Fix AI-built apps](https://[domain]/services/vibe-code-rescue.md): free 48-hour audit for Lovable, Bolt, Replit and Cursor apps, then fixed-price fixes from AED 2,900.
+- [White-label development for agencies](https://[domain]/agencies.md): per project from AED 18,000.
+
+## Industries
+
+- [Restaurants and cloud kitchens](https://[domain]/industries/restaurants.md): commission-free online ordering, WhatsApp ordering, own app, Foodics integration.
+- [Salons and spas](https://[domain]/industries/salons.md): own booking app with deposits, an alternative to marketplace fees.
+- [Laundry](https://[domain]/industries/laundry.md): pickup and delivery apps, driver routes, per-item and per-kg billing.
+- [Garages and car service](https://[domain]/industries/auto-repair.md): websites, booking, inspections and payment links.
+- [Home services](https://[domain]/industries/home-services.md): booking and dispatch for AC, cleaning and maintenance companies.
+- [Phone repair](https://[domain]/industries/phone-repair.md): websites, instant quotes, repair tracking.
+
+## Key pages
+
+- [Pricing in AED](https://[domain]/pricing.md)
+- [About: team, Dubai licence, hours](https://[domain]/about.md)
+- [Contact and WhatsApp](https://[domain]/contact.md)
+- [UAE e-invoicing guide](https://[domain]/guides/uae-e-invoicing.md)
+- [Website cost in Dubai](https://[domain]/guides/website-cost-dubai.md)
+- [App development cost in Dubai](https://[domain]/guides/app-development-cost-dubai.md)
+
+## Optional
+
+- [Arabic site](https://[domain]/ar)
+- [Full summary for AI systems](https://[domain]/llms-full.txt)
