@@ -29,7 +29,7 @@ export default async function Case({ params }: { params: Promise<{ slug: string 
         <div style={{ display: "flex", gap: 12, marginTop: 34, flexWrap: "wrap" }} data-intro><span className="concept">Concept build, not a client</span><span className="tag">{c.sector}</span><span className="tag">{c.platform}</span></div>
         <h1 className="display" data-intro data-split="lines" style={{ fontSize: "clamp(40px, 6.6vw, 120px)" }}>{c.h}</h1>
         <p className="lead" data-intro>{c.summary}</p>
-        <div className="facts"><div><span>Platform</span><b>{c.platform}</b></div><div><span>Timeline</span><b>{c.timeline}</b></div><div><span>Scope</span><b>{c.scope.slice(0, 2).join(", ")}</b></div><div><span>Status</span><b>Concept build</b></div></div>
+        <div className="facts"><div><span>Platform</span><b>{c.platform}</b></div><div><span>Sector</span><b>{c.sector}</b></div><div><span>Scope</span><b>{c.scope.slice(0, 2).join(", ")}</b></div><div><span>Status</span><b>Concept build</b></div></div>
       </div></header>
       <section className="sec-s themed t-dark"><div className="w"><div className="vis" data-reveal="clip"><Visual id={c.visuals[0]} brand={c.brand} /></div></div></section>
       <section className="sec themed t-paper"><div className="w two">
@@ -42,7 +42,7 @@ export default async function Case({ params }: { params: Promise<{ slug: string 
       <section className="sec themed t-dark"><div className="w">
         <SecHead eyebrow="Decisions" h="Choices we made, and why." />
         <ol className="steps" data-stagger>{c.decisions.map((d, i) => <li key={d.t} className="step"><span className="wk">{String(i + 1).padStart(2, "0")}</span><h3>{d.t}</h3><p>{d.p}</p></li>)}</ol>
-        <div className="tech" style={{ marginTop: 50 }}>{c.stack.map((s) => <span key={s}>{s}</span>)}</div>
+        <p className="sec-note" style={{ marginTop: 40 }}>Planned timeline: {c.timeline}</p><div className="tech" style={{ marginTop: 30 }}>{c.stack.map((s) => <span key={s}>{s}</span>)}</div>
         <p className="fine">This is a concept build designed and engineered by us. It is not a client project and shows no client results.</p>
       </div></section>
       <section className="sec-s themed t-coal"><div className="w two">

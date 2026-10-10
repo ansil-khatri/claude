@@ -9,7 +9,7 @@
     "lint": "tsc --noEmit",
     "test": "node --experimental-strip-types --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "audit": "node scripts/uae-audit.mjs",
+    "audit": "node scripts/seo-audit.mjs",
     "links": "node scripts/links-audit.mjs"
   },
   "dependencies": {
