@@ -1,4 +1,4 @@
-# 01 · Keyword research (UAE first), the way a non-technical owner searches
+# 01 · Keyword research (UAE), the way a non-technical owner searches
 
 ## How to read the tables
 - **Vol** = estimated UAE monthly searches (band): XS under 30, S 30 to 100, M 100 to 500, L 500 plus. Estimates; see README.
@@ -135,7 +135,7 @@ Why: low competition, buyer is mid-decision, and each maps to a fixed-price offe
 ## J · Avoid
 - Generic head terms with no UAE signal ("web design", "shopify agency") until the site has links.
 - Doorway city pages. Add Abu Dhabi and Sharjah pages only with real local content, local examples and a local phone/WhatsApp (see `02`).
-- Claims of "best", "No.1", "top-rated" without third-party proof. The FTC and UAE consumer rules treat unsubstantiated superlatives as misleading, and Google can drop the rich result.
+- Claims of "best", "No.1", "top-rated" without third-party proof. UAE consumer-protection and advertising rules treat unsubstantiated superlatives as misleading, and Google can drop the rich result.
 - "Cheap". Rank for "affordable" and "fixed price" instead.
 
 ## K · Methods to validate (do these once, 2 to 3 hours)

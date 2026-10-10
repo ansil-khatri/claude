@@ -26,13 +26,12 @@ Ordered by impact on traffic and enquiries. Each item names the files so it can 
 15. Regenerate `llms.txt` and `llms-full.txt` sections per `06` (industries, tools, audit); `.md` twins for new routes (already automatic via `routeEntries`).
 16. `/about` facts block + `sameAs` array driven by `site.ts` (fill when profiles exist).
 17. Per-route OG images for industries and tools (pattern exists).
-18. Add `hreflang` plumbing for `/us/` (no pages yet).
+18. Keep hreflang `en-AE` and `x-default`; add `ar-AE` pairs only when Arabic pages exist.
 19. Search Console and Bing verification via metadata `verification` fields from env.
 
 ## E · Phase 3 (month 3+, owner decision)
 20. `/abu-dhabi`, `/sharjah` pages only with real local content.
 21. Arabic site at `/ar/*` for P1 money pages (next-intl, RTL, Arabic fonts, hreflang pairs); start with `website-design`, `shopify-agency`, `whatsapp-automation`.
-22. `/us/*` section per `06`.
 
 ## Definition of done per page
 Unique title/meta/H1, answer box, price visible, 6 plus internal links, FAQ with schema, mockup or screenshot with alt text, OG image, in sitemap, `.md` twin present, passes `npm run audit` and `npm run links`, conversion bar and WhatsApp text correct, GA4 events firing.

@@ -26,7 +26,7 @@ Flat, exact-match money pages at `/<slug>` (already built). Everything else sits
 │    NEW /tools/website-cost-calculator  NEW /tools/whatsapp-reply-roi  NEW /tools/erp-vs-excel-checker
 ├─ NEW /free-website-audit   conversion page (lead magnet)
 ├─ /pricing  /process  /about  /contact  /legal/*
-└─ PHASE 3  /abu-dhabi  /sharjah (only with real local content), /us/* (see 06)
+└─ PHASE 3  /abu-dhabi  /sharjah (only with real local content), /ar/* Arabic (see 07)
 ```
 
 Hub pages are the three money pages that already carry the most breadth. Do **not** create separate "hub" pages that duplicate them; add a "Related services" strip and a link grid to the hub page instead.

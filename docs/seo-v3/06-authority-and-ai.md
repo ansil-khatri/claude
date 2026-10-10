@@ -1,4 +1,4 @@
-# 06 · Authority, AI crawlers and the US phase
+# 06 · Authority and AI crawlers (UAE)
 
 ## How "best agency" actually gets decided
 Google ranks agency queries on topical relevance (our pages), links and brand mentions (other sites), review signals (Google Business Profile, Clutch, Shopify directory) and user behaviour. AI assistants answer "best agency in Dubai" by quoting lists and directories they trust, so being **named on the pages they read** matters more than being on ours. Each item below is an owner action; none can be done in code.
@@ -19,7 +19,7 @@ Google ranks agency queries on topical relevance (our pages), links and brand me
 | 11 | Partner pages: payment (Tabby, Tamara, Telr, Network International), WhatsApp BSP, Zoho/Odoo partner programmes if eligible | Partner directories link out | Month 3+ |
 
 ### Reviews policy
-Ask every client for a Google and a Clutch review within 7 days of launch. Never buy, incentivise-with-discount, write or gate reviews. In the US the FTC's rule on fake and manipulated reviews carries civil penalties; the UAE has equivalent consumer-protection rules. Do not add `AggregateRating` schema until real reviews are visible on the page.
+Ask every client for a Google and a Clutch review within 7 days of launch. Never buy, incentivise-with-discount, write or gate reviews. UAE consumer-protection and advertising rules apply to fake or paid-for reviews, and Google and Clutch remove them. Do not add `AggregateRating` schema until real reviews are visible on the page.
 
 ### Proof replacement plan
 Concept builds stay labelled until each is replaced. Fast path: offer two or three early clients a discounted launch in exchange for a named case study and review (written agreement, disclosed on the case page). Replace case pages one by one; keep concept builds as "Studio concepts".
@@ -39,18 +39,6 @@ To add:
 Run these in ChatGPT, Perplexity, Gemini and Google AI Overviews; log whether we are named, linked, or a competitor is:
 1. best shopify agency in dubai · 2. who builds shopify stores for luxury brands in the uae · 3. shopify or wordpress for my small business in dubai · 4. how much does a website cost in dubai · 5. whatsapp auto reply for my business uae · 6. best erp for a small business in dubai · 7. how do i stop using excel for my business uae · 8. who can migrate my woocommerce store to shopify in dubai · 9. do i need a trade licence to sell online in dubai · 10. best agency for arabic and english ecommerce website uae.
 Track: mention count, cited URL, sentiment. Expect zero for 3 to 6 months; the goal is a rising trend, then first citation on long-tail prompts.
-
-## The USA phase (decide at week 12)
-**Honest view:** "Shopify agency" in the US is one of the most contested agency searches (Shopify's partner directory alone lists dozens of Platinum/Premier partners; ranking lists are dominated by NYC, Miami and Los Angeles agencies with hundreds of reviews). A national "best agency in the USA" ranking is a 12 to 24 month effort that depends on reviews and links, not on-page work. The way in is niche, problem-led and price-transparent.
-
-**Recommended approach if you proceed**
-1. **Same domain, `/us/` folder,** `hreflang en-US` with the UAE site as `en-AE`, USD prices, US-specific posts. Do not copy UAE pages.
-2. **Niches that fit our proof:** luxury and fashion DTC, fragrance, jewellery, B2B/wholesale ordering, ops automation for small businesses (WhatsApp is not the US channel: use SMS, web chat, email and Google Business messages instead).
-3. **Pages (first 12):** `/us/shopify-agency`, `/us/shopify-plus-agency`, `/us/custom-shopify-theme-development`, `/us/shopify-migration`, `/us/wordpress-agency`, `/us/woocommerce-development`, `/us/ai-automation-for-small-business`, `/us/ecommerce-website-cost`, `/us/shopify-store-cost`, plus 3 industry pages.
-4. **Cities:** state-level and metro pages only where we have a client, a case study or a regular presence. No doorway pages; Google's spam policy covers them.
-5. **Proof:** US reviews and case studies are required before the section earns links; start Clutch/DesignRush US profiles at launch.
-6. **Compliance pages:** CCPA/US privacy policy, ADA accessibility statement, US terms. Add "Hispanic/Latino-owned" or similar claims only if true.
-7. **Delivery:** confirm capacity and time-zone coverage before selling. A US lead with a missed call loses faster than a UAE one.
 
 ## Risks and how we handle them
 | Risk | Control |
