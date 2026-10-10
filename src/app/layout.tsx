@@ -9,6 +9,7 @@ import { Nav } from "@/components/shell/Nav";
 import { Footer } from "@/components/shell/Footer";
 import { RootEffects } from "@/components/shell/RootEffects";
 import { WaFloat } from "@/components/shell/WaFloat";
+import { Analytics } from "@/components/shell/Analytics";
 import { JsonLd } from "@/components/ui/JsonLd";
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WaFloat />
         <RootEffects />
+        <Analytics />
         <JsonLd data={org} />
         <div className="cur-dot" id="cur-dot" aria-hidden />
         <div className="cur-ring" id="cur-ring" aria-hidden />

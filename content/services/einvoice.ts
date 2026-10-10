@@ -12,7 +12,7 @@ export const einvoice: Page = {
   stage: {
     main: { t: "dash", title: "E-invoicing status · Peak Cooling", sub: "Checked against Ministry of Finance guidance, Oct 2026", kpis: [["Invoices this month", "1,284"], ["Rejected", "0"], ["Sources connected", "3"]], rows: [["Zoho Books", "1,102 invoices", "g|Live"], ["POS (Foodics-style)", "148 invoices", "g|Live"], ["Excel import", "34 invoices", "y|Review"]], head: ["SOURCE", "THIS MONTH", "STATUS"] },
     side: { t: "chat", name: "E-invoicing alerts", sub: "WhatsApp", color: "#25d366", day: "Today", msgs: [{ w: "in", t: "Invoice INV-5531 rejected: buyer TRN missing.", link: "Fix in 1 tap", time: "9:14 AM" }, { w: "out", t: "Fixed ✓", time: "9:16 AM" }] },
-    cards: [{ icon: "⏱", title: "263 days to 1 July 2027", sub: "Businesses under AED 50m", style: { left: "-3%", bottom: "10%" } }, { icon: "✓", title: "0 rejected this month", style: { right: "0%", top: "0%" }, dark: true }],
+    cards: [{ icon: "⏱", title: "264 days to 1 July 2027", sub: "Businesses under AED 50m", style: { left: "-3%", bottom: "10%" } }, { icon: "✓", title: "0 rejected this month", style: { right: "0%", top: "0%" }, dark: true }],
   },
   painsHead: "Where e-invoicing gets stuck.",
   pains: [

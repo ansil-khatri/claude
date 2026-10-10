@@ -40,6 +40,11 @@ for (const f of files) {
   const money = /^(services|industries|agencies|pricing)/.test(rel) && !/^(services|industries)\.html$/.test(rel);
   if (money && !/IN PLAIN ENGLISH/i.test(text)) issues.push("missing plain-English block");
   if (rel.startsWith("services/") || rel.startsWith("industries/") || rel === "pricing.html" || rel === "agencies.html") if (!/AED\s?[\d,]+/.test(text)) issues.push("no AED price");
+  if (/^(services|industries)\/[^/]+\.html$/.test(rel) || rel === "agencies.html") {
+    if (!/FAQPage/.test(html)) issues.push("no FAQPage schema");
+    if (!/pricing|How much|Fixed/i.test(text)) issues.push("no pricing heading in raw HTML");
+    if (!/<ol|proc-track/.test(html)) issues.push("process section missing");
+  }
   if (/^(work|industries|services)\//.test(rel) && !/Example project/.test(text) && /^(work|industries)\//.test(rel)) issues.push("missing 'Example project' chip");
   if (issues.length) { fail++; console.log(`FAIL ${rel}\n  - ${issues.join("\n  - ")}`); }
 }

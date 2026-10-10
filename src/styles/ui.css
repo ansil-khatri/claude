@@ -204,3 +204,6 @@ a:hover > .arrow, button:hover > .arrow { transform: translateX(4px); }
 .wa-float svg { width: 30px; height: 30px; }
 @media (min-width: 1041px) { .wa-float { display: none; } }
 @keyframes tabprog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.consent { position: fixed; z-index: 90; left: 16px; bottom: 16px; max-width: 460px; background: var(--panel); color: #e8e8ea; border-radius: 22px; padding: 18px 20px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); display: grid; gap: 14px; font-size: 14px; line-height: 1.5; } .consent a { text-decoration: underline; } .consent div { display: flex; gap: 8px; justify-content: flex-end; }
+@media (max-width: 640px) { .consent { left: 8px; right: 8px; bottom: 82px; max-width: none; } }
+.tt td.tier { font: 500 15px/1.45 var(--font-sans); text-transform: none; letter-spacing: 0; color: var(--ink); width: auto; }

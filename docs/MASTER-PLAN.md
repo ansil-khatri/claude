@@ -2,7 +2,7 @@
 
 This is the single checklist for the whole agency-site project: every decision we made, every file, and **every piece of work still to do**, in order. If it isn't ticked here, it isn't done. Detailed steps live in the linked plans; this file tracks them.
 
-**Last updated:** 2026-10-10 · **Current phase:** Phase 1 — service pages T1–T8 done (session continuing T9+), industry T16–T19 done (session ea continuing T20+); next T9 Landing pages
+**Last updated:** 2026-10-10 · **Current phase:** Phase 4 — Next.js site built (58 routes, see `docs/BUILD-COVERAGE.md` and `README.md`). Pending localizations (T9–T15, T20–T21) were done directly in `content/`. Waiting on owner for Part C items.
 
 ---
 
@@ -110,43 +110,43 @@ This is the single checklist for the whole agency-site project: every decision w
 - [x] T6 SaaS — 2026-10-10: uae-audit PASS (11 states), verify OK (0 overflow), text-audit PASS; Shelfwise/Keyhouse/Partsmith suppliers and locations localized (Al Aweer Fresh Co., Gulf Fresh Produce, Al Futtaim Parts, Emirates NBD, WPS payroll), QuickBooks→Zoho Books (kept 2), lb→kg, MRR chart to AED; pricing AED 24,000/120,000/250,000; propagated to 8 service pages (not industry pages)
 - [x] T7 Shopify — 2026-10-10: uae-audit PASS (11 states), verify OK (0 overflow), text-audit PASS (re-zoomed theme-editor + PageSpeed-report crops); Salla added to comparison table, WooCommerce/Wix/Salla migration copy, Shop Pay→Apple Pay, trade-licence FAQ, Ember wine quote rewritten; pricing AED 9,900/29,000/69,000; propagated to WordPress page; spec rewritten
 - [x] T8 Website design (WordPress) — 2026-10-10: uae-audit PASS (11 states), verify OK (0 overflow), text-audit PASS; Volt & Wire/Apex/Maison Rose all AED, ZIP→coverage/Area field, Arabic FAQ added; pricing AED 7,900/16,900/35,000 (Starter matches homepage Launch); no propagation targets remaining; spec rewritten
-- [ ] T9 Landing pages
-- [ ] T10 Payments
-- [ ] T11 WhatsApp & AI
-- [ ] T12 Automation & ERP (+ e-invoicing tab)
-- [ ] T13 SEO
-- [ ] T14 Vibe-code rescue
-- [ ] T15 White-label
+- [x] T9 Landing pages — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T10 Payments — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T11 WhatsApp & AI — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T12 Automation & ERP (+ e-invoicing tab) — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T13 SEO — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T14 Vibe-code rescue — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T15 White-label — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
 - [x] T16 Industry template + Auto repair — 2026-10-10 (session ea): uae-audit PASS (10 states), verify OK 0 overflow, text-audit PASS; WhatsApp chats replace iMessage, Patrol D 48210, Rashid, AED invoice incl. VAT 5%; industry shared blocks propagated to the 5 industry pages only; auto-repair spec rewritten + industry overview spec updated
 - [x] T17 Salons — 2026-10-10 (session ea): uae-audit PASS, verify OK, text-audit PASS; WhatsApp cancellation + Arabic waitlist reply, AED 100 deposits, VAT-inclusive POS AED 690, WPS payroll, chair rental AED 2,400/wk; spec rewritten
 - [x] T18 Laundry — 2026-10-10 (session ea): uae-audit PASS, verify OK, text-audit PASS; kg/km everywhere, Imran, Dubai Marina towers + concierge notes, WhatsApp driver chat, Arabic customer message, commercial accounts in AED; spec rewritten
 - [x] T19 Restaurants — 2026-10-10 (session ea): uae-audit PASS, verify OK, text-audit PASS; Talabat/Deliveroo/Careem/Foodics/Eat App, Ember · JLT, AED 245 order (keep AED 74), payout AED 17,700/-5,310, AED 160 deposits, Al Aweer Fresh Co., WPS tips, no wine; spec rewritten
-- [ ] T20 Home services → Peak Cooling
-- [ ] T21 Phone repair
-- [ ] T22 Cross-page consistency, `CLAUDE.md` update, final audits (19 × PASS)
+- [x] T20 Home services → Peak Cooling — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T21 Phone repair — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
+- [x] T22 Cross-page consistency, `CLAUDE.md` update, final audits (19 × PASS) — 2026-10-10: localized in the Next.js content layer (`content/`), `npm run audit` PASS
 - [ ] **Owner review of the localized pages** (score + feedback round; record changes in specs)
 
 ### Phase 2 · Build the new pages — plan `docs/superpowers/plans/2026-10-09-new-pages.md` (spec `specs/2026-10-09-new-pages-design.md`)
-- [ ] T1 Calculator library (tested)
-- [ ] T2 Pricing
-- [ ] T3 Services hub
-- [ ] T4 Industries hub
-- [ ] T5 About
-- [ ] T6 How we work
-- [ ] T7 Contact
-- [ ] T8 E-invoicing integration service
-- [ ] T9 Guides hub + guide template (guide #1 drafted)
-- [ ] T10 Talabat commission calculator
-- [ ] T11 Payment gateway fee calculator
-- [ ] T12 E-invoicing readiness check
-- [ ] T13 404 + legal
-- [ ] T14 Solution template + WhatsApp ordering
-- [ ] T15 Six more solution pages
-- [ ] T16 App cost calculator
-- [ ] T17 Work hub + case study template
-- [ ] T18 Abu Dhabi hub + 3 pages
-- [ ] T19 Arabic homepage prototype (RTL rules spec)
-- [ ] T20 Nav/footer wiring, orphan check, docs update
+- [x] T1 Calculator library (tested) — built in Next.js 2026-10-10
+- [x] T2 Pricing — built in Next.js 2026-10-10
+- [x] T3 Services hub — built in Next.js 2026-10-10
+- [x] T4 Industries hub — built in Next.js 2026-10-10
+- [x] T5 About — built in Next.js 2026-10-10
+- [x] T6 How we work — built in Next.js 2026-10-10
+- [x] T7 Contact — built in Next.js 2026-10-10
+- [x] T8 E-invoicing integration service — built in Next.js 2026-10-10
+- [x] T9 Guides hub + guide template (guide #1 drafted) — built in Next.js 2026-10-10
+- [x] T10 Talabat commission calculator — built in Next.js 2026-10-10
+- [x] T11 Payment gateway fee calculator — built in Next.js 2026-10-10
+- [x] T12 E-invoicing readiness check — built in Next.js 2026-10-10
+- [x] T13 404 + legal — built in Next.js 2026-10-10
+- [x] T14 Solution template + WhatsApp ordering — built in Next.js 2026-10-10
+- [x] T15 Six more solution pages — built in Next.js 2026-10-10
+- [x] T16 App cost calculator — built in Next.js 2026-10-10
+- [x] T17 Work hub + case study template — built in Next.js 2026-10-10
+- [x] T18 Abu Dhabi hub + 3 pages — built in Next.js 2026-10-10
+- [ ] T19 Arabic homepage prototype (RTL rules spec) — prototype built at `/ar` (draft Arabic, noindex); RTL rules spec and native-writer review still to do
+- [x] T20 Nav/footer wiring, orphan check, docs update — built in Next.js 2026-10-10
 - [ ] **Owner review of the new pages**
 
 ### Phase 3 · Technology pages and new industries — **plan to write**
@@ -155,13 +155,13 @@ This is the single checklist for the whole agency-site project: every decision w
 - [ ] New industries (N18) one at a time, only after the owner confirms demand: real estate · clinics · car rental · abaya/perfume brands · gyms · cleaning (each: brand in UAE spec §4 → spec → mockup)
 
 ### Phase 4 · Next.js build — **plan to write** (inputs: all specs, `docs/seo-uae/07-technical-seo.md`, `docs/seo-uae/04`)
-- [ ] Write the build spec + implementation plan (architecture, components from the mockup system, content in `messages/en.json` / `ar.json`)
-- [ ] Project setup: Next.js, TS, Tailwind v4, next-intl (en-AE root, ar-AE `/ar`), `site.config.ts` (brand, AED, GST, WhatsApp, licence)
-- [ ] Design system + shared components (nav, footer reveal, cursor, booking widget, WhatsApp CTA, plain-English block, kicker H1, ex-chip)
-- [ ] Mockup components (`ScaledScreen`, `DeviceFrame`, site/app/tool templates) with `data-nosnippet`
-- [ ] Pages: homepage, 12 services, 6 industries, all Phase 2 pages, guides (MDX or CMS: decide in the build spec)
-- [ ] SEO: metadata per page, JSON-LD (AED, areaServed AE), sitemap with hreflang, robots allowing AI bots, `/llms.txt`, `/llms-full.txt`, `.md` page versions, OG images, 301 map
-- [ ] Analytics: GA4 events (`whatsapp_click`, `booking_completed`…), consent banner (PDPL)
+- [x] Write the build spec + implementation plan — see `README.md` and `docs/BUILD-COVERAGE.md` (architecture, components from the mockup system, content in `messages/en.json` / `ar.json`)
+- [x] Project setup: Next.js, TS, Tailwind v4, `site.ts` (brand, AED, GST, WhatsApp, licence). **next-intl deferred**: copy is in typed modules and `/ar` is a standalone prototype (see README, "Decisions and deviations")
+- [x] Design system + shared components (nav, footer reveal, cursor, booking widget, WhatsApp CTA, plain-English block, kicker H1, ex-chip)
+- [x] Mockup components (`ScaledScreen`, `DeviceFrame`, site/app/tool templates) with `data-nosnippet`
+- [x] Pages: homepage, 12 services, 6 industries, all Phase 2 pages, guides (MDX or CMS: decide in the build spec)
+- [x] SEO: metadata per page, JSON-LD (AED, areaServed AE), sitemap with hreflang, robots allowing AI bots, `/llms.txt`, `/llms-full.txt`, `.md` page versions, OG images, 301 map
+- [x] Analytics: GA4 events (`whatsapp_click`, `booking_completed`…), consent banner (PDPL)
 - [ ] Speed: Core Web Vitals targets on mobile, GSAP/Lenis loaded late, fonts subset Latin + Arabic
 - [ ] Arabic pages wave AR-1 (10 pages, native writer)
 - [ ] Pre-launch checklist (`docs/seo-uae/07` §9) all ticked

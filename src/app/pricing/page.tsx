@@ -42,8 +42,8 @@ export default function Page() {
                 <thead><tr><th>Service</th><th>Tier</th><th>From</th><th>Time</th><th>Most projects land at</th></tr></thead>
                 <tbody>{g.rows.map((r) => r.tiers.map((t, ti) => (
                   <tr key={r.service + ti}>
-                    {ti === 0 ? <td rowSpan={3} style={{ fontWeight: 800, fontFamily: "var(--font-sans)", textTransform: "none", fontSize: 15, letterSpacing: 0, color: "var(--ink)", width: 200 }}>{r.slug !== "industries" ? <Link href={r.slug === "agencies" ? "/agencies" : `/services/${r.slug}`} style={{ textDecoration: "underline" }}>{r.service}</Link> : r.service}</td> : null}
-                    <td>{t[0]}</td><td><b>{t[1]}</b></td><td>{t[2]}</td>{ti === 0 ? <td rowSpan={3}>{r.land}</td> : null}
+                    {ti === 0 ? <td rowSpan={3} className="tier" style={{ fontWeight: 800, width: 200 }}>{r.slug !== "industries" ? <Link href={r.slug === "agencies" ? "/agencies" : `/services/${r.slug}`} style={{ textDecoration: "underline" }}>{r.service}</Link> : r.service}</td> : null}
+                    <td className="tier">{t[0]}</td><td><b>{t[1]}</b></td><td>{t[2]}</td>{ti === 0 ? <td rowSpan={3}>{r.land}</td> : null}
                   </tr>
                 )))}</tbody>
               </table></div>

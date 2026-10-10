@@ -1,7 +1,8 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { aed, deliveryCommission, gatewayFees, einvoiceDeadline, readinessScore, appCost, APP_FEATURES, APP_BASE, type Band } from "@/lib/calcs";
 import { waLink } from "@/config/site";
+import { track } from "@/components/shell/Analytics";
 
 const Slider = ({ id, label, v, set, min, max, step = 1, fmt = (x: number) => String(x) }: { id: string; label: string; v: number; set: (n: number) => void; min: number; max: number; step?: number; fmt?: (n: number) => string }) => (
   <div className="fld"><label htmlFor={id}>{label}<b>{fmt(v)}</b></label><input id={id} type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(+e.target.value)} /></div>
@@ -79,6 +80,7 @@ export function Readiness() {
   const [i, setI] = useState(0);
   const [ans, setAns] = useState<Record<string, string>>({});
   const done = i >= QUESTIONS.length;
+  useEffect(() => { if (done) track("einvoice_check_completed"); }, [done]);
   const pick = (k: string, v: string) => { setAns((a) => ({ ...a, [k]: v })); setI((x) => x + 1); };
   if (!done) {
     const q = QUESTIONS[i];
@@ -125,6 +127,7 @@ const FEATS: [string, string][] = [["payments", "Payments"], ["tabby", "Tabby"],
 export function AppCalc() {
   const [type, setType] = useState("booking"), [platforms, setP] = useState("both"), [features, setF] = useState<string[]>([]), [design, setD] = useState("template");
   const r = appCost({ type, platforms, features, design });
+  useEffect(() => { const t = setTimeout(() => track("calculator_completed", { tool: "app_cost" }), 1500); return () => clearTimeout(t); }, [type, platforms, features, design]);
   return (
     <div className="tool">
       <div className="tool-in">

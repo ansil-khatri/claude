@@ -221,3 +221,4 @@ table.gw { width: 100%; border-collapse: collapse; font-size: 15px; } table.gw t
 .pz-wrap { display: grid; gap: 14px; min-width: 0; } .pz-grp { min-width: 0; overflow: hidden; }
 .art-grid > * { min-width: 0; } .prose { max-width: 100%; }
 @media (max-width: 1000px) { .hero-glow { width: 320px !important; height: 320px !important; right: -150px !important; top: -170px !important; } .ar .hero-glow { left: -150px !important; right: auto !important; } }
+.ar { display: flow-root; }
