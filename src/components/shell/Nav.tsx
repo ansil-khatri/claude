@@ -1,37 +1,22 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { GROUPS, INDUSTRIES, SERVICES, NAV_MAIN, type Group } from "@content/catalog";
 import { site, waLink } from "@/config/site";
 import { WaIcon } from "@/components/ui/icons";
 
 export function Nav() {
-  const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
-  const last = useRef(0);
-  const acc = useRef(0);
   const path = usePathname();
 
   useEffect(() => { setOpen(false); }, [path]);
-  useEffect(() => {
-    const on = () => {
-      const y = window.scrollY, d = y - last.current;
-      last.current = y;
-      acc.current = Math.sign(d) === Math.sign(acc.current) ? acc.current + d : d;
-      if (y < 120) setHide(false);
-      else if (acc.current > 80) setHide(true);
-      else if (acc.current < -80) setHide(false);
-    };
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
-  }, []);
   useEffect(() => { document.documentElement.style.overflow = open ? "hidden" : ""; }, [open]);
 
   const wa = waLink("Hi, I'm on your website");
   return (
     <>
-      <div className={`nav-wrap ${hide && !open ? "hide" : ""}`}>
+      <div className="nav-wrap">
         <nav className="nav" aria-label="Main">
           <Link href="/" className="logo" aria-label={`${site.brand} home`}><span className="logo-mark" />{site.brand}</Link>
           <ul className="nav-links">

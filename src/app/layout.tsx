@@ -1,13 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/plus-jakarta-sans";
-import "@fontsource/instrument-serif/400-italic.css";
-import "@fontsource/instrument-serif/400.css";
+import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { site, url } from "@/config/site";
 import { Nav } from "@/components/shell/Nav";
 import { Footer } from "@/components/shell/Footer";
-import { RootEffects } from "@/components/shell/RootEffects";
+import { Motion } from "@/components/shell/Motion";
 import { WaFloat } from "@/components/shell/WaFloat";
 import { Analytics } from "@/components/shell/Analytics";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -20,7 +18,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
 };
-export const viewport: Viewport = { themeColor: "#111113", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0a0a0b", width: "device-width", initialScale: 1 };
 
 const org = {
   "@context": "https://schema.org",
@@ -34,10 +32,19 @@ const org = {
   ],
 };
 
+/** Runs before paint. Only ever adds classes that hide what the motion engine is about to animate, and removes them again after 3.5 s if JS never finishes. */
+const PRE = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('m-pre');if(!sessionStorage.getItem('seen')){sessionStorage.setItem('seen','1');d.classList.add('m-load');}setTimeout(function(){d.classList.remove('m-pre','m-load')},3500);}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AE" dir="ltr">
+    <html lang="en-AE" dir="ltr" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PRE }} />
+      </head>
       <body>
+        <div id="loader" aria-hidden="true"><div className="ld-in"><span className="ld-word"><b data-load-word>{site.brand}</b></span><span className="ld-n" data-load-n>00</span><i className="ld-bar" data-load-bar /></div></div>
+        <div id="curtain" aria-hidden="true"><span>{site.brand}</span></div>
+        <div id="pbar" className="pbar" aria-hidden="true" />
         <a href="#main" className="sr-only">Skip to content</a>
         <Nav />
         <div className="page-body" id="page-body">
@@ -45,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <Footer />
         <WaFloat />
-        <RootEffects />
+        <Motion />
         <Analytics />
         <JsonLd data={org} />
         <div className="cur-dot" id="cur-dot" aria-hidden />

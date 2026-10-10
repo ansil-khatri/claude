@@ -9,7 +9,7 @@
   --color-panel: #111113;
   --color-lime: #c8f542;
   --font-sans: "Plus Jakarta Sans Variable", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-serif: "Inter Variable", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }
 

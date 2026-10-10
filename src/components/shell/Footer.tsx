@@ -2,7 +2,7 @@ import Link from "next/link";
 import { INDUSTRIES, SERVICES } from "@content/catalog";
 import { footerLine, site, waLink } from "@/config/site";
 import { WaBtn } from "@/components/ui/Buttons";
-import { FooterFit } from "./RootEffects";
+import { FooterFit } from "./Motion";
 
 export function Footer() {
   return (

@@ -6,19 +6,24 @@ const theme = (b: Brand): CSSProperties =>
   ({ "--b-bg": b.bg, "--b-ink": b.ink, "--b-ac": b.accent, "--b-aci": b.accentInk, "--b-soft": b.soft } as CSSProperties);
 
 function Art({ b }: { b: Brand }) {
-  // Abstract brand illustration (no stock photos): layered shapes in the brand colours.
+  // Abstract "lens" composition: gradient field, hairline rings and film grain, in the brand colours. No stock photos, no blobs.
+  const id = b.key;
   return (
     <svg viewBox="0 0 520 420" preserveAspectRatio="xMidYMid slice" aria-hidden>
       <defs>
-        <radialGradient id={`g-${b.key}`} cx="30%" cy="25%" r="80%"><stop offset="0" stopColor="#fff" stopOpacity=".55" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></radialGradient>
+        <linearGradient id={`b-${id}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={b.accent} /><stop offset="1" stopColor={b.ink} stopOpacity=".78" /></linearGradient>
+        <radialGradient id={`a-${id}`} cx=".18" cy=".12" r=".9"><stop offset="0" stopColor="#fff" stopOpacity=".72" /><stop offset=".55" stopColor="#fff" stopOpacity="0" /></radialGradient>
+        <radialGradient id={`c-${id}`} cx=".72" cy=".62" r=".5"><stop offset="0" stopColor={b.accentInk} stopOpacity=".5" /><stop offset="1" stopColor={b.accentInk} stopOpacity="0" /></radialGradient>
+        <filter id={`n-${id}`}><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" /><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0" /></filter>
       </defs>
-      <rect width="520" height="420" fill={`url(#g-${b.key})`} />
-      <circle cx="380" cy="130" r="150" fill={b.accentInk} opacity=".14" />
-      <circle cx="120" cy="330" r="110" fill={b.ink} opacity=".1" />
-      <rect x="150" y="90" width="230" height="300" rx="115" fill={b.accentInk} opacity=".22" />
-      <path d="M60 380 C 160 250, 300 330, 470 170" stroke={b.accentInk} strokeWidth="14" fill="none" strokeLinecap="round" opacity=".5" />
-      <circle cx="270" cy="200" r="64" fill={b.accentInk} opacity=".85" />
-      <circle cx="270" cy="200" r="30" fill={b.accent} />
+      <rect width="520" height="420" fill={`url(#b-${id})`} />
+      <rect width="520" height="420" fill={`url(#a-${id})`} />
+      <rect width="520" height="420" fill={`url(#c-${id})`} />
+      {[64, 112, 164, 220, 282, 350].map((r) => <circle key={r} cx="318" cy="236" r={r} fill="none" stroke={b.accentInk} strokeOpacity={0.22 - r / 2400} strokeWidth="1" />)}
+      <circle cx="318" cy="236" r="30" fill={b.accentInk} opacity=".92" />
+      <circle cx="318" cy="236" r="6" fill={b.accent} />
+      <path d="M0 330 C 120 300, 210 340, 330 292 S 470 250, 520 262" fill="none" stroke={b.accentInk} strokeOpacity=".28" />
+      <rect width="520" height="420" filter={`url(#n-${id})`} opacity=".32" style={{ mixBlendMode: "multiply" }} />
     </svg>
   );
 }
