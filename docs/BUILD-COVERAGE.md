@@ -41,7 +41,7 @@ Written when the Next.js build was completed. Status: ✅ built · 🟡 built as
 | 06 pricing AED | `content/prices.ts` is the only price source for `/pricing`, home and the service tiers |
 | 07 technical SEO | Static rendering, one H1, FAQ/tabs in HTML, schema, sitemap/robots, hreflang `en-AE` (+ `x-default`), `/ar` kept noindex until approved |
 | 08 local presence + AI | E-E-A-T placeholders on About; AI-bot-friendly robots, llms.txt; "Example project" labelling everywhere |
-| 09 blog calendar | `content/guides.ts` (all 55 + 3 studies); guides #1, #2, #3, #7 written in full |
+| 09 blog calendar | `content/guides.ts` (all 55 + 3 studies); guides #1–#11 written in full; length-checked titles and descriptions and a per-page OG image for every dynamic route |
 | `llms/` | `content/data/llms*.txt` served at `/llms.txt` and `/llms-full.txt` with brand facts substituted |
 
 ## `docs/superpowers/specs` and `plans`

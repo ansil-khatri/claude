@@ -153,5 +153,7 @@ export const STUDIES = [
   { id: "D3", title: "We audited 30 AI-built apps from UAE startups", note: "From free rescue audits (anonymised)" },
 ];
 
+import { MORE } from "./guides-more";
+for (const g of GUIDES) { const m = MORE[g.slug]; if (m) Object.assign(g, m); }
 export const published = () => GUIDES.filter((g) => g.body);
 export const guide = (slug: string) => GUIDES.find((g) => g.slug === slug);

@@ -27,11 +27,20 @@ for (const f of files) {
   for (const [re, name] of BAD) {
     const m = text.match(re);
     if (!m) continue;
-    if (name === "USD" && /bills in USD/.test(text)) continue;
+    if (name === "USD" && /bills (in USD|your plan in USD)/.test(text)) continue;
+    if (name === "USD amount" && /Shopify says .from \$39/.test(text)) continue;
     if (name.startsWith("QuickBooks") && (text.match(/QuickBooks/g) || []).length <= 3) continue;
     if (name === "imperial unit" && /\b(mile|miles)\b/i.test(m[0]) === false && /lb/.test(m[0]) === false) continue;
     issues.push(`${name}: …${text.slice(Math.max(0, m.index - 40), m.index + 50)}…`);
   }
+  const dec = (x) => x.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"');
+  const tt = html.match(/<title>(.*?)<\/title>/), dd = html.match(/name="description" content="(.*?)"/);
+  if (rel !== "index.html" && !rel.startsWith("legal")) {
+    const base = tt ? dec(tt[1]).replace(/ · .*$/, "") : "";
+    if (!tt || base.length > 52) issues.push(`title base is ${base.length} chars (max 52): ${base}`);
+    if (!dd || dec(dd[1]).length < 120 || dec(dd[1]).length > 158) issues.push(`meta description is ${dd ? dec(dd[1]).length : 0} chars (120–158)`);
+  }
+  if (!/og:image/.test(html)) issues.push("no og:image");
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) issues.push(`expected 1 <h1>, found ${h1}`);
   if (!/wa\.me\//.test(html)) issues.push("no WhatsApp link");

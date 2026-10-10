@@ -51,11 +51,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div className="prose">{g.body.map(renderBlock)}</div>
           <div className="panel" style={{ margin: "48px 0", padding: 30, borderRadius: 28 }}>
             <b style={{ color: "var(--lime)", font: "600 11px var(--font-mono)", letterSpacing: ".08em" }}>WHAT WE&apos;D DO</b>
-            <p style={{ margin: "10px 0 16px", color: "#d6d6da" }}>Tell us how your invoicing or business runs today and we&apos;ll tell you honestly what to do first.</p>
+            <p style={{ margin: "10px 0 16px", color: "#d6d6da" }}>Tell us how your business runs today and we&apos;ll tell you honestly what to do first, even if the answer is a cheaper option.</p>
             <div className="chips">{g.links?.slice(0, 2).map((l) => <Link key={l.href} className="chip" href={l.href}>{l.label} →</Link>)}<WaBtn text={`Hi, I read your guide: ${g.title}`} /></div>
           </div>
           {g.faq && <><h2 style={{ font: "800 30px var(--font-sans)", letterSpacing: "-.04em", margin: "40px 0 10px" }}>FAQ</h2><Faq items={g.faq} /></>}
-          <div className="callout" style={{ background: "var(--card)", marginTop: 40 }}><b>Sources.</b> Ministry of Finance and Federal Tax Authority publications. Facts marked ⚠ were last checked in {CHECKED}. We&apos;re not a law or tax firm; confirm decisions with an advisor.</div>
+          <div className="callout" style={{ background: "var(--card)", marginTop: 40 }}><b>Sources.</b> Official publications and provider pages named in the text (for tax and e-invoicing: the Ministry of Finance and Federal Tax Authority). Facts marked ⚠ were last checked in {CHECKED}. We&apos;re not a law or tax firm; confirm decisions with an advisor.</div>
           <div className="team-card" style={{ display: "flex", gap: 18, alignItems: "center", marginTop: 26 }}><div className="team-av" style={{ margin: 0, flex: "none" }}>?</div><div><b>[Author name]</b><p style={{ color: "var(--mute)", fontSize: 14 }}>Photo, bio and LinkedIn go here. Named, real authors only.</p></div></div>
         </article>
       </div></section>

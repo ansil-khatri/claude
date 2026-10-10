@@ -13,7 +13,7 @@ const find = (slug: string) => INDUSTRY_PAGES.find((p) => p.caseStudy.brand === 
 export const generateStaticParams = () => INDUSTRY_PAGES.map((p) => ({ slug: p.caseStudy.brand }));
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const p = find(slug);
-  return p ? meta({ title: `${p.caseStudy.h} · Example project`, desc: `${p.caseStudy.problem} ${p.caseStudy.built}`, path: `/work/${slug}` }) : {};
+  return p ? meta({ title: `${BRANDS[slug].name}: Example Project`, desc: `${p.caseStudy.h} ${p.caseStudy.problem} ${p.caseStudy.built}`, path: `/work/${slug}` }) : {};
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

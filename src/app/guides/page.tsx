@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <>
       <HubHero kicker="Guides" h1="Straight answers for" em="UAE business owners." sub="Real AED numbers, real dates, plain English. Each guide shows when we last checked it." wa="Hi, I read your guides" />
-      <Plain text="Our guides answer the questions UAE owners actually ask: what e-invoicing means for you before July 2027, what a website or app really costs in dirhams, how much Talabat takes and how to get paid. Facts that can change (laws, fees, dates) are marked and linked to the official source." facts={[["Published", "4 guides"], ["Planned", "55 + 3 studies"], ["Checked", CHECKED], ["Languages", "English (Arabic soon)"]]} />
+      <Plain text="Our guides answer the questions UAE owners actually ask: what e-invoicing means for you before July 2027, what a website or app really costs in dirhams, how much Talabat takes and how to get paid. Facts that can change (laws, fees, dates) are marked and linked to the official source." facts={[["Published", `${GUIDES.filter((g) => g.body).length} guides`], ["Planned", "55 + 3 studies"], ["Checked", CHECKED], ["Languages", "English (Arabic soon)"]]} />
       <section className="sec-tight"><div className="w">
         <Link href={`/guides/${featured.slug}`} className="feat">
           <div><span className="eyebrow on-dark"><i />Featured pillar</span><h2>{featured.title}</h2><p>{featured.answer}</p><span className="btn btn-lime">Read the guide <span className="arrow">→</span></span></div>
