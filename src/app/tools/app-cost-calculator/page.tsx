@@ -2,7 +2,7 @@ import { HubHero } from "@/components/sections/Simple";
 import { FaqSection, Head, CtaSection } from "@/components/sections/Blocks";
 import { AppCalc } from "@/components/sections/ToolsClient";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { meta } from "@/lib/seo";
+import { meta, breadcrumbLd } from "@/lib/seo";
 import { url } from "@/config/site";
 
 export const metadata = meta({ title: 'App Cost Calculator Dubai · Estimate in AED', desc: 'Estimate what your app costs in AED: pick the type, platforms and features. Fixed price after a 30-minute call.', path: "/tools/app-cost-calculator" });
@@ -15,6 +15,7 @@ const FAQ = [
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Tools", "/tools"], ["App cost calculator", "/tools/app-cost-calculator"]])} />
       <HubHero kicker='Free tool' h1='How much would your app cost?' sub='Pick the type of app, the platforms and the features. You get an AED range and a time estimate.' wa="Hi, I used your app cost calculator" />
       <section className="sec"><div className="w"><AppCalc /></div></section>
       <section className="sec-tight"><div className="w two-col"><div><Head eyebrow="How we calculate it" title="Method and assumptions." /></div><div className="prose"><p>{'Method: a base price per app type (booking AED 35,000, ordering 45,000, delivery 60,000, loyalty 35,000, marketplace 105,000, internal tool 29,000), plus features, with adjustments for one platform (−15%) and custom design (+15%). The high end is 1.6× the low end. This is an estimate; your fixed price comes after a call.'}</p></div></div></section>

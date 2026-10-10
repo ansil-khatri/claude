@@ -17,7 +17,7 @@ export function Footer() {
             <p className="about" style={{ marginTop: 18 }}><a href={`mailto:${site.email}`}>{site.email}</a></p>
           </div>
           <div><h5>Start here</h5><ul>
-            {[["/pricing", "Pricing in AED"], ["/process", "How we work"], ["/work", "Work"], ["/guides", "Guides"], ["/guides/uae-e-invoicing", "E-invoicing 2027"], ["/tools", "Free tools"], ["/about", "About"], ["/contact", "Contact"]].map(([h, l]) => <li key={h}><Link href={h}>{l}</Link></li>)}
+            {[["/pricing", "Pricing in AED"], ["/process", "How we work"], ["/work", "Work"], ["/guides", "Guides"], ["/guides/uae-e-invoicing", "E-invoicing 2027"], ["/guides/website-cost-dubai", "Website cost in Dubai"], ["/guides/app-development-cost-dubai", "App cost in Dubai"], ["/guides/shopify-store-cost-uae", "Shopify store cost"], ["/tools", "Free tools"], ["/about", "About"], ["/contact", "Contact"]].map(([h, l]) => <li key={h}><Link href={h}>{l}</Link></li>)}
           </ul></div>
           <div><h5>Services</h5><ul>
             {SERVICES.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`}>{s.name}</Link></li>)}
@@ -26,6 +26,7 @@ export function Footer() {
           <div><h5>Industries</h5><ul>
             {INDUSTRIES.map((s) => <li key={s.slug}><Link href={`/industries/${s.slug}`}>{s.name}</Link></li>)}
             <li><Link href="/abu-dhabi">Abu Dhabi</Link></li>
+            <li><Link href="/sharjah">Sharjah</Link></li>
           </ul></div>
           <div><h5>Tools</h5><ul>
             {[["/tools/talabat-commission-calculator", "Talabat commission"], ["/tools/payment-gateway-fee-calculator", "Gateway fees"], ["/tools/e-invoicing-readiness-check", "E-invoicing check"], ["/tools/app-cost-calculator", "App cost"]].map(([h, l]) => <li key={h}><Link href={h}>{l}</Link></li>)}

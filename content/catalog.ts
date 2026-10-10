@@ -38,7 +38,7 @@ export const INDUSTRIES: IndustryMeta[] = [
   { slug: "home-services", name: "AC, cleaning & maintenance", brand: "peakcooling", h1: ["You're on a roof at 46°C.", "Your phone is ringing again."], worksWith: ["Jobber", "Zoho Books", "WhatsApp Business"], source: "industry-home-services",
     solutions: [{ slug: "website", name: "AC company website" }] },
   { slug: "phone-repair", name: "Phone repair & trade-ins", brand: "fixpoint", h1: ["You fix a screen in 45 minutes.", "\"How much?\" takes all day."], worksWith: ["RepairDesk", "Zoho Books", "WhatsApp Business"], source: "industry-phone-repair",
-    solutions: [] },
+    solutions: [{ slug: "website", name: "Phone repair website" }] },
 ];
 
 export const service = (slug: string) => SERVICES.find((s) => s.slug === slug);

@@ -1,0 +1,29 @@
+import type { Page } from "../types";
+
+export const PATCH: Partial<Page> = {
+  tech: ["Next.js · Webflow", "Google Ads · GA4", "Meta Pixel", "Zoho CRM · HubSpot", "GoHighLevel", "CallRail", "Google Tag Manager", "A/B testing", "WhatsApp click tracking"],
+  stage: {
+    main: { t: "site", k: "voltwire" }, side: { t: "phone", k: "voltwire", kind: "detail" },
+    cards: [
+      { icon: "⚡", title: "New lead · 41 seconds ago", sub: "Tesla charger · Khalifa City", style: { left: "-3%", bottom: "12%" } },
+      { icon: "📈", title: "Visitors who became leads", sub: "11.4% ▲ from 1.9%", style: { right: "2%", top: "2%" }, dark: true },
+      { icon: "⚡", title: "Speed 98 · 1.1 s", sub: "Phone speed score", style: { right: "-2%", bottom: "30%" } },
+    ],
+  },
+  tabs: [
+    { tab: "Matches the ad", chip: "One page per ad group · Same words · Same offer", h: "They click \"installed this week\". The page says the same.", p: "Someone searching \"Tesla charger install Abu Dhabi\" sees your ad, taps it and lands on a page about exactly that, with the same price and the same promise. No menu to get lost in, no \"Welcome to our company\".", fine: "We write a separate page for each service you advertise, in your customers' words.", viz: { t: "serp", query: "tesla charger install abu dhabi", items: [["Tesla Charger Installed This Week | Flat AED 4,550", "Sponsored · voltwire.ae/ev-charger", "Authority approval handled. Tesla Certified. See your price in 30 seconds."], ["EV Charger Installation Services", "organic · evcharge-guide.ae", "Compare installers, plans and typical costs in the UAE."], ["Wall Connector | Home charging", "tesla.com/ae", "Charge at home with the Tesla Wall Connector."], ["Same promise, ad to page", "✓ Ad headline = page headline", "Flat AED 4,550 on both"]] } },
+    { tab: "Forms people finish", chip: "2-step forms · Click to call · Instant booking", h: "A form that feels like a question, not paperwork.", p: "The first step asks one easy thing, like \"What are you charging?\". Contact details come second, once they're already in. People finish it on a phone in about 30 seconds, and can pick an appointment straight away.", fine: "Every lead goes to your CRM, your inbox and your phone at the same time.", viz: { t: "steps", title: "Lead form → thanks page", sub: "voltwire.ae/ev-charger", steps: [["Step 2: Where should we WhatsApp your price?", "Khalifa City ✓ · +971 50 ••• ••12"], ["Thanks! Your price: AED 4,550", "Carlos will WhatsApp you in ~5 min"], ["Pick your install day", "Thu 15 Oct · Fri 16 Oct · Sat 17 Oct"], ["Lead sent to HubSpot + Carlos", "0.8 s"]] } },
+    { tab: "Fast on phones", chip: "Under 1.5 s on 4G · Core Web Vitals · Lighter images", h: "Loaded before they can tap back.", p: "Most ad clicks come from phones, often on a slow connection. Our pages are hand-built with no page-builder bloat, so the headline and the button are on screen in about a second.", fine: "A faster page also raises your Google Ads Quality Score, so each click costs less.", viz: { t: "dash", title: "PageSpeed · mobile", sub: "voltwire.ae/ev-charger", kpis: [["Score", "98", "was 23"], ["Load on 4G", "1.1 s", "was 8.4 s"], ["CLS", "0.00"]], rows: [["Headline on screen", "g|0.7 s"], ["Form usable", "g|1.0 s"], ["Quality Score", "l|7 → 9"]], head: ["MOMENT", "TIME", ""] } },
+    { tab: "Tested, not guessed", chip: "A/B tests · Headlines · Offers · Forms", h: "Two versions, real visitors, a clear winner.", p: "We test one change at a time, like the headline, the offer or the first form question, and let your real traffic decide. You get a short note with the result and what we test next.", fine: "On the Growth plan we run a new test every two weeks.", viz: { t: "dash", title: "Headline test · EV charger page", sub: "14 days · same ad spend", kpis: [["Confidence", "97%"], ["Leads (B)", "179"], ["Lift", "+83%"]], rows: [["A · Original", "4.1%", "y|Control"], ["B · Price + speed", "7.5%", "g|Winner"], ["Same spend, more leads", "+83%", "b|Make B live →"]], head: ["VERSION", "CONVERSION", ""] } },
+    { tab: "Every lead tracked", chip: "Google Ads · GA4 · Meta Pixel · Call tracking · CRM", h: "Know which ad brought every customer.", p: "Form leads and phone calls are tracked back to the exact ad, keyword and page. You see the cost per lead and per booked job for each campaign, so you know where to spend more and what to switch off.", fine: "Conversions are sent back to Google and Meta, so their algorithms find more people like your real customers.", viz: { t: "dash", title: "Where your customers came from", sub: "Last 30 days", dark: true, kpis: [["Ad spend", "AED 22,900"], ["Leads", "184", "71 calls · 113 forms"], ["Per lead", "AED 125"], ["Quoted", "AED 433k"]], rows: [["Google · EV charger Abu Dhabi", "AED 118", "g|31 jobs"], ["Meta · Home install", "AED 204", "y|12 jobs"], ["Google · Brand", "AED 62", "g|9 jobs"]], head: ["CAMPAIGN", "PER LEAD", "JOBS"] } },
+  ],
+  techRows: [
+    ["", "Custom landing page Most chosen Next.js or Webflow, built by us", "Page builder Unbounce, Leadpages, Instapage", "Your homepage Wix, Squarespace, WordPress", "Cheap template Fiverr, ThemeForest"],
+    ["Best for", "Ads where each lead is worth AED 200 or more", "Marketing teams that build and test pages themselves", "People who already know your name", "Getting something live this week"],
+    ["Typical phone speed score", "95–100", "60–85", "30–60", "40–70"],
+    ["Visitors who become leads", "●●●●●", "●●● ●●", "● ●●●●", "●● ●●●"],
+    ["A/B testing", "Built in, and we run it", "Built in, you run it", "No", "No"],
+    ["Monthly cost", "AED 0–20 hosting", "AED 99–575 a month", "Included in your plan", "AED 0–20 hosting"],
+    ["Edit the text yourself", "Yes, in a simple editor", "Yes", "Yes", "Rarely"],
+  ],
+};

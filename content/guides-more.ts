@@ -37,6 +37,7 @@ export const MORE: Record<string, Partial<Guide>> = {
       { h2: "7. Launch checklist" }, { ol: ["Test a real order with each payment method", "Check VAT on invoices", "Check Arabic on a phone", "Install analytics and the Meta pixel with consent", "Set up redirects if you’re moving from another store", "Place an order from another emirate"] },
       { h2: "8. When to hire help" }, P("If you’re moving from WooCommerce or Salla, selling more than 100 products, or need custom subscriptions or bundles, a fixed-price agency build costs less than the sales you lose while you learn."),
     ],
+    faq: [{ q: "Do I need a trade licence to run a Shopify store in the UAE?", a: "You need a licence that covers e-commerce for the activity you sell. Requirements differ by emirate and free zone, so confirm yours with the licensing authority before you launch." }, { q: "How long does it take to launch?", a: "A simple store takes 3–4 weeks with an agency, and a few evenings if you build it yourself. Arabic, Tabby and shipping set-up add time." }],
   },
   "app-development-cost-dubai": {
     opening: "“Customers keep asking if we have an app.” You Google the price and see AED 25,000 and AED 1,000,000 on the same page.",
@@ -67,6 +68,7 @@ export const MORE: Record<string, Partial<Guide>> = {
       { h2: "Costs" }, C("WhatsApp charges per conversation or template message and the rate card changes. Check Meta’s current price list for the UAE."), P("Typical total: setup from AED 7,900, with running costs of AED 150–1,100 a month depending on volume."),
       { h2: "Rules to follow" }, { ul: ["Get opt-in before sending marketing messages", "Use approved templates for notifications", "Always offer a human handover", "Keep order confirmations factual"] },
     ],
+    faq: [{ q: "Is WhatsApp ordering allowed for restaurants?", a: "Yes, as long as customers contact you first or opt in. Use the WhatsApp Business app or API and follow Meta’s business messaging rules." }, { q: "Do I need the WhatsApp Business API?", a: "Not to start. The free Business app works for a handful of orders; the API is for automation, several staff and menus linked to your kitchen." }],
   },
   "whatsapp-business-api-cost-uae": {
     opening: "The free WhatsApp Business app worked for 50 chats a day. At 400, your staff can’t keep up.",
@@ -81,6 +83,7 @@ export const MORE: Record<string, Partial<Guide>> = {
       { h2: "Examples" }, { table: { head: ["Business", "Chats a month", "Typical monthly cost (AED)"], rows: [["Small salon", "800", "150–350"], ["Restaurant", "3,000", "400–800"], ["Busy retailer", "10,000", "1,000+"]] } },
       { h2: "How to start" }, { ol: ["Verify your Meta business", "Choose a provider", "Register your number", "Write and approve templates", "Test with your team", "Go live with a person watching"] },
     ],
+    faq: [{ q: "Is the WhatsApp Business API free?", a: "The API itself needs a provider, and Meta charges per conversation or message type. Check current pricing with Meta and your provider." }, { q: "Can a small business use the API?", a: "Yes, but only worth it once you need several staff on one number, automation or an assistant." }],
   },
   "best-payment-gateway-uae": {
     opening: "Your bank offered a gateway, a friend swears by Stripe, and a salesman pitched Telr. Which one leaves you more money?",
@@ -94,6 +97,7 @@ export const MORE: Record<string, Partial<Guide>> = {
       { h2: "Which fits which business" }, { ul: ["Online shop: Stripe or Telr plus Tabby/Tamara", "App or SaaS: Stripe", "Restaurant: your POS’s gateway plus payment links", "Salon: deposits through Stripe or Telr"] },
       { h2: "How to switch without losing sales" }, P("Build and test the new gateway alongside the old one, then switch at a quiet time. Keep the old one active for refunds."),
     ],
+    faq: [{ q: "Which gateway is cheapest in the UAE?", a: "It depends on your card volume and the share of international cards. Use our free gateway fee calculator and then ask each provider for a current quote." }, { q: "Can I use Stripe in the UAE?", a: "Stripe supports UAE businesses, but availability and features change. Confirm with Stripe for your licence type." }],
   },
   "tabby-vs-tamara-merchants": {
     opening: "Customers leave your checkout and come back with “Do you have Tabby?”",
@@ -109,5 +113,6 @@ export const MORE: Record<string, Partial<Guide>> = {
       { h2: "Can you offer both?" }, P("Yes, and most should. Show both on the product page and at checkout, and see which converts."),
       { h2: "Our recommendation" }, P("Start with both. Drop the one that doesn’t earn its fees after a quarter of real orders."),
     ],
+    faq: [{ q: "Should I offer both Tabby and Tamara?", a: "Many UAE stores do, because shoppers have a favourite. Compare each provider’s merchant fee and settlement time first." }, { q: "Do buy now pay later fees come out of my margin?", a: "Yes. The merchant pays a fee per order, usually higher than a card fee, so price and test accordingly." }],
   },
 };

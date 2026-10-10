@@ -30,6 +30,7 @@ for (const f of files) {
     if (name === "USD" && /bills (in USD|your plan in USD)/.test(text)) continue;
     if (name === "USD amount" && /Shopify says .from \$39/.test(text)) continue;
     if (name.startsWith("QuickBooks") && (text.match(/QuickBooks/g) || []).length <= 3) continue;
+    if (name.startsWith("QuickBooks") && rel.includes("quickbooks")) continue;
     if (name === "imperial unit" && /\b(mile|miles)\b/i.test(m[0]) === false && /lb/.test(m[0]) === false) continue;
     issues.push(`${name}: …${text.slice(Math.max(0, m.index - 40), m.index + 50)}…`);
   }

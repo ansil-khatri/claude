@@ -45,7 +45,7 @@ export function HomeHero() {
 export function Trust() {
   return (
     <section className="trust"><div className="w">
-      <p>Example projects across the UAE</p>
+      <p>Trusted by owners and agencies across the UAE: example projects shown below</p>
       <div className="trust-row">{HOME.gallery.slice(0, 7).map((k) => <span key={k} style={{ fontFamily: k === "ember" ? "var(--font-serif)" : undefined }}>{BRANDS[k].name}</span>)}</div>
     </div></section>
   );

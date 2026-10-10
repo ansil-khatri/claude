@@ -5,9 +5,11 @@ import { Faq } from "@/components/ui/Faq";
 import { HubHero } from "@/components/sections/Simple";
 import { Plain, Head, CtaSection, FaqSection } from "@/components/sections/Blocks";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { meta } from "@/lib/seo";
+import { meta, breadcrumbLd } from "@/lib/seo";
 import { url } from "@/config/site";
 import { Viz } from "@/components/mock/Viz";
+import { Finder } from "@/components/sections/Finder";
+import { SiteInBrowser, AppInPhone } from "@/components/mock/BrandMocks";
 
 export const metadata = meta({ title: "Software Development Services in Dubai & UAE", desc: "Shopify stores, websites, apps, WhatsApp assistants, payments, e-invoicing and automation for UAE businesses. Fixed AED prices. Start with your problem.", path: "/services" });
 
@@ -33,11 +35,12 @@ const FAQ = [
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Services", "/services"]])} />
       <HubHero kicker="Services" h1="What we build, and" em="what it costs." sub="Twelve services, one team, fixed prices in AED. Not sure which you need? Start with your problem below." wa="Hi, I'm on your services page" />
       <Plain text="We build software for UAE businesses in three groups: selling online (Shopify, websites, payments, landing pages), building products (mobile apps, web apps, SaaS) and running the business (WhatsApp & AI, automation, e-invoicing, SEO, fixing AI-built apps). Every service has a fixed AED price agreed before we start." facts={[["From", "AED 2,900"], ["Services", "12"], ["Languages", "English + Arabic"], ["Based in", "Dubai"]]} />
       <section className="sec"><div className="w">
         <Head eyebrow="Start here" title="My problem is…" lead="Pick the sentence that sounds like your week." />
-        <nav className="finder" aria-label="Problem finder">{FINDER.map(([t, h]) => <Link key={h + t} href={h}><span>{t}</span><span className="go">→</span></Link>)}</nav>
+        <Finder items={FINDER} previews={Object.fromEntries(FINDER.map(([, h]) => { const p = servicePage(h.replace("/services/", "")) ?? (h === "/agencies" ? servicePage("agencies") : undefined); const side = p?.stage.main; return [h, p && side ? <Viz key={h} spec={side} /> : <SiteInBrowser key={h} k="ember" />]; }))} />
       </div></section>
       <section className="sec-tight"><div className="w groups">
         {(Object.keys(GROUPS) as Group[]).map((g) => (

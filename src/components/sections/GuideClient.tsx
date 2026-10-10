@@ -16,7 +16,7 @@ export function GuideFilter({ guides, cats }: { guides: G[]; cats: string[] }) {
       </div>
       <div className="card-grid">
         {list.map((g) => {
-          const inner = <><span className="cat">{g.cat}</span><h3>{g.title}</h3>{g.answer && <p>{g.answer.slice(0, 130)}…</p>}<div className="foot"><span>{g.live ? `${g.read} min read` : `Planned · ${g.month}`}</span><span>{g.live ? "Read →" : "Soon"}</span></div></>;
+          const inner = <><span className="cat">{g.cat}</span><h3>{g.title}</h3>{g.answer && <p>{g.answer.slice(0, 130)}…</p>}<div className="foot"><span>{g.live ? `${g.read} min read · Updated Oct 2026` : `Planned · ${g.month}`}</span><span>{g.live ? "Read →" : "Soon"}</span></div></>;
           return g.live ? <Link key={g.slug} href={`/guides/${g.slug}`} className="g-card">{inner}</Link> : <div key={g.slug} className="g-card soon">{inner}</div>;
         })}
       </div>

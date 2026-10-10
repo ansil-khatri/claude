@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { published, guide, CHECKED, type Block } from "@content/guides";
+import { published, guide, CHECKED, CATS, catSlug, catFromSlug, GUIDES, type Block } from "@content/guides";
+import { HubHero } from "@/components/sections/Simple";
 import { Faq } from "@/components/ui/Faq";
 import { Plain, CtaSection, Head } from "@/components/sections/Blocks";
 import { WaBtn } from "@/components/ui/Buttons";
@@ -10,9 +11,11 @@ import { meta, breadcrumbLd } from "@/lib/seo";
 import { site, url } from "@/config/site";
 
 export const dynamicParams = false;
-export const generateStaticParams = () => published().map((g) => ({ slug: g.slug }));
+export const generateStaticParams = () => [...published().map((g) => ({ slug: g.slug })), ...CATS.filter((c) => published().some((g) => g.cat === c)).map((c) => ({ slug: catSlug(c) }))];
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const g = guide(slug);
+  const cat = catFromSlug(slug);
+  if (!g && cat) return meta({ title: `${cat} Guides for UAE Businesses`, desc: `Guides on ${cat.toLowerCase()} for UAE business owners: real AED prices, official dates with a last-checked note, and plain-English steps you can act on this week.`, path: `/guides/${slug}` });
   return g?.body ? meta({ title: g.seoTitle, desc: g.answer ?? g.title, path: `/guides/${slug}` }) : {};
 }
 
@@ -24,12 +27,28 @@ function renderBlock(b: Block, i: number) {
   if ("p" in b) return <p key={i}>{b.p}</p>;
   if ("ul" in b) return <ul key={i}>{b.ul.map((x) => <li key={x}>{x}</li>)}</ul>;
   if ("ol" in b) return <ol key={i}>{b.ol.map((x) => <li key={x}>{x}</li>)}</ol>;
+  if ("tip" in b) return <div key={i} className="callout tip">✓ <b>Tip.</b> {b.tip}</div>;
+  if ("figure" in b) return <figure key={i} className="fig"><figcaption>{b.figure.title}</figcaption><ol>{b.figure.rows.map(([d, t]) => <li key={d}><b>{d}</b><span>{t}</span></li>)}</ol></figure>;
   if ("check" in b) return <div key={i} className="callout">⚠ <b>Check the official source.</b> {b.check}</div>;
   return <div key={i} style={{ overflowX: "auto" }}><table><thead><tr>{b.table.head.map((h) => <th key={h}>{h}</th>)}</tr></thead><tbody>{b.table.rows.map((r, j) => <tr key={j}>{r.map((c, k) => <td key={k}>{c}</td>)}</tr>)}</tbody></table></div>;
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const g = guide(slug);
+  const cat = catFromSlug(slug);
+  if (!g && cat) {
+    const list = published().filter((x) => x.cat === cat);
+    if (!list.length) notFound();
+    return (
+      <>
+        <JsonLd data={breadcrumbLd([["Home", "/"], ["Guides", "/guides"], [cat, `/guides/${slug}`]])} />
+        <HubHero kicker="Guides" h1={`${cat} guides`} em="for UAE business owners." sub="Real AED numbers and dates, each with a last-checked note." wa={`Hi, I read your ${cat} guides`} />
+        <section className="sec"><div className="w"><div className="card-grid">{list.map((x) => <Link key={x.slug} href={`/guides/${x.slug}`} className="g-card"><span className="cat">{x.cat}</span><h3>{x.title}</h3>{x.answer && <p>{x.answer.slice(0, 130)}…</p>}<div className="foot"><span>{x.read} min read · Updated Oct 2026</span></div></Link>)}</div>
+          <p style={{ marginTop: 28 }}><Link href="/guides">← All guides</Link> · {CATS.filter((c) => c !== cat && GUIDES.some((x) => x.cat === c && x.body)).map((c) => <span key={c}><Link href={`/guides/${catSlug(c)}`}>{c}</Link>{" · "}</span>)}</p></div></section>
+        <CtaSection h="Have a question we haven't answered? 30 minutes, free." lead="Tell us what you're trying to figure out." steps={["Pick a time that works for you", "Ask us anything", "Get a plan and fixed price within 48 hours"]} wa="Hi, I have a question" />
+      </>
+    );
+  }
   if (!g?.body) notFound();
   const toc = g.body.filter((b): b is { h2: string; id?: string } => "h2" in b).map((b) => ({ id: b.id ?? slugify(b.h2), t: b.h2 }));
   const related = published().filter((x) => x.slug !== slug).slice(0, 3);
@@ -55,7 +74,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <div className="chips">{g.links?.slice(0, 2).map((l) => <Link key={l.href} className="chip" href={l.href}>{l.label} →</Link>)}<WaBtn text={`Hi, I read your guide: ${g.title}`} /></div>
           </div>
           {g.faq && <><h2 style={{ font: "800 30px var(--font-sans)", letterSpacing: "-.04em", margin: "40px 0 10px" }}>FAQ</h2><Faq items={g.faq} /></>}
-          <div className="callout" style={{ background: "var(--card)", marginTop: 40 }}><b>Sources.</b> Official publications and provider pages named in the text (for tax and e-invoicing: the Ministry of Finance and Federal Tax Authority). Facts marked ⚠ were last checked in {CHECKED}. We&apos;re not a law or tax firm; confirm decisions with an advisor.</div>
+          <div className="callout" style={{ background: "var(--card)", marginTop: 40 }}><b>Sources.</b> Official publications and provider pages named in the text (for tax and e-invoicing: the Ministry of Finance and Federal Tax Authority). Facts marked ⚠ were last checked in {CHECKED}. We&apos;re not a law or tax firm; confirm decisions with an advisor.{(g.cat === "E-invoicing" || g.cat === "Automation") && <> Official sites: <a href="https://mof.gov.ae" target="_blank" rel="noopener noreferrer">Ministry of Finance</a> · <a href="https://tax.gov.ae" target="_blank" rel="noopener noreferrer">Federal Tax Authority</a>.</>}</div>
           <div className="team-card" style={{ display: "flex", gap: 18, alignItems: "center", marginTop: 26 }}><div className="team-av" style={{ margin: 0, flex: "none" }}>?</div><div><b>[Author name]</b><p style={{ color: "var(--mute)", fontSize: 14 }}>Photo, bio and LinkedIn go here. Named, real authors only.</p></div></div>
         </article>
       </div></section>

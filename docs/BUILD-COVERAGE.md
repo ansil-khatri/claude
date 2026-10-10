@@ -61,3 +61,18 @@ Written when the Next.js build was completed. Status: ✅ built · 🟡 built as
 - `content/showcases.ts`: six UAE-localised "Built for your industry" tabs per service (result tiles, chips, "Sold by", mockup, moment caption), from the service specs' showcase tables.
 - Case studies added for Shopify, Website, Mobile, Web apps, SaaS, Landing, Payments and Automation (AED figures, illustrative-numbers chip).
 - Still partial: process pinned horizontal scroll, results counters/wipe, services-hub hover thumbnails.
+
+## Second pass: every spec audited (2026-10-10)
+
+Three read-only audits compared the build with the service specs, industry + new-page specs, UAE localization spec and `seo-uae/01–09`. What changed:
+
+- **Guides:** all 55 calendar guides now have full bodies (#12–#55 in `content/guides-12-22.ts` … `guides-45-55.ts`), plus 6 cluster guides (`guides-cluster.ts`, #56–#61). Each outside fact carries a "last checked October 2026" callout. Category hubs at `/guides/<category>`. Guide template gained tip callouts, a timeline figure (guide #1), FAQs on every guide, official source links and updated dates.
+- **Service pages:** spec-accurate replacements in `content/overrides/*.ts` (applied last in `content/services/index.ts`): FAQs, comparison rows, case studies, deep-dive mockups, hero cards, prices.
+- **Industries/solutions:** 3 hero cards, back-office figures, WhatsApp wording; 8 solution pages (added `/industries/phone-repair/website`) with expanded copy and a rendered mini case; `/sharjah` page.
+- **Interaction:** pinned horizontal process scroll, real before/after phone screens on the mobile "Sound familiar" cards, gallery hover scrolls the whole concept site, services-hub finder with hover preview.
+- **Leads and tracking:** `/api/lead` (forwards to `LEAD_WEBHOOK_URL`; the UI shows a WhatsApp fallback when nothing was delivered), `booking_completed` fires only on a successful submit, `calculator_completed` on all calculators.
+- **SEO:** BreadcrumbList on every hub and tool, `audience` on industry Service schema, Organization logo, Article schema on `/work/*`, shorter guide titles, `scripts/links-audit.mjs` (`npm run links`: raw-HTML H1/canonical/plain-English checks and broken-link scan).
+- **Tools:** two-bar commission chart, guide links, 12-question readiness check with summary and "Email me this"; 404 page search.
+
+### Still open (needs the owner or a decision, not code)
+Brand name/domain, licence number, WhatsApp number, real team names/photos/LinkedIn, real proof, licensed photos, Arabic copy and AR-1 pages (native writer), D1–D3 data studies (need real data), Phase 3 technology pages (no spec yet), Phase 0/5–8 business and launch tasks, Lighthouse/WebPageTest run on the live domain.

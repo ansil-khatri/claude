@@ -18,7 +18,7 @@ export function markdownFor(parts: string[]): string | null {
   if (parts[0] === "industries" && parts[1] && !parts[2]) { const p = industryPage(parts[1]); return p ? pageMd(p, path) : null; }
   if (parts[0] === "guides" && parts[1]) {
     const g = guide(parts[1]); if (!g?.body) return null;
-    const body = g.body.map((b) => ("h2" in b ? `\n## ${b.h2}` : "h3" in b ? `\n### ${b.h3}` : "p" in b ? b.p : "ul" in b ? b.ul.map((x) => `- ${x}`).join("\n") : "ol" in b ? b.ol.map((x, i) => `${i + 1}. ${x}`).join("\n") : "check" in b ? `> Check the official source: ${b.check}` : `${b.table.head.join(" | ")}\n${b.table.rows.map((r) => r.join(" | ")).join("\n")}`)).join("\n\n");
+    const body = g.body.map((b) => ("h2" in b ? `\n## ${b.h2}` : "h3" in b ? `\n### ${b.h3}` : "p" in b ? b.p : "ul" in b ? b.ul.map((x) => `- ${x}`).join("\n") : "ol" in b ? b.ol.map((x, i) => `${i + 1}. ${x}`).join("\n") : "check" in b ? `> Check the official source: ${b.check}` : "tip" in b ? `> Tip: ${b.tip}` : "figure" in b ? `${b.figure.title}\n${b.figure.rows.map(([d, t]) => `- ${d}: ${t}`).join("\n")}` : `${b.table.head.join(" | ")}\n${b.table.rows.map((r) => r.join(" | ")).join("\n")}`)).join("\n\n");
     return `# ${g.title}\n\n**Answer:** ${g.answer}\n\n${body}\n\nCanonical: https://${site.domain}${path}`;
   }
   if (parts[0] === "pricing") return ["# Prices in AED (excl. 5% VAT)", ...PRICE_ROWS.flatMap((g) => [`\n## ${g.group}`, ...g.rows.map((r) => `- **${r.service}**: ${r.tiers.map((t) => `${t[0]} ${t[1]}`).join(" · ")}. Most projects: ${r.land}`)])].join("\n");

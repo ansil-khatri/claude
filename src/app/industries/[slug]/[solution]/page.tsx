@@ -42,10 +42,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
         <div className="tt rv"><table><thead><tr><th>Package</th><th>From</th><th>Time</th></tr></thead><tbody>{s.cost.rows.map(([a, b, c]) => <tr key={a}><td style={{ fontFamily: "var(--font-sans)", textTransform: "none", fontSize: 16, color: "var(--ink)", fontWeight: 700, letterSpacing: 0, width: "auto" }}>{a}</td><td><b>{b}</b></td><td>{c}</td></tr>)}</tbody></table></div>
         <span className="note">{s.caseNote.text} <span className="ex-chip" style={{ background: "var(--soft)", color: "var(--mute)" }}>Example project · illustrative numbers</span></span>
       </div></section>
+      {s.miniCase && <section className="sec-tight"><div className="w"><Head eyebrow="Mini case (example)" title={s.miniCase.h} />
+        <div className="soft-sec" style={{ margin: 0, padding: "clamp(24px,4vw,44px)" }}><span className="ex-chip" style={{ background: "var(--card)", color: "var(--mute)" }}>Example project · illustrative numbers</span>
+          <p style={{ marginTop: 14 }}><b>The problem.</b> {s.miniCase.problem}</p><p style={{ marginTop: 10 }}><b>What we built.</b> {s.miniCase.built}</p>
+          <div className="show-tiles" style={{ marginTop: 18 }}>{s.miniCase.metrics.map(([a, b]) => <div key={a}><b>{a}</b><small>{b}</small></div>)}</div></div></div></section>}
       <FaqSection eyebrow="FAQ" head="Questions about this." items={s.faq} />
       <section className="sec-tight"><div className="w"><div className="chips"><b style={{ marginRight: 8 }}>Related:</b>{s.related.map((r) => <Link key={r.href} className="chip" href={r.href}>{r.name} →</Link>)}<Link className="chip" href={`/industries/${slug}`}>All {ind.name.toLowerCase()} →</Link></div></div></section>
       <CtaSection h="Want this for your business? 30 minutes and you'll know what it costs." lead="Tell us how you work today. We'll show you the closest example." steps={["Pick a time that works for you", "Walk us through how you work", "Get a plan and fixed price within 48 hours"]} wa={s.waText} />
-      <JsonLd data={[breadcrumbLd([["Home", "/"], ["Industries", "/industries"], [ind.name, `/industries/${slug}`], [s.name, path]]), serviceLd({ name: s.name, seo: s.seo, slug: sl }, path, s.cost.rows[0][1])]} />
+      <JsonLd data={[breadcrumbLd([["Home", "/"], ["Industries", "/industries"], [ind.name, `/industries/${slug}`], [s.name, path]]), serviceLd({ name: s.name, seo: s.seo, slug: sl }, path, s.cost.rows[0][1], ind.name)]} />
     </>
   );
 }

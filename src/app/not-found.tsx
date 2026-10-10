@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { WaBtn } from "@/components/ui/Buttons";
+import { FindPage } from "@/components/sections/FindPage";
+import { SERVICES, INDUSTRIES } from "@content/catalog";
+import { published } from "@content/guides";
 
 export default function NotFound() {
   return (
@@ -10,6 +13,7 @@ export default function NotFound() {
         <div className="chips" style={{ margin: "26px 0" }}>
           {[["/services", "Services"], ["/industries", "Industries"], ["/pricing", "Pricing"], ["/guides", "Guides"], ["/contact", "Contact"]].map(([h, l]) => <Link key={h} className="chip" href={h}>{l} →</Link>)}
         </div>
+        <FindPage items={[...SERVICES.map((x) => [`/services/${x.slug}`, x.name] as [string, string]), ...INDUSTRIES.map((x) => [`/industries/${x.slug}`, x.name] as [string, string]), ...published().map((g) => [`/guides/${g.slug}`, g.title] as [string, string]), ["/pricing", "Pricing"], ["/contact", "Contact"]]} />
         <WaBtn text="Hi, I couldn't find a page on your website" />
       </div>
     </section>

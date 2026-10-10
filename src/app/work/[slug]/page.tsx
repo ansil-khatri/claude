@@ -1,3 +1,4 @@
+import { url } from "@/config/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { INDUSTRY_PAGES } from "@content/industries";
@@ -29,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <section className="sec"><div className="w"><Head eyebrow="What's next" title="Related" />
         <div className="chips">{SERVICES.slice(0, 6).map((s) => <Link key={s.slug} className="chip" href={`/services/${s.slug}`}>{s.name}</Link>)}<Link className="chip" href={`/industries/${p.slug}`}>{p.name}</Link></div></div></section>
       <CtaSection h="Want results like these? 30 minutes and you'll know what it takes." lead="Tell us about the business." steps={["Pick a time that works for you", "Tell us about the business", "Get a plan and fixed price within 48 hours"]} wa="Hi, I'd like results like your example project" />
-      <JsonLd data={breadcrumbLd([["Home", "/"], ["Work", "/work"], [c.h, `/work/${slug}`]])} />
+      <JsonLd data={[breadcrumbLd([["Home", "/"], ["Work", "/work"], [c.h, `/work/${slug}`]]), { "@context": "https://schema.org", "@type": "Article", headline: c.h, inLanguage: "en-AE", url: url(`/work/${slug}`), about: "Example project (illustrative numbers)", author: { "@id": url("/#org") }, publisher: { "@id": url("/#org") }, datePublished: "2026-10-10", dateModified: "2026-10-10" }]} />
     </>
   );
 }

@@ -26,7 +26,7 @@ const org = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization", "@id": url("/#org"), name: site.brand, url: url(), email: site.email,
+      "@type": "Organization", "@id": url("/#org"), name: site.brand, url: url(), logo: url("/icon.svg"), email: site.email,
       areaServed: { "@type": "Country", name: "United Arab Emirates" },
       contactPoint: { "@type": "ContactPoint", telephone: site.phoneDisplay, contactType: "sales", availableLanguage: ["English", "Arabic"] },
     },

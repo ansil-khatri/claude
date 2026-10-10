@@ -26,7 +26,6 @@ export function Analytics() {
       if (href.includes("wa.me")) track("whatsapp_click");
       else if (href.startsWith("tel:")) track("phone_click");
       else if (a.getAttribute("href") === "#book" || /Book a free call/i.test(a.textContent ?? "")) track("book_call_click");
-      else if (/^Confirm /.test(a.textContent ?? "")) track("booking_completed");
     };
     document.addEventListener("click", on);
     if (location.pathname === "/pricing") track("pricing_view");

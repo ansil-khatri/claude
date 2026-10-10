@@ -164,7 +164,7 @@ This is the single checklist for the whole agency-site project: every decision w
 - [x] Analytics: GA4 events (`whatsapp_click`, `booking_completed`…), consent banner (PDPL)
 - [ ] Speed: Core Web Vitals targets on mobile, GSAP/Lenis loaded late, fonts subset Latin + Arabic
 - [ ] Arabic pages wave AR-1 (10 pages, native writer)
-- [ ] Pre-launch checklist (`docs/seo-uae/07` §9) all ticked
+- [ ] Pre-launch checklist (`docs/seo-uae/07` §9) all ticked — 2026-10-10: code-side items pass (`npm run audit`, `npm run links`, crawl); open: Arabic RTL screenshots, Lighthouse/WebPageTest on the live domain, real licence/address/number
 
 ### Phase 5 · Launch
 - [ ] Deploy on CDN with Gulf edge; HTTPS; redirects
@@ -174,6 +174,7 @@ This is the single checklist for the whole agency-site project: every decision w
 - [ ] Owner sign-off
 
 ### Phase 6 · Content (from launch, ongoing) — `docs/seo-uae/09-blog-calendar.md`
+- [x] (written in code 2026-10-10, owner to fact-check before launch: all 55 guides + 6 cluster guides have bodies; data studies D1–D3 need real data)
 - [ ] Month 1: guides #1–#8 (each: keyword validated, ⚠ facts checked, visuals, links, added to hub)
 - [ ] Month 2: #9–#16 + AR #1, #3
 - [ ] Month 3: #17–#24 + AR #6, #2

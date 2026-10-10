@@ -3,7 +3,7 @@ import { PACKAGES, PRICE_ROWS, CARE, PRICE_DRIVERS, COMPARE, TERMS } from "@cont
 import { HubHero } from "@/components/sections/Simple";
 import { Plain, Head, FaqSection, CtaSection } from "@/components/sections/Blocks";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { meta } from "@/lib/seo";
+import { meta, breadcrumbLd } from "@/lib/seo";
 
 export const metadata = meta({ title: "Prices in AED: Websites, Shopify, Apps, WhatsApp AI", desc: "Every price before you call: websites from AED 7,900, Shopify from AED 9,900, apps from AED 35,000, WhatsApp assistants from AED 2,900. Fixed price, +5% VAT.", path: "/pricing" });
 
@@ -19,6 +19,7 @@ const FAQ = [
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Pricing", "/pricing"]])} />
       <HubHero kicker="Pricing" h1="Every price," em="before you call us." sub="Fixed in AED, agreed in writing before we start. Prices exclude 5% VAT." wa="Hi, I'm on your pricing page" />
       <Plain text="Most UAE businesses start with one of four packages: an add-on from AED 2,900, a website from AED 7,900, a website and app from AED 49,000, or a monthly care plan from AED 790. Every service below lists its starting price, what most projects really cost, and what changes the price." facts={[["Add-on", "AED 2,900"], ["Website", "AED 7,900"], ["Build", "AED 49,000"], ["Care", "AED 790/mo"]]} />
       <section className="sec-tight"><div className="panel"><div className="w sec">

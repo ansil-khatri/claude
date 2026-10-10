@@ -10,6 +10,18 @@ const FIX: Record<string, { title?: string; desc?: string }> = {
   "/guides/start-shopify-store-uae": { title: "How to Start a Shopify Store in the UAE" },
   "/guides/app-development-cost-dubai": { title: "App Development Cost in Dubai (2026): AED Prices" },
   "/guides": { title: "Guides for UAE Business Owners" },
+  "/guides/ac-maintenance-business-bookings": { title: "AC Maintenance Company: Get More Bookings" },
+  "/guides/bilingual-website-guide": { title: "Bilingual Arabic + English Website Guide (UAE)" },
+  "/guides/cloud-kitchen-multi-brand-ordering": { title: "Cloud Kitchen Software for Multi-Brand (UAE)" },
+  "/guides/fresha-vs-own-salon-app": { title: "Fresha Alternative: Your Own Salon App (UAE)" },
+  "/guides/google-ads-leads-not-converting-dubai": { title: "Google Ads Dubai: Clicks But No Calls" },
+  "/guides/inventory-system-uae": { title: "Inventory System for UAE Shops and Restaurants" },
+  "/guides/license-to-sell-online-uae": { title: "Licence to Sell Online in the UAE" },
+  "/guides/shopify-arabic-store": { title: "Arabic Shopify Store: RTL and Translation" },
+  "/guides/shopify-tabby-tamara-setup": { title: "Add Tabby & Tamara to Shopify (UAE Guide)" },
+  "/guides/start-laundry-delivery-business-uae": { title: "Start a Laundry Delivery Business in the UAE" },
+  "/guides/whatsapp-chatbot-guide-uae": { title: "WhatsApp Chatbot for UAE Businesses: Guide" },
+
   "/guides/e-invoicing-checklist-july-2027": { title: "E-Invoicing Checklist for UAE SMEs: 10 Steps", desc: "A 10-step e-invoicing checklist for UAE small businesses: deadline, invoice sources, TRNs, ASP, testing and go-live before July 2027." },
   "/guides/talabat-commission-math": { title: "Talabat Commission: What Restaurants Really Pay", desc: "Delivery apps in the UAE typically take 15–30% commission plus promos. On AED 70,000 a month of app orders, that's AED 15,000–21,000." },
   "/guides/uae-e-invoicing": { title: "UAE E-Invoicing 2026–2027: What SMEs Must Do", desc: "UAE businesses under AED 50m must appoint an ASP by 31 March 2027 and go live on 1 July 2027. What SMEs must do, step by step." },
@@ -59,7 +71,7 @@ export const breadcrumbLd = (items: [string, string][]) => ({
   itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: url(path) })),
 });
 
-export const serviceLd = (p: { name: string; seo: { desc: string }; slug: string }, path: string, from?: string) => ({
+export const serviceLd = (p: { name: string; seo: { desc: string }; slug: string }, path: string, from?: string, audience?: string) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name: p.name,
@@ -68,5 +80,6 @@ export const serviceLd = (p: { name: string; seo: { desc: string }; slug: string
   provider: { "@id": url("/#org") },
   areaServed: { "@type": "Country", name: "United Arab Emirates" },
   inLanguage: ["en-AE", "ar-AE"],
+  ...(audience ? { audience: { "@type": "BusinessAudience", audienceType: audience } } : {}),
   ...(from ? { offers: { "@type": "Offer", priceCurrency: "AED", price: from.replace(/[^\d.]/g, ""), priceSpecification: { "@type": "PriceSpecification", priceCurrency: "AED", valueAddedTaxIncluded: false } } } : {}),
 });

@@ -11,6 +11,7 @@ import { seo } from "./seo";
 import { rescue } from "./rescue";
 import { whitelabel } from "./whitelabel";
 import { SHOWCASE, CASES } from "../showcases";
+import { PATCHES } from "../overrides";
 
 /** Website tiers follow the price book (UAE spec §5), not the older mockup numbers. */
 const websiteFixed: Page = {
@@ -35,5 +36,6 @@ export const SERVICE_PAGES: Page[] = [shopify, websiteFixed, payments, landing, 
   ...p,
   showcase: p.showcase ? { ...p.showcase, items: SHOWCASE[p.slug] ?? p.showcase.items } : p.showcase,
   caseStudy: CASES[p.slug] ?? p.caseStudy,
+  ...(PATCHES[p.slug] ?? {}),
 })).map(scrub);
 export const servicePage = (slug: string) => SERVICE_PAGES.find((p) => p.slug === slug);

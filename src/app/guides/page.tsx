@@ -1,9 +1,10 @@
+import { JsonLd } from "@/components/ui/JsonLd";
 import Link from "next/link";
 import { GUIDES, STUDIES, CATS, CHECKED } from "@content/guides";
 import { HubHero } from "@/components/sections/Simple";
 import { Plain, Head, CtaSection } from "@/components/sections/Blocks";
 import { GuideFilter } from "@/components/sections/GuideClient";
-import { meta } from "@/lib/seo";
+import { meta, breadcrumbLd } from "@/lib/seo";
 
 export const metadata = meta({ title: "Guides for UAE Business Owners: E-invoicing, Costs, Apps, WhatsApp", desc: "Straight answers for UAE business owners: e-invoicing 2027, what websites and apps really cost in AED, Talabat commission, payments and more.", path: "/guides" });
 
@@ -11,6 +12,7 @@ export default function Page() {
   const featured = GUIDES[0];
   return (
     <>
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Guides", "/guides"]])} />
       <HubHero kicker="Guides" h1="Straight answers for" em="UAE business owners." sub="Real AED numbers, real dates, plain English. Each guide shows when we last checked it." wa="Hi, I read your guides" />
       <Plain text="Our guides answer the questions UAE owners actually ask: what e-invoicing means for you before July 2027, what a website or app really costs in dirhams, how much Talabat takes and how to get paid. Facts that can change (laws, fees, dates) are marked and linked to the official source." facts={[["Published", `${GUIDES.filter((g) => g.body).length} guides`], ["Planned", "55 + 3 studies"], ["Checked", CHECKED], ["Languages", "English (Arabic soon)"]]} />
       <section className="sec-tight"><div className="w">

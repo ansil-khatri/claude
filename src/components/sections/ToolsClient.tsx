@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { aed, deliveryCommission, gatewayFees, einvoiceDeadline, readinessScore, appCost, APP_FEATURES, APP_BASE, type Band } from "@/lib/calcs";
-import { waLink } from "@/config/site";
+import { waLink, site } from "@/config/site";
 import { track } from "@/components/shell/Analytics";
 
 const Slider = ({ id, label, v, set, min, max, step = 1, fmt = (x: number) => String(x) }: { id: string; label: string; v: number; set: (n: number) => void; min: number; max: number; step?: number; fmt?: (n: number) => string }) => (
@@ -10,6 +10,7 @@ const Slider = ({ id, label, v, set, min, max, step = 1, fmt = (x: number) => St
 
 export function DeliveryCalc() {
   const [o, setO] = useState(512), [a, setA] = useState(138), [c, setC] = useState(30), [p, setP] = useState(2640), [d, setD] = useState(30);
+  useEffect(() => { const t = setTimeout(() => track("calculator_completed", { tool: "talabat_commission" }), 2500); return () => clearTimeout(t); }, [o, a, c, p, d]);
   const r = useMemo(() => deliveryCommission({ ordersPerMonth: o, avgOrder: a, commissionPct: c, promoPerMonth: p, directSharePct: d }), [o, a, c, p, d]);
   const share = r.appSalesYear ? Math.min(100, (r.commissionYear / r.appSalesYear) * 100) : 0;
   return (
@@ -24,11 +25,15 @@ export function DeliveryCalc() {
       </div>
       <div className="tool-out" aria-live="polite">
         <div className="res-lbl">Last 12 months to delivery apps</div><div className="res-big">{aed(r.commissionYear)}</div>
-        <div className="cmp-bar"><i style={{ width: share + "%", background: "#ff6b5b" }} /></div>
+        <div className="cmp2" role="img" aria-label="Delivery app commission compared with card fees on your own ordering">
+          <div><span>Delivery apps</span><i style={{ width: "100%", background: "#ff6b5b" }} /><b>{aed(r.commissionYear)}</b></div>
+          <div><span>Own ordering (≈3% card fees)</span><i style={{ width: Math.max(2, (r.appSalesYear * 0.03 / Math.max(1, r.commissionYear)) * 100) + "%", background: "var(--lime)" }} /><b>{aed(r.appSalesYear * 0.03)}</b></div>
+        </div>
         <div className="res-line"><span>App sales a year</span><b>{aed(r.appSalesYear)}</b></div>
         <div className="res-lbl" style={{ marginTop: 18 }}>If {d}% of regulars ordered direct, you&apos;d keep</div><div className="res-big">{aed(r.keptYear)}</div><div className="res-lbl">a year (card fees ≈ 2.9% already deducted)</div>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
           <a className="btn btn-lime" href="/industries/restaurants/online-ordering">See how restaurants keep this</a>
+          <a className="btn btn-line" href="/guides/talabat-commission-math">Read: what Talabat really takes</a>
           <a className="btn btn-line" href={waLink(`Hi, my delivery apps cost me ${aed(r.commissionYear)} a year. Send me this result.`)} target="_blank" rel="noopener">Send me this result</a>
         </div>
       </div>
@@ -38,6 +43,7 @@ export function DeliveryCalc() {
 
 export function GatewayCalc() {
   const [s, setS] = useState(150000), [n, setN] = useState(500), [i, setI] = useState(10), [b, setB] = useState(false);
+  useEffect(() => { const t = setTimeout(() => track("calculator_completed", { tool: "gateway_fees" }), 2500); return () => clearTimeout(t); }, [s, n, i]);
   const rows = useMemo(() => gatewayFees({ sales: s, payments: n, intlSharePct: i }), [s, n, i]);
   return (
     <div className="tool">
@@ -57,7 +63,7 @@ export function GatewayCalc() {
             {b && <tr><td>Tabby / Tamara</td><td colSpan={2}>Ask the provider</td></tr>}
           </tbody></table>
         <p className="res-lbl" style={{ marginTop: 16 }}>Cheapest: <b style={{ color: "var(--lime)" }}>{rows[0].name}</b>, about {aed(rows[rows.length - 1].yearly - rows[0].yearly)} a year less than the most expensive of these four.</p>
-        <a className="btn btn-lime" style={{ marginTop: 16 }} href="/services/payment-integration">Set it up properly</a>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}><a className="btn btn-lime" href="/services/payment-integration">Set it up properly</a><a className="btn btn-line" href="/guides/best-payment-gateway-uae">Read: best payment gateway in the UAE</a></div>
       </div>
     </div>
   );
@@ -74,6 +80,8 @@ const QUESTIONS: { k: string; q: string; opts: [string, string][] }[] = [
   { k: "owner", q: "Is one person responsible for e-invoicing?", opts: [["yes", "Yes"], ["no", "No"]] },
   { k: "type", q: "Who do you invoice?", opts: [["b2b", "Mostly businesses (B2B)"], ["b2c", "Mostly consumers (B2C)"], ["both", "Both"]] },
   { k: "tested", q: "Have you tested invoices through an ASP?", opts: [["yes", "Yes"], ["no", "No"]] },
+  { k: "itHelp", q: "Do you have IT help (in-house or a partner)?", opts: [["yes", "Yes"], ["no", "No"]] },
+  { k: "zone", q: "Free zone or mainland company?", opts: [["mainland", "Mainland"], ["freezone", "Free zone"], ["both", "Both"]] },
 ];
 
 export function Readiness() {
@@ -102,9 +110,10 @@ export function Readiness() {
     <div className="tool">
       <div className="tool-out" style={{ position: "static" }}>
         <div className="res-lbl">Your readiness score</div>
-        <div className="ring" style={{ ["--p" as string]: r.score } as React.CSSProperties}><b>{r.score}</b></div>
+        <div className="ring" style={{ ["--p" as string]: r.score } as React.CSSProperties}><b>{r.score}<small>/100</small></b></div>
         <div className="res-line"><span>Appoint an ASP by</span><b>{dl.asp}</b></div>
         <div className="res-line"><span>Go live</span><b>{dl.live}</b></div>
+        <p className="res-lbl" style={{ marginTop: 12 }}>Your situation: {ans.band === "50m+" ? "revenue of AED 50 million or more" : "revenue under AED 50 million"}; {ans.volume === "l" ? "over 1,000 invoices a month" : ans.volume === "m" ? "100\u20131,000 invoices a month" : "under 100 invoices a month"}; {ans.entities === "many" ? "several legal entities" : "one legal entity"}; {ans.type === "b2c" ? "mostly consumer sales" : ans.type === "both" ? "business and consumer sales" : "mostly business customers"}{ans.zone === "freezone" ? "; free zone company (check how your zone is treated)" : ""}{ans.itHelp === "no" ? "; no IT help, so a partner will save you time" : ""}.</p>
         {ans.type === "b2c" && <p className="res-lbl" style={{ marginTop: 12 }}>B2C sales are not covered yet as of our last check (October 2026). Re-check before relying on this.</p>}
         <p className="res-lbl" style={{ marginTop: 14 }}>We&apos;re an integration partner, not an ASP. Dates per Ministry of Finance, checked October 2026.</p>
       </div>
@@ -114,6 +123,7 @@ export function Readiness() {
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}>
           <a className="btn btn-ink" href="/services/e-invoicing-integration">See e-invoicing integration</a>
           <a className="btn btn-line" href={waLink(`Hi, my e-invoicing readiness score is ${r.score}/100. Can you help?`)} target="_blank" rel="noopener">WhatsApp me</a>
+          <a className="btn btn-line" href={`mailto:${site.email}?subject=${encodeURIComponent("My e-invoicing readiness result")}&body=${encodeURIComponent(`Readiness score ${r.score}/100. To do: ${r.todo.join("; ") || "nothing"}`)}`}>Email me this</a>
           <button className="btn btn-line" onClick={() => { setI(0); setAns({}); }}>Start again</button>
         </div>
         <p className="note">Nothing is stored. Results are not saved unless you opt in later.</p>

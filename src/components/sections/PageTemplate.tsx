@@ -21,7 +21,7 @@ export function PageTemplate({ p, kind, path, parent }: { p: Page; kind: "servic
       <FaqSection eyebrow={p.faqEyebrow} head={p.faqHead} items={p.faq} />
       <Related eyebrow={p.relEyebrow} head={p.relHead} items={p.related} ind={p.indRow} />
       <CtaSection h={p.ctaH} lead={p.ctaLead} steps={p.ctaSteps} wa={p.waText} />
-      <JsonLd data={[breadcrumbLd([["Home", "/"], [parent.label, parent.href], [p.name, path]]), serviceLd(p, path, from)]} />
+      <JsonLd data={[breadcrumbLd([["Home", "/"], [parent.label, parent.href], [p.name, path]]), serviceLd(p, path, from, parent.href === "/industries" ? p.name : undefined)]} />
     </>
   );
 }

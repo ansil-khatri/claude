@@ -6,6 +6,8 @@ export type Block =
   | { ul: string[] }
   | { ol: string[] }
   | { check: string }
+  | { tip: string }
+  | { figure: { title: string; rows: [string, string][] } }
   | { table: { head: string[]; rows: string[][] } };
 
 export type Guide = {
@@ -154,6 +156,28 @@ export const STUDIES = [
 ];
 
 import { MORE } from "./guides-more";
-for (const g of GUIDES) { const m = MORE[g.slug]; if (m) Object.assign(g, m); }
+import { MORE_12_22 } from "./guides-12-22";
+import { MORE_23_33 } from "./guides-23-33";
+import { MORE_34_44 } from "./guides-34-44";
+import { MORE_45_55 } from "./guides-45-55";
+import { CLUSTER_GUIDES } from "./guides-cluster";
+const ALL_MORE = { ...MORE, ...MORE_12_22, ...MORE_23_33, ...MORE_34_44, ...MORE_45_55 };
+for (const g of GUIDES) { const m = ALL_MORE[g.slug]; if (m) Object.assign(g, m); }
+GUIDES.push(...CLUSTER_GUIDES);
+// Guide #1: timeline figure (dates per the Ministry of Finance, as last checked in CHECKED)
+{
+  const g1 = GUIDES.find((g) => g.n === 1);
+  if (g1?.body && !g1.body.some((b) => "figure" in b)) {
+    g1.body.splice(2, 0, { figure: { title: "UAE e-invoicing timeline (last checked " + CHECKED + ")", rows: [["1 Jul 2026", "Pilot starts"], ["1 Jan 2027", "Mandatory: businesses with revenue of AED 50 million or more"], ["31 Mar 2027", "Appoint an ASP: businesses under AED 50 million"], ["1 Jul 2027", "Go live: businesses under AED 50 million"], ["1 Oct 2027", "Government entities"]] } });
+  }
+}
+const FAQ_EXTRA: Record<string, { q: string; a: string }[]> = {
+  "e-invoicing-checklist-july-2027": [{ q: "Can I do the checklist myself?", a: "Most steps are admin: collecting TRNs, choosing an ASP and testing. The integration step is where a developer helps." }, { q: "What if I miss the deadline?", a: "Penalties and rules are set by the authorities. Check the latest Ministry of Finance guidance rather than relying on a summary." }],
+  "talabat-commission-math": [{ q: "Do Talabat and Deliveroo charge the same commission?", a: "Rates differ by plan and contract. Use your own contract percentage in the calculator." }, { q: "Should I leave delivery apps?", a: "Usually not. Keep them for discovery and move regulars to your own ordering link." }],
+};
+for (const g of GUIDES) if (g.body && !g.faq && FAQ_EXTRA[g.slug]) g.faq = FAQ_EXTRA[g.slug];
+/** URL slug for each category hub, e.g. /guides/e-invoicing */
+export const catSlug = (c: string) => c.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const catFromSlug = (s: string) => CATS.find((c) => catSlug(c) === s);
 export const published = () => GUIDES.filter((g) => g.body);
 export const guide = (slug: string) => GUIDES.find((g) => g.slug === slug);

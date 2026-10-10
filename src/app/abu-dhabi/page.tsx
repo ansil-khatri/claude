@@ -1,13 +1,15 @@
+import { JsonLd } from "@/components/ui/JsonLd";
 import Link from "next/link";
 import { AD_HUB, CITY } from "@content/abudhabi";
 import { HubHero } from "@/components/sections/Simple";
 import { Plain, Head, FaqSection, CtaSection } from "@/components/sections/Blocks";
-import { meta } from "@/lib/seo";
+import { meta, breadcrumbLd } from "@/lib/seo";
 
 export const metadata = meta({ title: AD_HUB.seo.title, desc: AD_HUB.seo.desc, path: "/abu-dhabi" });
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Abu Dhabi", "/abu-dhabi"]])} />
       <HubHero kicker="Abu Dhabi" h1="Software for Abu Dhabi businesses," em="from a team an hour away." sub="Apps, websites and Shopify stores for Abu Dhabi, with meetings at your office on request." wa="Hi, I'm on your Abu Dhabi page" />
       <Plain text={AD_HUB.plain} facts={AD_HUB.facts} />
       <section className="sec"><div className="w"><Head eyebrow="Abu Dhabi" title="What's different in Abu Dhabi." />
