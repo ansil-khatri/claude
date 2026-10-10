@@ -71,7 +71,7 @@ export const GUIDES: Guide[] = [
     ] }),
   G(3, "website-cost-dubai", "How much does a website cost in Dubai? Real AED prices for 2026", "Website Design Cost in Dubai (2026): Real AED Prices", "Costs", "Month 1", 8, { ar: true,
     opening: "You asked three companies for a quote. One said AED 1,500, one AED 15,000, one “depends”. Here’s why, and what you should actually pay.",
-    answer: "A professional small-business website in Dubai usually costs AED 6,000–18,000; template sites AED 3,500–8,000; custom bilingual sites with booking or a store AED 18,000–45,000. Plus hosting and care each month.",
+    answer: "Across the Dubai market a professional small-business website usually costs AED 6,000 to 18,000, template sites AED 3,500 to 8,000, and custom bilingual sites with booking or a store AED 18,000 to 45,000. Our WordPress business sites start from AED 7,900 excluding VAT, plus hosting and care each month.",
     links: [{ href: "/services/website-design", label: "Website design" }, { href: "/pricing", label: "Pricing" }, { href: "/guides/bilingual-website-guide", label: "Bilingual websites" }],
     body: [
       { h2: "Price by type of website" }, { table: { head: ["Type", "Typical price (AED)", "What you get"], rows: [["Template", "3,500–8,000", "A theme with your logo and text, a few pages"], ["Professional / bespoke", "6,000–18,000", "Custom design, up to ~8 pages, SEO basics"], ["Custom bilingual with booking or store", "18,000–45,000", "Arabic + English, integrations, performance work"]] } },
@@ -160,10 +160,8 @@ import { MORE_12_22 } from "./guides-12-22";
 import { MORE_23_33 } from "./guides-23-33";
 import { MORE_34_44 } from "./guides-34-44";
 import { MORE_45_55 } from "./guides-45-55";
-import { CLUSTER_GUIDES } from "./guides-cluster";
 const ALL_MORE = { ...MORE, ...MORE_12_22, ...MORE_23_33, ...MORE_34_44, ...MORE_45_55 };
 for (const g of GUIDES) { const m = ALL_MORE[g.slug]; if (m) Object.assign(g, m); }
-GUIDES.push(...CLUSTER_GUIDES);
 // Guide #1: timeline figure (dates per the Ministry of Finance, as last checked in CHECKED)
 {
   const g1 = GUIDES.find((g) => g.n === 1);

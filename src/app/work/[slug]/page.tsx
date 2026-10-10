@@ -1,36 +1,55 @@
-import { url } from "@/config/site";
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import { INDUSTRY_PAGES } from "@content/industries";
-import { BRANDS } from "@content/brands";
-import { HubHero } from "@/components/sections/Simple";
-import { CaseStudy, CtaSection, Head } from "@/components/sections/Blocks";
-import { meta, breadcrumbLd } from "@/lib/seo";
+import { notFound } from "next/navigation";
+import { CASES, caseBySlug } from "@content/v3/cases";
+import { postBySlug } from "@content/v3/posts";
+import { money } from "@content/v3/nav";
+import { meta } from "@/lib/seo";
+import { caseLd, breadcrumbLd } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { SERVICES } from "@content/catalog";
+import { Visual } from "@/components/mock/Visual";
+import { Crumbs, CtaBand, SecHead } from "@/components/sections/Blocks";
 
 export const dynamicParams = false;
-const find = (slug: string) => INDUSTRY_PAGES.find((p) => p.caseStudy.brand === slug);
-export const generateStaticParams = () => INDUSTRY_PAGES.map((p) => ({ slug: p.caseStudy.brand }));
+export const generateStaticParams = () => CASES.map((c) => ({ slug: c.slug }));
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params; const p = find(slug);
-  return p ? meta({ title: `${BRANDS[slug].name}: Example Project`, desc: `${p.caseStudy.h} ${p.caseStudy.problem} ${p.caseStudy.built}`, path: `/work/${slug}` }) : {};
+  const { slug } = await params; const c = caseBySlug(slug);
+  return c ? meta({ title: `${c.name}: ${c.sector} Concept Build`, desc: c.summary, path: `/work/${c.slug}` }) : {};
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params; const p = find(slug); if (!p) notFound();
-  const c = p.caseStudy, b = BRANDS[slug];
+export default async function Case({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; const c = caseBySlug(slug); if (!c) notFound();
+  const services = c.services.map(money).filter((x): x is NonNullable<typeof x> => !!x);
+  const posts = c.posts.map(postBySlug).filter((x): x is NonNullable<typeof x> => !!x);
+  const next = CASES[(CASES.findIndex((x) => x.slug === c.slug) + 1) % CASES.length];
   return (
     <>
-      <HubHero kicker={`Example project · ${p.name}`} h1={c.h} sub={`${b.name} · ${b.area}. ${c.problem}`} wa={`Hi, I'm on your ${b.name} example page`} />
-      <section className="sec-tight"><div className="w"><div className="card-grid">
-        {[["Client", `${b.name} (concept)`], ["Industry", p.name], ["Location", b.area], ["Services", "Website · app · payments · WhatsApp"], ["Timeline", "About 12 weeks"], ["Budget", "From AED 49,000"]].map(([k, v]) => <div key={k} className="g-card" style={{ minHeight: 0 }}><span className="cat">{k}</span><h3 style={{ fontSize: 20 }}>{v}</h3></div>)}
-      </div></div></section>
-      <CaseStudy c={c} />
-      <section className="sec"><div className="w"><Head eyebrow="What's next" title="Related" />
-        <div className="chips">{SERVICES.slice(0, 6).map((s) => <Link key={s.slug} className="chip" href={`/services/${s.slug}`}>{s.name}</Link>)}<Link className="chip" href={`/industries/${p.slug}`}>{p.name}</Link></div></div></section>
-      <CtaSection h="Want results like these? 30 minutes and you'll know what it takes." lead="Tell us about the business." steps={["Pick a time that works for you", "Tell us about the business", "Get a plan and fixed price within 48 hours"]} wa="Hi, I'd like results like your example project" />
-      <JsonLd data={[breadcrumbLd([["Home", "/"], ["Work", "/work"], [c.h, `/work/${slug}`]]), { "@context": "https://schema.org", "@type": "Article", headline: c.h, inLanguage: "en-AE", url: url(`/work/${slug}`), about: "Example project (illustrative numbers)", author: { "@id": url("/#org") }, publisher: { "@id": url("/#org") }, datePublished: "2026-10-10", dateModified: "2026-10-10" }]} />
+      <JsonLd data={caseLd(c)} /><JsonLd data={breadcrumbLd([["Home", "/"], ["Work", "/work"], [c.name, `/work/${c.slug}`]])} />
+      <header className="ph-hero themed t-dark"><div className="w" style={{ position: "relative", zIndex: 2 }}>
+        <Crumbs trail={[["Home", "/"], ["Work", "/work"], [c.name]]} />
+        <div style={{ display: "flex", gap: 12, marginTop: 34, flexWrap: "wrap" }} data-intro><span className="concept">Concept build, not a client</span><span className="tag">{c.sector}</span><span className="tag">{c.platform}</span></div>
+        <h1 className="display" data-intro data-split="lines" style={{ fontSize: "clamp(40px, 6.6vw, 120px)" }}>{c.h}</h1>
+        <p className="lead" data-intro>{c.summary}</p>
+        <div className="facts"><div><span>Platform</span><b>{c.platform}</b></div><div><span>Sector</span><b>{c.sector}</b></div><div><span>Scope</span><b>{c.scope.slice(0, 2).join(", ")}</b></div><div><span>Status</span><b>Concept build</b></div></div>
+      </div></header>
+      <section className="sec-s themed t-dark"><div className="w"><div className="vis" data-reveal="clip"><Visual id={c.visuals[0]} brand={c.brand} /></div></div></section>
+      <section className="sec themed t-paper"><div className="w two">
+        <div><span className="label">The brief</span><p className="statement" style={{ marginTop: 22, fontSize: "clamp(26px,3vw,46px)" }} data-reveal>{c.brief}</p></div>
+        <div><span className="label">What we built</span><p className="lead" style={{ marginTop: 22, color: "var(--fg)" }} data-reveal>{c.built}</p></div>
+      </div></section>
+      {c.visuals.slice(1).map((v, i) => (
+        <section key={v + i} className={`sec-s themed ${i % 2 ? "t-coal" : "t-dark"}`}><div className="w"><div className="vis" data-reveal="clip"><Visual id={v} brand={c.brand} /></div></div></section>
+      ))}
+      <section className="sec themed t-dark"><div className="w">
+        <SecHead eyebrow="Decisions" h="Choices we made, and why." />
+        <ol className="steps" data-stagger>{c.decisions.map((d, i) => <li key={d.t} className="step"><span className="wk">{String(i + 1).padStart(2, "0")}</span><h3>{d.t}</h3><p>{d.p}</p></li>)}</ol>
+        <p className="sec-note" style={{ marginTop: 40 }}>Planned timeline: {c.timeline}</p><div className="tech" style={{ marginTop: 30 }}>{c.stack.map((s) => <span key={s}>{s}</span>)}</div>
+        <p className="fine">This is a concept build designed and engineered by us. It is not a client project and shows no client results.</p>
+      </div></section>
+      <section className="sec-s themed t-coal"><div className="w two">
+        <div><div className="cl-h">Services behind this build</div><div className="rel">{services.map((s) => <Link key={s.slug} href={`/${s.slug}`}><span>{s.label}</span><span>→</span></Link>)}</div></div>
+        <div><div className="cl-h">Read more</div><div className="rel">{posts.map((p) => <Link key={p.slug} href={`/blog/${p.slug}`}><span>{p.title}</span><span>→</span></Link>)}<Link href={`/work/${next.slug}`}><span>Next build: {next.name}</span><span>→</span></Link></div></div>
+      </div></section>
+      <CtaBand h="Your brand, built to this standard." lead="Tell us what you sell and when you want to launch." wa={`Hi, I liked the ${c.name} concept and want something similar`} />
     </>
   );
 }

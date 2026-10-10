@@ -1,26 +1,27 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/config/site";
 
-export const ogSize = { width: 1200, height: 630 };
-
-/** Branded 1200×630 card used by every dynamic route's opengraph-image. */
-export function ogCard({ kicker, title, from }: { kicker: string; title: string; from?: string }) {
+export const OG_SIZE = { width: 1200, height: 630 };
+/** Parrot Noir social card: black stage, parrot rule, big title. */
+export function ogImage(opts: { kicker: string; title: string; foot?: string }) {
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", background: "#111113", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 64, position: "relative" }}>
-        <div style={{ position: "absolute", right: -160, top: -160, width: 460, height: 460, borderRadius: 460, background: "#c8f542" }} />
-        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 32, fontWeight: 800 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 10, background: "#c8f542" }} />{site.brand}
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#060606", color: "#f3f3ef", padding: 64, fontFamily: "sans-serif", position: "relative" }}>
+        <div style={{ position: "absolute", right: -160, top: -220, width: 620, height: 620, borderRadius: 620, background: "radial-gradient(circle, rgba(124,255,53,0.55), rgba(124,255,53,0) 68%)" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, letterSpacing: -1 }}>
+          <div style={{ width: 26, height: 26, borderRadius: 26, background: "#7cff35", display: "flex" }} />
+          <div style={{ display: "flex" }}>{site.brand}</div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={{ fontSize: 28, color: "#c8f542", fontWeight: 700 }}>{kicker}</div>
-          <div style={{ fontSize: title.length > 60 ? 54 : 68, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2, maxWidth: 1000 }}>{title}</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+          <div style={{ display: "flex", fontSize: 24, letterSpacing: 4, textTransform: "uppercase", color: "#7cff35" }}>{opts.kicker}</div>
+          <div style={{ display: "flex", fontSize: opts.title.length > 60 ? 62 : 78, lineHeight: 1.0, letterSpacing: -3, fontWeight: 700, maxWidth: 1010 }}>{opts.title}</div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#a5a5ab" }}>
-          <span>Dubai & UAE · Fixed AED prices · Arabic + English</span>{from && <span style={{ color: "#fff", fontWeight: 700 }}>From {from}</span>}
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, color: "#8d8d92" }}>
+          <div style={{ display: "flex" }}>{opts.foot ?? "Shopify · WordPress · Custom themes · ERP · WhatsApp · AI"}</div>
+          <div style={{ display: "flex" }}>{site.domain}</div>
         </div>
       </div>
     ),
-    ogSize
+    OG_SIZE,
   );
 }

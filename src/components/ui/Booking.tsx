@@ -33,7 +33,7 @@ export function Booking({ title = "Book a free 30-minute call" }: { title?: stri
           <h4>You&apos;re booked{name ? `, ${name}` : ""}.</h4>
           <p className="sub">{dl(days[d])} · {TIMES[t!]} Dubai time (GST) · Google Meet or in person in Dubai</p>
           <p className="sub" style={{ marginTop: 10 }}>{sent ? "We\u2019ll WhatsApp you a confirmation within the hour." : "We couldn\u2019t send this automatically. Please confirm it on WhatsApp so we hold the slot."}</p>
-          {!sent && <p style={{ marginTop: 12 }}><a className="btn btn-lime btn-sm" href={waLink(`Hi, I'd like a call on ${dl(days[d])} at ${TIMES[t!]}. Name: ${name || "-"}`)} target="_blank" rel="noopener">Confirm on WhatsApp</a></p>}
+          {!sent && <p style={{ marginTop: 12 }}><a className="btn btn-p btn-sm" href={waLink(`Hi, I'd like a call on ${dl(days[d])} at ${TIMES[t!]}. Name: ${name || "-"}`)} target="_blank" rel="noopener">Confirm on WhatsApp</a></p>}
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ export function Booking({ title = "Book a free 30-minute call" }: { title?: stri
         style={{ width: "100%", padding: "14px 16px", borderRadius: 14, border: "1px solid var(--line)", marginBottom: 12, font: "inherit" }} />
       <input aria-label="Your WhatsApp number" inputMode="tel" placeholder="WhatsApp number (optional)" value={wa} onChange={(e) => setWa(e.target.value)}
         style={{ width: "100%", padding: "14px 16px", borderRadius: 14, border: "1px solid var(--line)", marginBottom: 12, font: "inherit" }} />
-      <button className="btn btn-ink" disabled={t === null || busy} style={{ opacity: t === null ? 0.5 : 1 }} onClick={async () => {
+      <button className="btn btn-k" disabled={t === null || busy} style={{ opacity: t === null ? 0.5 : 1 }} onClick={async () => {
         setBusy(true);
         const r = await sendLead({ kind: "booking", name: name || "(no name)", whatsapp: wa, slot: `${dl(days[d])} ${TIMES[t!]} GST` });
         setSent(r.delivered); setBusy(false); setDone(true);

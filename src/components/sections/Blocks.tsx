@@ -1,266 +1,157 @@
 import Link from "next/link";
-import type { Page, Pain, ShowItem } from "@content/types";
-import { Faq } from "@/components/ui/Faq";
-import { Tabs } from "@/components/ui/Tabs";
+import { Visual } from "@/components/mock/Visual";
 import { BookBtn, WaBtn } from "@/components/ui/Buttons";
-import { Booking } from "@/components/ui/Booking";
-import { Viz } from "@/components/mock/Viz";
-import { AppInPhone, SiteInBrowser } from "@/components/mock/BrandMocks";
-import { BRANDS } from "@content/brands";
-import { published } from "@content/guides";
-import { PinnedChapters } from "@/components/scenes/PinnedChapters";
+import { CountUp } from "@/components/ui/CountUp";
+import type { Section } from "@content/v3/types";
+import type { Block } from "@content/guides";
 
-export const Eyebrow = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
-export const Head = ({ eyebrow, title, lead, dark }: { eyebrow: string; title: React.ReactNode; lead?: string; dark?: boolean }) => (
-  <div className={`sec-head ${dark ? "on-dark" : ""}`}><span data-reveal="fade"><Eyebrow>{eyebrow}</Eyebrow></span><h2 className="h2" data-split="lines">{title}</h2>{lead && <p className="lead" data-reveal="up" data-delay="0.15">{lead}</p>}</div>
-);
+export const slugify = (s: string) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-export function Plain({ text, facts }: { text: string; facts: [string, string][] }) {
+export function SecHead({ eyebrow, h, lead }: { eyebrow: string; h: string; lead?: string }) {
   return (
-    <section className="plx"><div className="w plx-in">
-      <div className="plx-l">IN PLAIN ENGLISH</div>
-      <div className="plx-r"><p data-split="scrub">{text}</p>
-        <div className="plx-f" data-stagger="up">{facts.map(([k, v]) => <span key={k}><b>{k}</b>{v}</span>)}</div></div>
-    </div></section>
-  );
-}
-
-function PainCard({ p, i }: { p: Pain; i: number }) {
-  const num = p.cost.match(/(AED\s?[\d,.]+[kKM]?|\d[\d,.]*\s?(?:%|hours?|seconds?|s|min)|\d[\d,.]*)/)?.[0] ?? "";
-  return (
-    <div className="pain" tabIndex={0} data-cursor="See fix">
-      <div className={`pain-vis ${p.bv ? "has-v" : ""}`} data-nosnippet>
-        <div className="pain-before"><span className="tg">BEFORE</span>{p.bv ? <div className="pv"><Viz spec={p.bv} /></div> : <div className="pain-num">{num}</div>}<p>{p.cost}</p></div>
-        <div className="pain-after"><span className="tg">AFTER</span>{p.av && <div className="pv"><Viz spec={p.av} /></div>}<p>{p.fix}</p></div>
-        <span className="hint">Hover or tap to see the fix</span>
-      </div>
-      <blockquote>{p.q}</blockquote>
+    <div className="sh">
+      <span className="label" data-reveal="fade">{eyebrow}</span>
+      <h2 className="display h2" data-split="lines">{h}</h2>
+      {lead && <p className="lead" data-reveal>{lead}</p>}
     </div>
   );
 }
-export function Pains({ head, pains, title }: { head: string; pains: Pain[]; title?: string }) {
+
+export function Crumbs({ trail }: { trail: [string, string?][] }) {
   return (
-    <section className="sec"><div className="w">
-      <Head eyebrow="Sound familiar?" title={head} lead="Hover over each card (or tap it) to see what changes." />
-      <div className="pgrid3" data-stagger="up">{pains.map((p, i) => <PainCard key={i} p={p} i={i} />)}</div>
-    </div></section>
+    <nav className="crumbs" aria-label="Breadcrumb">
+      {trail.map(([l, h], i) => (
+        <span key={l} style={{ display: "contents" }}>{i > 0 && <i>/</i>}{h ? <Link href={h}>{l}</Link> : <span>{l}</span>}</span>
+      ))}
+    </nav>
   );
 }
 
-export function Showcase({ s }: { s: NonNullable<Page["showcase"]> }) {
-  const items: ShowItem[] = s.items ?? s.brands.map((k) => ({ label: BRANDS[k].industry, brand: k, results: [`${BRANDS[k].rating}★`, BRANDS[k].items[1]?.p ?? BRANDS[k].items[0].p] as [string, string], chips: BRANDS[k].items.map((i) => i.n), moment: "", phone: s.phone }));
-  return (
-    <section className="sec" id="work"><div className="w">
-      <Head eyebrow={s.eyebrow} title={s.head} lead={s.lead} />
-      <div data-reveal="up"><Tabs autoplay={7000} numbered arrows rowClass="show-tabs" items={items.map((it) => {
-        const b = BRANDS[it.brand];
-        return {
-          label: it.label,
-          content: (
-            <div className="show-stage" style={{ ["--sa"as string]: b.accent, ["--sb" as string]: b.bg } as React.CSSProperties}>
-              <div className="show-info">
-                <div className="show-badge" style={{ background: b.accent, color: b.accentInk }}>{b.name[0]}</div>
-                <h3>{b.name}</h3><p>{b.tag} · {b.area}</p>
-                {it.soldBy && <p className="sold">Sold by {it.soldBy}</p>}
-                <div className="show-tiles">{it.results.map((r) => <div key={r}><b>{r.split(" · ")[0]}</b><small>{r.split(" · ")[1] ?? ""}</small></div>)}</div>
-                <div className="chips">{it.chips.map((c) => <span key={c} className="chip">{c}</span>)}</div>
-                <span className="ex-chip" style={{ marginTop: 18 }}>Example project · illustrative numbers</span>
-              </div>
-              <div className="show-vis">
-                <div className="show-site">{it.viz ? <Viz spec={it.viz} /> : <SiteInBrowser k={it.brand} />}</div>
-                <div className="show-phone"><AppInPhone k={it.brand} kind={it.phone ?? s.phone} />{it.moment && <small className="moment">{it.moment}</small>}</div>
-              </div>
-            </div>
-          ),
-        };
-      })} /></div>
-    </div></section>
-  );
+export function Marquee({ items, alt = false, dir = -1 }: { items: string[]; alt?: boolean; dir?: 1 | -1 }) {
+  return <div className={`marq ${alt ? "alt" : ""}`} data-marquee data-dir={dir} aria-hidden><div className="marq-in">{items.map((t) => <span key={t}>{t}</span>)}</div></div>;
 }
 
-export function DeepDive({ eyebrow, head, tabs }: { eyebrow: string; head: string; tabs: Page["tabs"] }) {
+export function CtaBand({ h, lead, wa }: { h: string; lead: string; wa: string }) {
   return (
-    <PinnedChapters dark
-      head={<Head dark eyebrow={eyebrow} title={head} />}
-      items={tabs.map((t) => ({
-        label: t.tab,
-        copy: (<>
-          <span className="chip">{t.chip}</span>
-          <h3>{t.h}</h3><p>{t.p}</p>
-          <div className="fine">{t.fine}</div>
-          <div className="dd-acts"><BookBtn /></div>
-        </>),
-        visual: <Viz spec={t.viz} />,
-      }))} />
-  );
-}
-
-function Dots({ c }: { c: string }) {
-  const [a, b = ""] = c.split(" ");
-  const dark = (a.match(/●/g) || []).length, light = (a.match(/○/g) || []).length + (b.match(/[●○]/g) || []).length;
-  return <span className="dots" aria-label={`${dark} out of ${dark + light}`}>{"●".repeat(dark)}<i>{"●".repeat(light)}</i></span>;
-}
-export function Compare({ eyebrow, head, lead, rows, note }: { eyebrow: string; head: string; lead?: string; rows: string[][]; note?: string }) {
-  if (!rows.length) return null;
-  const [h, ...body] = rows;
-  const rec = h.findIndex((c) => /most chosen|recommended/i.test(c));
-  const cell = (c: string, th = false) => {
-    const m = c.match(/^(.*?)(Most chosen|Recommended)\s*(.*)$/);
-    if (m) return <>{m[1].trim()} <span className="badge2">{m[2]}</span>{m[3] && <small>{m[3]}</small>}</>;
-    const split = th ? c.match(/^(\S+(?:\s\S+)?(?:\s\(\w+\))?)\s+(.*)$/) : null;
-    return split && c.length > 24 ? <>{split[1]}<small>{split[2]}</small></> : c;
-  };
-  return (
-    <section className="sec"><div className="w">
-      <Head eyebrow={eyebrow} title={head} lead={lead} />
-      <div className="tt" data-reveal="up"><table>
-        <thead><tr>{h.map((c, i) => <th key={i} className={i === rec ? "rec" : ""} scope="col">{cell(c, true)}</th>)}</tr></thead>
-        <tbody>{body.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={j === rec ? "rec" : ""}>{/^[●○]+( [●○]+)?$/.test(c) ? <Dots c={c} /> : c}</td>)}</tr>)}</tbody>
-      </table></div>
-      {note && <span className="note">{note}</span>}
-    </div></section>
-  );
-}
-
-export function Process({ eyebrow, head, steps }: { eyebrow: string; head: string; steps: Page["proc"] }) {
-  return (
-    <div className="pin-wrap"><section className="hsw hsw-light" data-hscroll>
-      <div className="hsw-in">
-        <div className="w hsw-head"><Head eyebrow={eyebrow} title={head} /><i className="hsw-bar" data-hscroll-bar /></div>
-        <ol className="hsw-track" data-hscroll-track>
-          {steps.map((s, i) => (
-            <li key={i} className="pc">
-              <span className="pc-n" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
-              <div className="pc-wk"><span>{s.wk}</span><b>{s.when}</b></div>
-              <h4>{s.title}</h4><p>{s.p}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section></div>
-  );
-}
-
-export function Pricing({ p, id = "pricing" }: { p: Page; id?: string }) {
-  return (
-    <section className="sec-tight" id={id}><div className="panel"><div className="w sec">
-      <Head dark eyebrow={p.priceEyebrow} title={p.priceH2} lead={p.priceLead} />
-      <div className="pgrid" data-stagger="up">
-        {p.tiers.map((t, i) => (
-          <div key={i} className={`pr ${t.hot ? "hot" : ""}`}>
-            <span className="k">{t.k}</span><h4>{t.name}</h4><p>{t.desc}</p>
-            <div className="amt"><small>{/^(free)$/i.test(t.amt) ? "" : "from"}</small>{t.amt}{t.unit && <small>{t.unit}</small>}</div>
-            <ul>{t.items.map((x) => <li key={x}>{x}</li>)}</ul>
-            <a className={`btn ${t.hot ? "btn-ink" : "btn-ink"}`} href="#book">{t.hot ? "Book a free call" : "Get a quote"}</a>
-          </div>
-        ))}
-      </div>
-      <div className="aff"><b>What changes the price:</b>{p.affects.map((a) => <span key={a}>{a}</span>)}</div>
-      <span className="note">Prices exclude 5% VAT. Your exact price comes in writing within 48 hours.</span>
-    </div></div></section>
-  );
-}
-
-export function FaqSection({ eyebrow, head, items }: { eyebrow: string; head: string; items: { q: string; a: string }[] }) {
-  return (
-    <section className="sec"><div className="w faq-grid">
-      <div><span data-reveal="fade"><Eyebrow>{eyebrow}</Eyebrow></span><h2 className="h2" data-split="lines">{head}</h2></div>
-      <div data-reveal="up"><Faq items={items} /></div>
-    </div></section>
-  );
-}
-
-export function GuidesBlock({ guides }: { guides?: { slug: string; title: string }[] }) {
-  const live = new Set(published().map((g) => g.slug));
-  guides = guides?.filter((g) => live.has(g.slug));
-  if (!guides?.length) return null;
-  return (
-    <section className="sec-tight"><div className="w">
-      <div className="guides-blk" data-reveal="up"><b>Guides on this topic</b>
-        <ul>{guides.map((g) => <li key={g.slug}><Link href={`/guides/${g.slug}`}>{g.title} <span className="arrow">→</span></Link></li>)}</ul></div>
-    </div></section>
-  );
-}
-
-export function Related({ eyebrow, head, items, ind }: { eyebrow: string; head: string; items: Page["related"]; ind?: string[] }) {
-  return (
-    <section className="sec"><div className="w">
-      <Head eyebrow={eyebrow} title={head} />
-      <div className="rgrid" data-stagger="up">
-        {items.map((r) => (
-          <Link key={r.name} href={r.href} className="rc" data-cursor="Open">
-            <span className="k">{r.k}</span><h4>{r.name}</h4><p>{r.p}</p><span className="go">Explore →</span>
-          </Link>
-        ))}
-      </div>
-      {ind && <div className="ind-row"><b>Built for:</b>{ind.map((x) => <span key={x}>{x}</span>)}</div>}
-    </div></section>
-  );
-}
-
-export function CaseStudy({ c }: { c: NonNullable<Page["caseStudy"]> }) {
-  const b = BRANDS[c.brand];
-  return (
-    <section className="sec-tight"><div className="panel case-panel" style={{ ["--cg" as string]: b.accent } as React.CSSProperties}><div className="w sec">
-      <div className="case-grid">
-        <div className="case-copy">
-          <Eyebrow>{c.label}</Eyebrow>
-          <h2 className="h2" data-split="lines">{c.h}</h2>
-          <span className="ex-chip">Example project · illustrative numbers</span>
-          <dl>
-            <dt>The problem</dt><dd>{c.problem}</dd>
-            <dt>What we built</dt><dd>{c.built}</dd>
-          </dl>
-          <div className="case-metrics">{c.metrics.map(([n, l]) => <div key={l}><b>{n}</b><small>{l}</small></div>)}</div>
-          <blockquote className="case-q">“{c.quote}”<cite>{c.by}</cite></blockquote>
-        </div>
-        <div className="case-vis" data-nosnippet data-reveal="clip">
-          <div className="case-a"><Viz spec={c.viz} /></div>
-          <div className="case-b"><Viz spec={c.viz2} /></div>
+    <section className="cta themed t-paper" style={{ background: "var(--parrot)" }}>
+      <div className="w sec">
+        <span className="label" style={{ color: "rgba(4,18,10,.7)" }}>Start a project</span>
+        <h2 className="display h1" data-split="lines" style={{ margin: "26px 0" }}>{h}</h2>
+        <p className="lead" data-reveal>{lead}</p>
+        <div className="cta-row" style={{ marginTop: 40 }} data-reveal>
+          <Link className="btn btn-k" href="/contact" data-magnetic>Start a project <i className="arr">→</i></Link>
+          <WaBtn text={wa} label="WhatsApp us" />
         </div>
       </div>
-    </div></div></section>
+    </section>
   );
 }
 
-export function CtaSection({ h, lead, steps, wa, bookTitle }: { h: string; lead: string; steps: string[]; wa: string; bookTitle?: string }) {
-  const [a, b] = h.split(/\s(?=\d+ minutes)/);
+const tone = ["t-dark", "t-coal", "t-paper"] as const;
+
+/** Renders one typed Section from the content layer. `i` rotates the surface so a long page keeps rhythm. */
+export function SectionView({ s, i, brand }: { s: Section; i: number; brand?: string }) {
+  const t = s.k === "split" ? (i % 2 ? "t-coal" : "t-dark") : s.k === "process" || s.k === "pricing" ? "t-paper" : s.k === "numbers" ? "t-dark" : tone[i % 2];
+  switch (s.k) {
+    case "split":
+      return (
+        <section className={`sec themed ${t}`}><div className={`w split ${s.flip ? "flip" : ""}`}>
+          <div><span className="label" data-reveal="fade">{s.eyebrow}</span><h2 className="display h3" data-split="lines">{s.h}</h2><p className="big" data-reveal>{s.p}</p>
+            {s.bullets && <ul className="bul" data-stagger>{s.bullets.map((b) => <li key={b}>{b}</li>)}</ul>}{s.fine && <span className="fine">{s.fine}</span>}</div>
+          <div className="vis" data-reveal="clip"><Visual id={s.visual} brand={brand} /></div>
+        </div></section>
+      );
+    case "bento":
+      return (
+        <section className={`sec themed ${t}`}><div className="w">
+          <SecHead eyebrow={s.eyebrow} h={s.h} lead={s.lead} />
+          <div className="bento" data-stagger>{s.tiles.map((x, n) => (
+            <article key={x.t} className={`bt ${x.span === 2 ? "s2" : ""} ${x.visual ? "has-v" : ""}`}>
+              <div><span className="bt-n">{String(n + 1).padStart(2, "0")}</span><h3 style={{ marginTop: 14 }}>{x.t}</h3><p>{x.p}</p></div>
+              {x.visual && <div className="bt-v"><Visual id={x.visual} brand={brand} /></div>}
+            </article>
+          ))}</div>
+        </div></section>
+      );
+    case "process":
+      return (
+        <section className={`sec themed ${t}`}><div className="w">
+          <SecHead eyebrow={s.eyebrow} h={s.h} lead={s.lead} />
+          <ol className="steps" data-stagger>{s.steps.map((x) => <li className="step" key={x.t}><span className="wk">{x.wk}</span><h3>{x.t}</h3><p>{x.p}</p></li>)}</ol>
+        </div></section>
+      );
+    case "compare":
+      return (
+        <section className={`sec themed ${t}`}><div className="w">
+          <SecHead eyebrow={s.eyebrow} h={s.h} lead={s.lead} />
+          <div className="tbl" data-reveal><table><thead><tr>{s.head.map((c, n) => <th key={n} className={n === s.head.length - 1 ? "us" : ""}>{c}</th>)}</tr></thead>
+            <tbody>{s.rows.map((r, n) => <tr key={n}>{r.map((c, m) => m === 0 ? <td key={m}>{c}</td> : <td key={m} className={m === r.length - 1 ? "us" : ""}>{c}</td>)}</tr>)}</tbody></table></div>
+          {s.note && <p className="sec-note">{s.note}</p>}
+        </div></section>
+      );
+    case "stack":
+      return (
+        <section className={`sec themed ${t}`}><div className="w">
+          <SecHead eyebrow={s.eyebrow} h={s.h} lead={s.lead} />
+          <div className="stack-g" data-stagger>{s.groups.map((g) => <div className="stack-c" key={g.name}><h3>{g.name}</h3><ul>{g.items.map((x) => <li key={x}>{x}</li>)}</ul></div>)}</div>
+        </div></section>
+      );
+    case "numbers":
+      return (
+        <section className="sec-s themed t-dark"><div className="w"><div className="nums" data-stagger>{s.items.map((x) => (
+          <div key={x.label}><b><CountUp to={x.n} prefix={x.prefix} suffix={x.suffix} /></b><span>{x.label}</span></div>
+        ))}</div></div></section>
+      );
+    case "pricing":
+      return (
+        <section className={`sec themed ${t}`}><div className="w">
+          <SecHead eyebrow={s.eyebrow} h={s.h} lead={s.lead} />
+          <div className="tiers" data-stagger>{s.tiers.map((x) => (
+            <article key={x.name} className={`tier ${x.hot ? "hot" : ""}`}><span className="k">{x.k}</span><h3>{x.name}</h3>
+              <div className="amt">{x.amt}{x.unit && <small>{x.unit}</small>}</div><p>{x.desc}</p><ul>{x.items.map((it) => <li key={it}>{it}</li>)}</ul></article>
+          ))}</div>
+          {s.note && <p className="sec-note">{s.note}</p>}
+        </div></section>
+      );
+  }
+}
+
+/** Article body blocks (shared with the reused guides). */
+export function Prose({ body }: { body: Block[] }) {
   return (
-    <section className="sec-tight" id="book"><div className="panel"><div className="w cta-panel">
-      <div>
-        <h2 className="cta-h" data-split="lines">{b ? <>{a} <em>{b.match(/^\d+ minutes/)?.[0]}</em>{b.replace(/^\d+ minutes/, "")}</> : h}</h2>
-        <p className="lead">{lead}</p>
-        <ol className="cta-steps" data-stagger="up">{steps.map((s) => <li key={s}>{s}</li>)}</ol>
-        <WaBtn text={wa} />
+    <div className="prose">
+      {body.map((b, i) => {
+        if ("h2" in b) return <h2 key={i} id={b.id ?? slugify(b.h2)}>{b.h2}</h2>;
+        if ("h3" in b) return <h3 key={i}>{b.h3}</h3>;
+        if ("p" in b) return <p key={i} dangerouslySetInnerHTML={{ __html: linkify(b.p) }} />;
+        if ("ul" in b) return <ul key={i}>{b.ul.map((x, n) => <li key={n} dangerouslySetInnerHTML={{ __html: linkify(x) }} />)}</ul>;
+        if ("ol" in b) return <ol key={i}>{b.ol.map((x, n) => <li key={n} dangerouslySetInnerHTML={{ __html: linkify(x) }} />)}</ol>;
+        if ("check" in b) return <p key={i} className="callout">✓ {b.check}</p>;
+        if ("tip" in b) return <p key={i} className="callout">{b.tip}</p>;
+        if ("figure" in b) return (
+          <div className="tbl" key={i}><table><caption style={{ textAlign: "left", font: "600 18px var(--font-display)", paddingBottom: 12 }}>{b.figure.title}</caption><tbody>{b.figure.rows.map(([a, c]) => <tr key={a}><td>{a}</td><td>{c}</td></tr>)}</tbody></table></div>
+        );
+        return (
+          <div className="tbl" key={i}><table><thead><tr>{b.table.head.map((h) => <th key={h}>{h}</th>)}</tr></thead><tbody>{b.table.rows.map((r, n) => <tr key={n}>{r.map((c, m) => <td key={m}>{c}</td>)}</tr>)}</tbody></table></div>
+        );
+      })}
+    </div>
+  );
+}
+/** Minimal inline markdown: [text](/path) links and **bold**. Input is our own content, but escape angle brackets first. */
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const linkify = (s: string) => esc(s).replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>').replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+
+export function PageHero({ trail, kicker, h, dim, sub, children }: { trail: [string, string?][]; kicker: string; h: string; dim?: string; sub?: string; children?: React.ReactNode }) {
+  return (
+    <header className="ph-hero themed t-dark">
+      <div className="w" style={{ position: "relative", zIndex: 2 }}>
+        <Crumbs trail={trail} />
+        <span className="label" style={{ marginTop: 34, display: "flex" }} data-intro>{kicker}</span>
+        <h1 className="display" data-intro data-split="lines">{h}{dim && <> <span className="dim">{dim}</span></>}</h1>
+        {sub && <p className="lead" data-intro>{sub}</p>}
+        {children}
       </div>
-      <div data-reveal="up" data-delay="0.15"><Booking title={bookTitle} /></div>
-    </div></div></section>
-  );
-}
-
-export function Journey({ j }: { j: NonNullable<Page["journey"]> }) {
-  return (
-    <section className="sec" id="journey"><div className="w">
-      <Head eyebrow="What we build" title={j.head} lead={j.lead} />
-      <div data-reveal="up"><Tabs autoplay={7000} numbered arrows items={j.steps.map((s, i) => ({
-        label: s.tab,
-        content: (
-          <div className={`jr-stage s${i % 5}`}>
-            <div className="jr-copy">
-              <span className="mono" style={{ fontSize: 12, opacity: 0.6 }}>STEP {String(i + 1).padStart(2, "0")}</span>
-              <h3>{s.h}</h3><p>{s.story}</p>
-              <div className="jr-res">{s.results.map(([n, l]) => <div key={l}><b>{n}</b><small>{l}</small></div>)}</div>
-              <div className="chips">{s.chips.map((c) => <span className="chip" key={c}>{c}</span>)}</div>
-            </div>
-            <div className="jr-vis" data-nosnippet>
-              <Viz spec={s.viz} />
-              {s.viz2 && <div className="jr-v2"><Viz spec={s.viz2} /></div>}
-              {s.card && <div className="fcard" style={{ left: "-2%", bottom: "2%" }}><span className="ic">✓</span><div>{s.card.title}{s.card.sub && <small>{s.card.sub}</small>}</div></div>}
-            </div>
-          </div>
-        ),
-      }))} /></div>
-      <div style={{ marginTop: 18 }}><span className="ex-chip" style={{ background: "var(--soft)", color: "var(--mute)" }}>Example project · illustrative numbers</span></div>
-    </div></section>
+    </header>
   );
 }

@@ -1,21 +1,35 @@
-import { SERVICES, INDUSTRIES } from "@content/catalog";
-import { SOLUTIONS } from "@content/solutions";
-import { CITY } from "@content/abudhabi";
-import { published, CATS, catSlug } from "@content/guides";
-import { INDUSTRY_PAGES } from "@content/industries";
+import { PAGES } from "@content/v3/pages";
+import { POSTS } from "@content/v3/posts";
+import { CASES } from "@content/v3/cases";
+import { INDUSTRIES } from "@content/v3/industries";
 
-/** Every indexable route (single registry for the sitemap, llms.txt and .md versions). */
-export function allRoutes(): string[] {
+export const STATIC_ROUTES = ["/", "/work", "/pricing", "/process", "/about", "/contact", "/blog", "/tools", "/tools/shopify-store-cost-calculator", "/tools/website-cost-calculator", "/tools/whatsapp-reply-roi", "/tools/erp-vs-excel-checker", "/free-website-audit", "/industries", "/legal/privacy", "/legal/terms", "/legal/cookies"];
+export type RouteEntry = { path: string; lastmod: string; priority: number; freq: "weekly" | "monthly" };
+const TODAY = "2026-10-10";
+/** Every indexable route (single registry for sitemap, llms files and .md twins). */
+export function routeEntries(): RouteEntry[] {
   return [
-    "/", "/services", "/industries", "/pricing", "/about", "/process", "/contact", "/work", "/guides", "/tools", "/agencies", "/abu-dhabi", "/sharjah",
-    ...SERVICES.map((s) => `/services/${s.slug}`),
-    ...INDUSTRIES.map((i) => `/industries/${i.slug}`),
-    ...SOLUTIONS.map((s) => `/industries/${s.ind}/${s.slug}`),
-    ...CITY.map((c) => `/abu-dhabi/${c.slug}`),
-    ...published().map((g) => `/guides/${g.slug}`),
-    ...CATS.filter((c) => published().some((g) => g.cat === c)).map((c) => `/guides/${catSlug(c)}`),
-    ...INDUSTRY_PAGES.map((p) => `/work/${p.caseStudy.brand}`),
-    "/tools/talabat-commission-calculator", "/tools/payment-gateway-fee-calculator", "/tools/e-invoicing-readiness-check", "/tools/app-cost-calculator",
-    "/legal/privacy", "/legal/terms", "/legal/cookies",
+    { path: "/", lastmod: TODAY, priority: 1, freq: "weekly" },
+    ...PAGES.map((p) => ({ path: `/${p.slug}`, lastmod: TODAY, priority: 0.95, freq: "monthly" as const })),
+    { path: "/work", lastmod: TODAY, priority: 0.8, freq: "monthly" },
+    ...CASES.map((c) => ({ path: `/work/${c.slug}`, lastmod: TODAY, priority: 0.7, freq: "monthly" as const })),
+    { path: "/pricing", lastmod: TODAY, priority: 0.85, freq: "monthly" },
+    { path: "/process", lastmod: TODAY, priority: 0.6, freq: "monthly" },
+    { path: "/about", lastmod: TODAY, priority: 0.6, freq: "monthly" },
+    { path: "/contact", lastmod: TODAY, priority: 0.7, freq: "monthly" },
+    { path: "/blog", lastmod: TODAY, priority: 0.8, freq: "weekly" },
+    ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, lastmod: p.updated, priority: p.pillar ? 0.85 : 0.7, freq: "monthly" as const })),
+    { path: "/industries", lastmod: TODAY, priority: 0.8, freq: "monthly" },
+    ...INDUSTRIES.map((i) => ({ path: `/industries/${i.slug}`, lastmod: TODAY, priority: 0.8, freq: "monthly" as const })),
+    { path: "/free-website-audit", lastmod: TODAY, priority: 0.7, freq: "monthly" },
+    { path: "/tools", lastmod: TODAY, priority: 0.7, freq: "monthly" },
+    { path: "/tools/shopify-store-cost-calculator", lastmod: TODAY, priority: 0.6, freq: "monthly" },
+    { path: "/tools/website-cost-calculator", lastmod: TODAY, priority: 0.7, freq: "monthly" },
+    { path: "/tools/whatsapp-reply-roi", lastmod: TODAY, priority: 0.6, freq: "monthly" },
+    { path: "/tools/erp-vs-excel-checker", lastmod: TODAY, priority: 0.6, freq: "monthly" },
+    { path: "/legal/privacy", lastmod: TODAY, priority: 0.2, freq: "monthly" },
+    { path: "/legal/terms", lastmod: TODAY, priority: 0.2, freq: "monthly" },
+    { path: "/legal/cookies", lastmod: TODAY, priority: 0.2, freq: "monthly" },
   ];
 }
+export const allRoutes = () => routeEntries().map((r) => r.path);

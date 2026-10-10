@@ -12,7 +12,7 @@ export async function POST(req: Request) {
   const lead = {
     kind: str(body.kind, 20) || "contact", name: str(body.name, 100), business: str(body.business, 150), whatsapp: str(body.whatsapp, 40),
     needs: Array.isArray(body.needs) ? body.needs.slice(0, 8).map((x) => str(x, 40)) : [], budget: str(body.budget, 40),
-    slot: str(body.slot, 80), page: str(body.page, 200), receivedAt: new Date().toISOString(),
+    slot: str(body.slot, 80), url: str(body.url, 200), message: str(body.message, 600), page: str(body.page, 200), receivedAt: new Date().toISOString(),
   };
   if (!lead.name) return NextResponse.json({ ok: false, error: "Name is required" }, { status: 422 });
   const hook = process.env.LEAD_WEBHOOK_URL;

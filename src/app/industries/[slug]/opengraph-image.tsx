@@ -1,8 +1,9 @@
-import { INDUSTRY_PAGES, industryPage } from "@content/industries";
-import { ogCard, ogSize } from "@/lib/og";
-export const size = ogSize; export const contentType = "image/png"; export const dynamic = "force-static";
-export const generateStaticParams = () => INDUSTRY_PAGES.map((p) => ({ slug: p.slug }));
+import { ogImage, OG_SIZE } from "@/lib/og";
+import { INDUSTRIES, industryBySlug } from "@content/v3/industries";
+export const dynamic = "force-static"; export const dynamicParams = false;
+export const size = OG_SIZE; export const contentType = "image/png"; export const alt = "Industry";
+export const generateStaticParams = () => INDUSTRIES.map((i) => ({ slug: i.slug }));
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
-  const p = industryPage((await params).slug)!;
-  return ogCard({ kicker: p.kicker, title: `${p.h1a} ${p.h1b}`, from: p.tiers[0].amt });
+  const { slug } = await params; const i = industryBySlug(slug)!;
+  return ogImage({ kicker: i.kicker, title: `${i.h1[0]} ${i.h1[1]}` });
 }

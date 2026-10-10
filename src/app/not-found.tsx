@@ -1,21 +1,15 @@
 import Link from "next/link";
+import { MONEY } from "@content/v3/nav";
 import { WaBtn } from "@/components/ui/Buttons";
-import { FindPage } from "@/components/sections/FindPage";
-import { SERVICES, INDUSTRIES } from "@content/catalog";
-import { published } from "@content/guides";
 
 export default function NotFound() {
   return (
-    <section className="panel hub-hero" style={{ marginTop: 14, minHeight: "80vh" }}>
-      <div className="w" style={{ position: "relative", zIndex: 2 }}>
-        <h1>This page moved or <em>never existed.</em></h1>
-        <p className="hero-sub">Try one of these instead.</p>
-        <div className="chips" style={{ margin: "26px 0" }}>
-          {[["/services", "Services"], ["/industries", "Industries"], ["/pricing", "Pricing"], ["/guides", "Guides"], ["/contact", "Contact"]].map(([h, l]) => <Link key={h} className="chip" href={h}>{l} →</Link>)}
-        </div>
-        <FindPage items={[...SERVICES.map((x) => [`/services/${x.slug}`, x.name] as [string, string]), ...INDUSTRIES.map((x) => [`/industries/${x.slug}`, x.name] as [string, string]), ...published().map((g) => [`/guides/${g.slug}`, g.title] as [string, string]), ["/pricing", "Pricing"], ["/contact", "Contact"]]} />
-        <WaBtn text="Hi, I couldn't find a page on your website" />
-      </div>
-    </section>
+    <section className="nf themed t-dark"><div className="w">
+      <span className="label">Error 404</span>
+      <h1 className="display h1">This page moved, or never existed.</h1>
+      <p className="lead">Try one of our service pages instead.</p>
+      <div className="svc-grid">{MONEY.slice(0, 6).map((m) => <Link key={m.slug} href={`/${m.slug}`} className="svc" style={{ minHeight: 120 }}><b>{m.label}</b><span className="tlink">Open →</span></Link>)}</div>
+      <div className="cta-row"><Link className="btn btn-p" href="/">Home <i className="arr">→</i></Link><Link className="btn btn-o" href="/pricing">Pricing</Link><WaBtn text="Hi, I couldn't find a page on your website" /></div>
+    </div></section>
   );
 }
