@@ -8,6 +8,7 @@ const FIX: Record<string, { title?: string; desc?: string }> = {
   "/abu-dhabi/shopify-agency": { desc: "Shopify stores for Abu Dhabi brands: Arabic + English, Tabby and Tamara, delivery across the UAE. From AED 9,900. We meet in Abu Dhabi on request." },
   "/guides/shopify-store-cost-uae": { title: "Shopify Store Cost in UAE (2026): Plans, Apps, Setup" },
   "/guides/start-shopify-store-uae": { title: "How to Start a Shopify Store in the UAE" },
+  "/guides/app-development-cost-dubai": { title: "App Development Cost in Dubai (2026): AED Prices" },
   "/guides": { title: "Guides for UAE Business Owners" },
   "/guides/e-invoicing-checklist-july-2027": { title: "E-Invoicing Checklist for UAE SMEs: 10 Steps", desc: "A 10-step e-invoicing checklist for UAE small businesses: deadline, invoice sources, TRNs, ASP, testing and go-live before July 2027." },
   "/guides/talabat-commission-math": { title: "Talabat Commission: What Restaurants Really Pay", desc: "Delivery apps in the UAE typically take 15–30% commission plus promos. On AED 70,000 a month of app orders, that's AED 15,000–21,000." },
