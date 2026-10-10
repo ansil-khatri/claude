@@ -5,6 +5,7 @@ export type Tier = { k: string; name: string; desc: string; amt: string; unit?: 
 export type Tab = { tab: string; chip: string; h: string; p: string; fine: string; viz: VizSpec };
 export type Float = { icon?: string; title: string; sub?: string; style: React.CSSProperties; dark?: boolean };
 export type Stage = { main: VizSpec; side?: VizSpec; cards: Float[]; sideLeft?: boolean };
+export type ShowItem = { label: string; brand: string; results: [string, string]; chips: string[]; moment: string; phone?: "home" | "detail" | "status" | "tracking" | "checkout" | "lock" | "loyalty"; viz?: VizSpec; soldBy?: string };
 export type Related = { k: string; name: string; p: string; href: string };
 
 export type Page = {
@@ -23,7 +24,7 @@ export type Page = {
   stage: Stage;
   painsHead: string;
   pains: Pain[];
-  showcase?: { eyebrow: string; head: string; lead: string; brands: string[]; phone: "home" | "detail" | "status" | "tracking" | "checkout" | "lock" | "loyalty" };
+  showcase?: { items?: ShowItem[]; eyebrow: string; head: string; lead: string; brands: string[]; phone: "home" | "detail" | "status" | "tracking" | "checkout" | "lock" | "loyalty" };
   journey?: { head: string; lead: string; steps: JourneyStep[] };
   ddEyebrow: string;
   ddHead: string;

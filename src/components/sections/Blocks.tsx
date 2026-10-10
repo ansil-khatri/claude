@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Page, Pain } from "@content/types";
+import type { Page, Pain, ShowItem } from "@content/types";
 import { Faq } from "@/components/ui/Faq";
 import { Tabs } from "@/components/ui/Tabs";
 import { BookBtn, WaBtn } from "@/components/ui/Buttons";
@@ -47,23 +47,28 @@ export function Pains({ head, pains, title }: { head: string; pains: Pain[]; tit
 }
 
 export function Showcase({ s }: { s: NonNullable<Page["showcase"]> }) {
+  const items: ShowItem[] = s.items ?? s.brands.map((k) => ({ label: BRANDS[k].industry, brand: k, results: [`${BRANDS[k].rating}★`, BRANDS[k].items[1]?.p ?? BRANDS[k].items[0].p] as [string, string], chips: BRANDS[k].items.map((i) => i.n), moment: "", phone: s.phone }));
   return (
     <section className="sec" id="work"><div className="w">
       <Head eyebrow={s.eyebrow} title={s.head} lead={s.lead} />
-      <Tabs autoplay={7000} numbered arrows rowClass="show-tabs" items={s.brands.map((k) => {
-        const b = BRANDS[k];
+      <Tabs autoplay={7000} numbered arrows rowClass="show-tabs" items={items.map((it) => {
+        const b = BRANDS[it.brand];
         return {
-          label: b.industry,
+          label: it.label,
           content: (
-            <div className="show-stage" style={{ ["--sa" as string]: b.accent, ["--sb" as string]: b.bg } as React.CSSProperties}>
+            <div className="show-stage" style={{ ["--sa"as string]: b.accent, ["--sb" as string]: b.bg } as React.CSSProperties}>
               <div className="show-info">
                 <div className="show-badge" style={{ background: b.accent, color: b.accentInk }}>{b.name[0]}</div>
                 <h3>{b.name}</h3><p>{b.tag} · {b.area}</p>
-                <div className="show-tiles"><div><b>{b.rating}★</b><small>{b.reviews}</small></div><div><b>{b.items[1]?.p ?? b.items[0].p}</b><small>{b.items[1]?.n ?? b.items[0].n}</small></div></div>
-                <div className="chips">{b.items.map((it) => <span key={it.n} className="chip">{it.n}</span>)}</div>
+                {it.soldBy && <p className="sold">Sold by {it.soldBy}</p>}
+                <div className="show-tiles">{it.results.map((r) => <div key={r}><b>{r.split(" · ")[0]}</b><small>{r.split(" · ")[1] ?? ""}</small></div>)}</div>
+                <div className="chips">{it.chips.map((c) => <span key={c} className="chip">{c}</span>)}</div>
                 <span className="ex-chip" style={{ marginTop: 18 }}>Example project · illustrative numbers</span>
               </div>
-              <div className="show-vis"><div className="show-site"><SiteInBrowser k={k} /></div><div className="show-phone"><AppInPhone k={k} kind={s.phone} /></div></div>
+              <div className="show-vis">
+                <div className="show-site">{it.viz ? <Viz spec={it.viz} /> : <SiteInBrowser k={it.brand} />}</div>
+                <div className="show-phone"><AppInPhone k={it.brand} kind={it.phone ?? s.phone} />{it.moment && <small className="moment">{it.moment}</small>}</div>
+              </div>
             </div>
           ),
         };

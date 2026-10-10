@@ -10,6 +10,7 @@ import { einvoice } from "./einvoice";
 import { seo } from "./seo";
 import { rescue } from "./rescue";
 import { whitelabel } from "./whitelabel";
+import { SHOWCASE, CASES } from "../showcases";
 
 /** Website tiers follow the price book (UAE spec §5), not the older mockup numbers. */
 const websiteFixed: Page = {
@@ -30,5 +31,9 @@ function scrub<T>(v: T): T {
 }
 export const scrubPage = scrub;
 
-export const SERVICE_PAGES: Page[] = [shopify, websiteFixed, payments, landing, mobile, webapp, saas, ai, automation, einvoice, seo, rescue, whitelabel].map(scrub);
+export const SERVICE_PAGES: Page[] = [shopify, websiteFixed, payments, landing, mobile, webapp, saas, ai, automation, einvoice, seo, rescue, whitelabel].map((p) => ({
+  ...p,
+  showcase: p.showcase ? { ...p.showcase, items: SHOWCASE[p.slug] ?? p.showcase.items } : p.showcase,
+  caseStudy: CASES[p.slug] ?? p.caseStudy,
+})).map(scrub);
 export const servicePage = (slug: string) => SERVICE_PAGES.find((p) => p.slug === slug);

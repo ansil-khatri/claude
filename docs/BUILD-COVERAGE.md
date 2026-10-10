@@ -55,3 +55,9 @@ Written when the Next.js build was completed. Status: ✅ built · 🟡 built as
 | New pages spec | See Phase 2 table above |
 | UAE localization plan / new-pages plan | Toolkit tasks (audits, screenshots) replaced by `npm run audit`, `npm test` and the crawl described in README; calculator code ported as `src/lib/calcs.ts` |
 | `docs/seo/` (US) | ➡ Phase 2, `/us/` not built |
+
+## Spec-by-spec gap fill (service pages)
+
+- `content/showcases.ts`: six UAE-localised "Built for your industry" tabs per service (result tiles, chips, "Sold by", mockup, moment caption), from the service specs' showcase tables.
+- Case studies added for Shopify, Website, Mobile, Web apps, SaaS, Landing, Payments and Automation (AED figures, illustrative-numbers chip).
+- Still partial: process pinned horizontal scroll, results counters/wipe, services-hub hover thumbnails.

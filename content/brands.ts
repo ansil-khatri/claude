@@ -55,6 +55,36 @@ export const BRANDS: Record<string, Brand> = {
     items: [{ n: "Royal oud 50 ml", p: "AED 390" }, { n: "Silk abaya", p: "AED 690" }, { n: "Gift set", p: "AED 499" }],
     chip: "Free UAE delivery",
   },
+  routeline: {
+    key: "routeline", name: "Routeline", tag: "Dispatch & invoicing for trades", area: "UAE trades", domain: "routeline.app", phone: "",
+    bg: "#fff4ec", ink: "#2b1406", accent: "#ea580c", accentInk: "#fff", soft: "#fde3d1", industry: "SaaS",
+    headline: ["Dispatch, quotes", "and invoices in one."], sub: "For AC, electrical and maintenance companies. WPS payroll export and Zoho Books sync.",
+    rating: "4.8", reviews: "640 businesses", items: [{ n: "Solo", p: "AED 120/mo" }, { n: "Team", p: "AED 390/mo" }, { n: "Fleet", p: "AED 990/mo" }], chip: "WPS export",
+  },
+  shelfwise: {
+    key: "shelfwise", name: "Shelfwise", tag: "Inventory & food cost", area: "GCC restaurants", domain: "shelfwise.app", phone: "",
+    bg: "#f1faf3", ink: "#0d2a16", accent: "#16a34a", accentInk: "#fff", soft: "#d8f0df", industry: "SaaS",
+    headline: ["Count on your phone.", "Cut your food cost."], sub: "Par levels, supplier orders and food-cost reports with a Foodics sync.",
+    rating: "4.8", reviews: "380 restaurants", items: [{ n: "Starter", p: "AED 365/mo" }, { n: "Group", p: "AED 990/mo" }, { n: "Chain", p: "Custom" }], chip: "Foodics sync",
+  },
+  glowdesk: {
+    key: "glowdesk", name: "Glowdesk", tag: "Multi-location salon management", area: "UAE salon groups", domain: "glowdesk.app", phone: "",
+    bg: "#fdf2f8", ink: "#3b0a24", accent: "#db2777", accentInk: "#fff", soft: "#fbd5e8", industry: "SaaS",
+    headline: ["Every location.", "One payroll file."], sub: "Commissions, retail stock and WPS payroll export for salon groups.",
+    rating: "4.9", reviews: "120 groups", items: [{ n: "Location", p: "AED 290/mo" }, { n: "Group", p: "AED 1,100/mo" }, { n: "Franchise", p: "Custom" }], chip: "WPS payroll",
+  },
+  keyhouse: {
+    key: "keyhouse", name: "Keyhouse", tag: "Rent & maintenance", area: "Dubai property managers", domain: "keyhouse.app", phone: "",
+    bg: "#effafa", ink: "#06292b", accent: "#0d9488", accentInk: "#fff", soft: "#cdeeee", industry: "SaaS",
+    headline: ["Rent on time.", "Repairs on record."], sub: "Ejari, post-dated cheques, RERA-ready owner statements and a tenant app.",
+    rating: "4.8", reviews: "18,000 units", items: [{ n: "Portfolio", p: "AED 4/unit" }, { n: "Agency", p: "AED 3/unit" }, { n: "Enterprise", p: "Custom" }], chip: "Ejari ready",
+  },
+  partsmith: {
+    key: "partsmith", name: "Partsmith", tag: "Auto parts purchasing", area: "Sharjah Industrial Area suppliers", domain: "partsmith.app", phone: "",
+    bg: "#f4f4f5", ink: "#18181b", accent: "#52525b", accentInk: "#fff", soft: "#e4e4e7", industry: "SaaS",
+    headline: ["The right part,", "first time."], sub: "Live supplier prices, VIN fit check and barcode receiving for UAE garages.",
+    rating: "4.8", reviews: "290 shops", items: [{ n: "Shop", p: "AED 450/mo" }, { n: "Multi-bay", p: "AED 900/mo" }, { n: "Group", p: "Custom" }], chip: "VIN fit check",
+  },
   ledgerly: {
     key: "ledgerly", name: "Ledgerly", tag: "SaaS", area: "DIFC, Dubai", domain: "ledgerly.app", phone: "",
     bg: "#f5f6ff", ink: "#12123a", accent: "#6366f1", accentInk: "#fff", soft: "#e4e6ff", industry: "SaaS",

@@ -222,3 +222,6 @@ table.gw { width: 100%; border-collapse: collapse; font-size: 15px; } table.gw t
 .art-grid > * { min-width: 0; } .prose { max-width: 100%; }
 @media (max-width: 1000px) { .hero-glow { width: 320px !important; height: 320px !important; right: -150px !important; top: -170px !important; } .ar .hero-glow { left: -150px !important; right: auto !important; } }
 .ar { display: flow-root; }
+
+.show-info .sold { font: 600 13px/1.3 var(--font-sans); background: rgba(255,255,255,.2); display: inline-block; padding: 6px 12px; border-radius: 99px; margin: -8px 0 16px; }
+.show-phone .moment { display: block; margin-top: 10px; font: 600 11px/1.35 var(--font-sans); color: rgba(255,255,255,.9); text-align: center; background: rgba(0,0,0,.28); border-radius: 12px; padding: 7px 9px; }
