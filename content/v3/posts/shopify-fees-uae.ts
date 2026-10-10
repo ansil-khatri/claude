@@ -4,7 +4,7 @@ const CHECKED = "October 2026";
 
 export const post: Post = {
   slug: "shopify-fees-uae",
-  title: "Shopify fees for UAE merchants: plans, transaction fees and apps",
+  title: "Shopify fees in the UAE: plans, gateways and apps",
   seoTitle: "Shopify Fees in the UAE: Plans, Gateways and Apps",
   desc: "Every Shopify fee a UAE merchant meets: plan price, transaction fees, payment gateway fees and apps, with the Shopify Payments question checked and hedged.",
   cluster: "shopify",
@@ -30,7 +30,7 @@ export const post: Post = {
       "A Shopify transaction fee: an extra percentage that applies only if you use a payment provider other than Shopify Payments.",
       "Apps and extras: monthly fees for things like reviews, email, subscriptions, translation and a custom domain.",
     ] },
-    { p: "Our build price is separate from all four. The build is a one-off. These fees are what you pay to keep the store open. If you want a full total for a store, our [Shopify store cost guide](/blog/shopify-store-cost-uae) and the [calculator](/tools/shopify-store-cost-calculator) put them side by side with the build." },
+    { p: "Our build price is separate from all four. The build is a one-off, and you can see what it covers on our [Shopify agency page for Dubai](/shopify-agency-dubai). These fees are what you pay to keep the store open. If you want a full total for a store, our [Shopify store cost guide](/blog/shopify-store-cost-uae) and the [calculator](/tools/shopify-store-cost-calculator) put them side by side with the build." },
     { h2: "1. Shopify plans" },
     { p: "Shopify's public pricing, as reported by review sites we checked in October 2026, is below. Prices are in US dollars, and the AED figures are our rounded conversion at the usual 3.67 peg, before any VAT on the subscription." },
     { table: { head: ["Plan", "Monthly billing", "Annual billing, per month", "About, in AED (annual)"], rows: [
@@ -78,7 +78,7 @@ export const post: Post = {
       ["Theme", "One-off for premium themes", "Check the price on the theme store"],
       ["Marketing apps", "Monthly", "Skip until the basics work"],
     ] } },
-    { p: "We aim to use few apps and put needed features in the theme where we can. A leaner store is faster and cheaper to run. This is part of how we approach a [Shopify build in Dubai](/shopify-agency-dubai)." },
+    { p: "We aim to use few apps and put needed features in the theme where we can. A leaner store is faster and cheaper to run. This is part of how we approach a Shopify build." },
     { h2: "A sample monthly bill" },
     { p: "Here is an illustration for a small UAE brand, built from the ranges above. It is an example, not a quote, and your numbers will differ." },
     { table: { head: ["Line", "Illustration"], rows: [
@@ -89,6 +89,17 @@ export const post: Post = {
       ["Domain", "Yearly, often small"],
     ] } },
     { p: "Our own prices, excluding 5% VAT, for the one-off build are AED 6,900 for the setup package, from AED 9,900 for a launch store and from AED 29,000 for a custom theme. See [Shopify vs Wix in the UAE](/blog/shopify-vs-wix-uae) if you are not sure you need Shopify at all." },
+    { h2: "Fees that are not Shopify's" },
+    { p: "Some costs sit outside Shopify but still belong in your budget, because a store cannot run without them." },
+    { ul: [
+      "Shipping. Courier and last-mile delivery rates depend on weight, zone and volume. Get rate cards before you set your shipping prices.",
+      "Cash on delivery. If you offer it, couriers usually charge a handling fee and you wait for the cash to be remitted.",
+      "Returns. Free returns are a marketing choice that costs real money. Price them in.",
+      "Photography. Good images cost more than almost any app and sell more than any plugin.",
+      "Marketing. Instagram, Google and email all cost money or time. A store with no traffic earns nothing.",
+      "Support time. Someone has to answer WhatsApp messages and ship orders.",
+    ] },
+    { p: "Many owners focus on a USD 29 plan and forget these. The platform fee is usually the smallest part of what it costs to run a store." },
     { h2: "How to keep Shopify fees low" },
     { ul: [
       "Choose annual billing once you are sure the store will run.",

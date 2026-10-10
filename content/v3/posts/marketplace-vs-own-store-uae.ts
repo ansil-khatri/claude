@@ -24,7 +24,7 @@ export const post: Post = {
   body: [
     { h2: "The short version" },
     { p: "A marketplace is a rented shop in a busy mall. People already walk past, but the mall sets the rent, the rules and the price comparison. Your own store is a shop on your own street. You have to bring the customers, but you keep the margin and you know who they are." },
-    { p: "Neither is right for everyone. The honest answer for most UAE sellers is to use both, for different jobs. The rest of this page helps you decide the split." },
+    { p: "Neither is right for everyone. The honest answer for most UAE sellers is to use both, for different jobs. The rest of this page helps you decide the split, and our [e-commerce website development service in Dubai](/ecommerce-website-development-dubai) is there if you decide to build." },
     { h2: "What a marketplace gives you" },
     { ul: [
       "Traffic from day one. Shoppers already search there and trust the checkout.",
@@ -60,7 +60,16 @@ export const post: Post = {
       ["Custom Shopify theme", "29,000 (typical to 55,000)", "6 to 8 weeks"],
       ["Arabic RTL on the launch tier", "About 3,500 add-on", "Part of the build"],
     ] } },
-    { p: "For a broader view of what building a store involves, see our [e-commerce website development service in Dubai](/ecommerce-website-development-dubai)." },
+    { h2: "Cash flow, returns and service" },
+    { p: "Money timing differs. A marketplace usually pays you on its own schedule, after it deducts fees and returns, so you wait for cash. On your own store the payment gateway pays you on its settlement schedule, which you can ask about before you sign. Neither is instant. Plan stock purchases around the slower of the two." },
+    { p: "Returns work differently too. On a marketplace, the buyer often returns through the marketplace process, and you may be charged a return fee on top of losing the sale. On your own store you set the return policy, within UAE consumer rules. Confirm those rules with the relevant authority or your lawyer." },
+    { p: "Customer service is the third difference. On a marketplace, the buyer's complaint can hurt your seller rating, which affects how visible your products are. On your own store, a complaint is a chance to fix things by WhatsApp and keep the customer. This is one of the quiet advantages of owning the relationship." },
+    { h2: "Three mistakes we see sellers make" },
+    { ol: [
+      "Treating the marketplace as the whole business. When the rules or the fees change, the business changes with them.",
+      "Building a store with no plan for traffic. A store is a shop, not a magnet. Decide how the first 1,000 visitors will arrive before you pay for the build.",
+      "Pricing the same product lower on the marketplace than on the own store, with no reason. Buyers compare. Keep prices consistent, or give own-store buyers a clear extra, such as a gift, faster support or a bundle.",
+    ] },
     { h2: "Side by side" },
     { table: { head: ["Question", "Marketplace (noon, Amazon.ae)", "Your own store"], rows: [
       ["Upfront cost", "Low", "Higher (AED 6,900 to 24,000 for most small brands)"],

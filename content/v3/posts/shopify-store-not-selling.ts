@@ -9,7 +9,7 @@ export const post: Post = {
   read: 10,
   date: "2026-10-10",
   updated: "2026-10-10",
-  answer: "A Shopify store that is not selling has one of four problems: too few visitors, the wrong visitors, a page that does not convince, or a checkout that loses people. Check your visitor numbers first, then where they drop off. Our free audit reviews all four, and fixes start from AED 1,500.",
+  answer: "A Shopify store that is not selling has one of four problems: too few visitors, the wrong visitors, a page that does not convince, or a checkout that loses people. Check your visitor numbers first, then where they drop off. Our free audit reviews all four and tells you what to fix first.",
   opening: "The store is live. You paid for it, added the products, told your friends. Weeks later the orders are close to zero, and every agency email promises a fix. Before you spend again, you need to know which part is broken, because the cure for no traffic is the opposite of the cure for a leaky checkout.",
   keywords: ["shopify store not selling", "why is my shopify store not selling", "shopify no sales", "shopify store no orders uae", "improve shopify store sales"],
   links: [

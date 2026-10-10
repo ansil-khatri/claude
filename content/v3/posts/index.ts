@@ -10,6 +10,27 @@ import { post as migration } from "./shopify-migration-seo-checklist";
 import { post as plus } from "./shopify-vs-shopify-plus-uae";
 import { post as waReply } from "./whatsapp-auto-reply-for-business";
 import { post as wpVsShopify } from "./wordpress-vs-shopify-dubai";
+import { post as n_ai_chatbot_for_your_website_uae } from "./ai-chatbot-for-your-website-uae";
+import { post as n_arabic_website_cost_dubai } from "./arabic-website-cost-dubai";
+import { post as n_custom_erp_vs_odoo_zoho } from "./custom-erp-vs-odoo-zoho";
+import { post as n_do_i_need_a_website_uae } from "./do-i-need-a-website-uae";
+import { post as n_e_invoicing_uae_small_business } from "./e-invoicing-uae-small-business";
+import { post as n_freelancer_vs_agency_dubai } from "./freelancer-vs-agency-dubai";
+import { post as n_how_long_does_a_shopify_store_take } from "./how-long-does-a-shopify-store-take";
+import { post as n_marketplace_vs_own_store_uae } from "./marketplace-vs-own-store-uae";
+import { post as n_online_selling_licence_dubai } from "./online-selling-licence-dubai";
+import { post as n_payment_gateway_uae_online_store } from "./payment-gateway-uae-online-store";
+import { post as n_sell_on_instagram_uae_website } from "./sell-on-instagram-uae-website";
+import { post as n_shopify_fees_uae } from "./shopify-fees-uae";
+import { post as n_shopify_store_not_selling } from "./shopify-store-not-selling";
+import { post as n_shopify_vs_wix_uae } from "./shopify-vs-wix-uae";
+import { post as n_start_online_store_dubai } from "./start-online-store-dubai";
+import { post as n_website_not_showing_on_google_dubai } from "./website-not-showing-on-google-dubai";
+import { post as n_whatsapp_booking_reminders_clinics_salons } from "./whatsapp-booking-reminders-clinics-salons";
+import { post as n_whatsapp_business_api_cost_uae } from "./whatsapp-business-api-cost-uae";
+import { post as n_whatsapp_orders_without_excel } from "./whatsapp-orders-without-excel";
+import { post as n_woocommerce_to_shopify_uae } from "./woocommerce-to-shopify-uae";
+import { post as n_wordpress_security_maintenance_uae } from "./wordpress-security-maintenance-uae";
 
 /** Slugs of the posts kept from the earlier guide library, re-skinned for this site. Their links are remapped to the new URL structure. */
 const REUSED: Record<string, { cluster: Post["cluster"]; seoTitle: string; desc: string; links: { href: string; label: string }[]; date: string }> = {
@@ -30,7 +51,7 @@ const fromGuide = (g: Guide, r: (typeof REUSED)[string]): Post => ({
 });
 const reused: Post[] = Object.keys(REUSED).map((s) => GUIDES.find((g) => g.slug === s)).filter((g): g is Guide => !!g?.body).map((g) => fromGuide(g, REUSED[g.slug]));
 
-export const POSTS: Post[] = [choose, wpVsShopify, themeVs, plus, migration, headless, ecoSeo, luxury, erpExcel, waReply, ...reused]
+export const POSTS: Post[] = [choose, wpVsShopify, themeVs, plus, migration, headless, ecoSeo, luxury, erpExcel, waReply, ...reused, n_ai_chatbot_for_your_website_uae, n_arabic_website_cost_dubai, n_custom_erp_vs_odoo_zoho, n_do_i_need_a_website_uae, n_e_invoicing_uae_small_business, n_freelancer_vs_agency_dubai, n_how_long_does_a_shopify_store_take, n_marketplace_vs_own_store_uae, n_online_selling_licence_dubai, n_payment_gateway_uae_online_store, n_sell_on_instagram_uae_website, n_shopify_fees_uae, n_shopify_store_not_selling, n_shopify_vs_wix_uae, n_start_online_store_dubai, n_website_not_showing_on_google_dubai, n_whatsapp_booking_reminders_clinics_salons, n_whatsapp_business_api_cost_uae, n_whatsapp_orders_without_excel, n_woocommerce_to_shopify_uae, n_wordpress_security_maintenance_uae]
   .sort((a, b) => (a.date < b.date ? 1 : -1));
 export const postBySlug = (s: string) => POSTS.find((p) => p.slug === s);
 export const CLUSTER_LABEL: Record<Post["cluster"], string> = { shopify: "Shopify", web: "Web and WordPress", luxury: "Luxury commerce", automation: "Automation" };

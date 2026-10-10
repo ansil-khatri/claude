@@ -76,6 +76,12 @@ export const post: Post = {
     { h2: "Do you need Arabic at all?" },
     { p: "Not always. If your customers are international professionals, tourists or B2B buyers in English, an English-only site may be enough for now. If you sell to Emirati and Arab families, or to older customers, or your competitors have Arabic, it is a strong reason to add it. A second language also doubles what you must maintain, so every new product needs two descriptions." },
     { p: "If you are unsure, launch in English with a design that is ready for Arabic, and add Arabic in a second phase. That spreads the cost without forcing a rebuild." },
+    { h2: "A worked example" },
+    { p: "Take a perfume brand with 40 products that wants an Arabic and English Shopify store. Using our price book, the launch store starts at AED 9,900 and the Arabic layout adds about AED 3,500, which brings the build to about AED 13,400 excluding VAT. Then add content. If the brand has 40 products with a short description each, plus a home page, About page and policies, a human translator or copywriter will quote separately, and the price depends on word count and on whether you want translation or fresh Arabic writing." },
+    { p: "If the same brand chose a custom Shopify theme from AED 29,000, Arabic design would be inside that price, and the content would still be extra. This is an illustration with our own numbers, not a quote." },
+    { h2: "Running costs after launch" },
+    { p: "Bilingual sites cost more to keep up. Every new product needs text in both languages, every sale banner needs two designs and every campaign needs two sets of copy. Decide who will write the Arabic each month, and what it costs, before you commit. If you plan to publish blog posts or news, double the writing time." },
+    { p: "Check email and WhatsApp messages too. If your store replies in English to an Arabic customer, you lose the benefit of the translation. Our [WhatsApp auto-reply guide](/blog/whatsapp-auto-reply-for-business) shows how to answer in the language the customer used." },
     { h2: "What to ask in a quote" },
     { ol: [
       "Is Arabic included in the design price, or an add-on?",

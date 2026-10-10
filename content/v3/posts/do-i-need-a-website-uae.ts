@@ -77,6 +77,9 @@ export const post: Post = {
     { check: "Prices for builders, hosting and agencies change. Last checked October 2026. Confirm current figures with the provider before you buy." },
     { h2: "Do you also need a trade licence for a website?" },
     { p: "A website does not by itself need a licence, but a business selling goods or services for profit generally needs the right licence for its activity. If you sell online, read our guide to the [online selling licence in Dubai](/blog/online-selling-licence-dubai) and confirm with DET or a PRO. This is not legal advice." },
+    { h2: "What customers do before they contact you" },
+    { p: "Think about your own habits. Before you call a clinic, a consultant or a contractor you have not used, you probably search for them. You look for proof that they are real: an address, prices, photos of work, reviews. A business that gives you none of that feels risky, even if it is excellent." },
+    { p: "The more money a purchase involves, the more this matters. A coffee needs no research. A fit-out, a legal service or a medical procedure does. If your work is in the second group, a simple site is cheap insurance against losing the customer before the first call." },
     { h2: "A quick test: ten minutes to decide" },
     { ol: [
       "Search Google for what you do plus your area. Do competitors with websites appear above you?",
