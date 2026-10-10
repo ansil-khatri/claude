@@ -8,19 +8,19 @@ import { Viz } from "@/components/mock/Viz";
 import { AppInPhone, SiteInBrowser } from "@/components/mock/BrandMocks";
 import { BRANDS } from "@content/brands";
 import { published } from "@content/guides";
-import { HScroll } from "./HScroll";
+import { PinnedChapters } from "@/components/scenes/PinnedChapters";
 
 export const Eyebrow = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
 export const Head = ({ eyebrow, title, lead, dark }: { eyebrow: string; title: React.ReactNode; lead?: string; dark?: boolean }) => (
-  <div className={`sec-head rv ${dark ? "on-dark" : ""}`}><Eyebrow>{eyebrow}</Eyebrow><h2 className="h2">{title}</h2>{lead && <p className="lead">{lead}</p>}</div>
+  <div className={`sec-head ${dark ? "on-dark" : ""}`}><span data-reveal="fade"><Eyebrow>{eyebrow}</Eyebrow></span><h2 className="h2" data-split="lines">{title}</h2>{lead && <p className="lead" data-reveal="up" data-delay="0.15">{lead}</p>}</div>
 );
 
 export function Plain({ text, facts }: { text: string; facts: [string, string][] }) {
   return (
     <section className="plx"><div className="w plx-in">
       <div className="plx-l">IN PLAIN ENGLISH</div>
-      <div className="plx-r"><p>{text}</p>
-        <div className="plx-f">{facts.map(([k, v]) => <span key={k}><b>{k}</b>{v}</span>)}</div></div>
+      <div className="plx-r"><p data-split="scrub">{text}</p>
+        <div className="plx-f" data-stagger="up">{facts.map(([k, v]) => <span key={k}><b>{k}</b>{v}</span>)}</div></div>
     </div></section>
   );
 }
@@ -28,7 +28,7 @@ export function Plain({ text, facts }: { text: string; facts: [string, string][]
 function PainCard({ p, i }: { p: Pain; i: number }) {
   const num = p.cost.match(/(AED\s?[\d,.]+[kKM]?|\d[\d,.]*\s?(?:%|hours?|seconds?|s|min)|\d[\d,.]*)/)?.[0] ?? "";
   return (
-    <div className="pain rv" tabIndex={0} data-cursor="See fix" style={{ transitionDelay: `${i * 80}ms` }}>
+    <div className="pain" tabIndex={0} data-cursor="See fix">
       <div className={`pain-vis ${p.bv ? "has-v" : ""}`} data-nosnippet>
         <div className="pain-before"><span className="tg">BEFORE</span>{p.bv ? <div className="pv"><Viz spec={p.bv} /></div> : <div className="pain-num">{num}</div>}<p>{p.cost}</p></div>
         <div className="pain-after"><span className="tg">AFTER</span>{p.av && <div className="pv"><Viz spec={p.av} /></div>}<p>{p.fix}</p></div>
@@ -42,7 +42,7 @@ export function Pains({ head, pains, title }: { head: string; pains: Pain[]; tit
   return (
     <section className="sec"><div className="w">
       <Head eyebrow="Sound familiar?" title={head} lead="Hover over each card (or tap it) to see what changes." />
-      <div className="pgrid3">{pains.map((p, i) => <PainCard key={i} p={p} i={i} />)}</div>
+      <div className="pgrid3" data-stagger="up">{pains.map((p, i) => <PainCard key={i} p={p} i={i} />)}</div>
     </div></section>
   );
 }
@@ -52,7 +52,7 @@ export function Showcase({ s }: { s: NonNullable<Page["showcase"]> }) {
   return (
     <section className="sec" id="work"><div className="w">
       <Head eyebrow={s.eyebrow} title={s.head} lead={s.lead} />
-      <Tabs autoplay={7000} numbered arrows rowClass="show-tabs" items={items.map((it) => {
+      <div data-reveal="up"><Tabs autoplay={7000} numbered arrows rowClass="show-tabs" items={items.map((it) => {
         const b = BRANDS[it.brand];
         return {
           label: it.label,
@@ -73,30 +73,25 @@ export function Showcase({ s }: { s: NonNullable<Page["showcase"]> }) {
             </div>
           ),
         };
-      })} />
+      })} /></div>
     </div></section>
   );
 }
 
 export function DeepDive({ eyebrow, head, tabs }: { eyebrow: string; head: string; tabs: Page["tabs"] }) {
   return (
-    <section className="sec-tight"><div className="panel dd-panel"><div className="w">
-      <Head dark eyebrow={eyebrow} title={head} />
-      <Tabs dark numbered rowClass="dd-tabs" items={tabs.map((t) => ({
+    <PinnedChapters dark
+      head={<Head dark eyebrow={eyebrow} title={head} />}
+      items={tabs.map((t) => ({
         label: t.tab,
-        content: (
-          <div className="dd-grid">
-            <div className="dd-copy">
-              <span className="chip">{t.chip}</span>
-              <h3>{t.h}</h3><p>{t.p}</p>
-              <div className="fine">{t.fine}</div>
-              <div className="dd-acts"><BookBtn /></div>
-            </div>
-            <div className="dd-vis" data-nosnippet><Viz spec={t.viz} /></div>
-          </div>
-        ),
+        copy: (<>
+          <span className="chip">{t.chip}</span>
+          <h3>{t.h}</h3><p>{t.p}</p>
+          <div className="fine">{t.fine}</div>
+          <div className="dd-acts"><BookBtn /></div>
+        </>),
+        visual: <Viz spec={t.viz} />,
       }))} />
-    </div></div></section>
   );
 }
 
@@ -118,7 +113,7 @@ export function Compare({ eyebrow, head, lead, rows, note }: { eyebrow: string; 
   return (
     <section className="sec"><div className="w">
       <Head eyebrow={eyebrow} title={head} lead={lead} />
-      <div className="tt rv"><table>
+      <div className="tt" data-reveal="up"><table>
         <thead><tr>{h.map((c, i) => <th key={i} className={i === rec ? "rec" : ""} scope="col">{cell(c, true)}</th>)}</tr></thead>
         <tbody>{body.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={j === rec ? "rec" : ""}>{/^[●○]+( [●○]+)?$/.test(c) ? <Dots c={c} /> : c}</td>)}</tr>)}</tbody>
       </table></div>
@@ -129,17 +124,20 @@ export function Compare({ eyebrow, head, lead, rows, note }: { eyebrow: string; 
 
 export function Process({ eyebrow, head, steps }: { eyebrow: string; head: string; steps: Page["proc"] }) {
   return (
-    <section className="sec proc-sec"><div className="w">
-      <Head eyebrow={eyebrow} title={head} />
-      <HScroll>
-        {steps.map((s, i) => (
-          <li key={i} className={`proc-card ${i === 2 ? "dark" : ""}`}>
-            <div className="proc-wk"><span>{s.wk}</span><b>{s.when}</b></div>
-            <h4>{s.title}</h4><p>{s.p}</p>
-          </li>
-        ))}
-      </HScroll>
-    </div></section>
+    <div className="pin-wrap"><section className="hsw hsw-light" data-hscroll>
+      <div className="hsw-in">
+        <div className="w hsw-head"><Head eyebrow={eyebrow} title={head} /><i className="hsw-bar" data-hscroll-bar /></div>
+        <ol className="hsw-track" data-hscroll-track>
+          {steps.map((s, i) => (
+            <li key={i} className="pc">
+              <span className="pc-n" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+              <div className="pc-wk"><span>{s.wk}</span><b>{s.when}</b></div>
+              <h4>{s.title}</h4><p>{s.p}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section></div>
   );
 }
 
@@ -147,9 +145,9 @@ export function Pricing({ p, id = "pricing" }: { p: Page; id?: string }) {
   return (
     <section className="sec-tight" id={id}><div className="panel"><div className="w sec">
       <Head dark eyebrow={p.priceEyebrow} title={p.priceH2} lead={p.priceLead} />
-      <div className="pgrid">
+      <div className="pgrid" data-stagger="up">
         {p.tiers.map((t, i) => (
-          <div key={i} className={`pr rv ${t.hot ? "hot" : ""}`} style={{ transitionDelay: `${i * 90}ms` }}>
+          <div key={i} className={`pr ${t.hot ? "hot" : ""}`}>
             <span className="k">{t.k}</span><h4>{t.name}</h4><p>{t.desc}</p>
             <div className="amt"><small>{/^(free)$/i.test(t.amt) ? "" : "from"}</small>{t.amt}{t.unit && <small>{t.unit}</small>}</div>
             <ul>{t.items.map((x) => <li key={x}>{x}</li>)}</ul>
@@ -166,8 +164,8 @@ export function Pricing({ p, id = "pricing" }: { p: Page; id?: string }) {
 export function FaqSection({ eyebrow, head, items }: { eyebrow: string; head: string; items: { q: string; a: string }[] }) {
   return (
     <section className="sec"><div className="w faq-grid">
-      <div className="rv"><Eyebrow>{eyebrow}</Eyebrow><h2 className="h2">{head}</h2></div>
-      <div className="rv"><Faq items={items} /></div>
+      <div><span data-reveal="fade"><Eyebrow>{eyebrow}</Eyebrow></span><h2 className="h2" data-split="lines">{head}</h2></div>
+      <div data-reveal="up"><Faq items={items} /></div>
     </div></section>
   );
 }
@@ -178,7 +176,7 @@ export function GuidesBlock({ guides }: { guides?: { slug: string; title: string
   if (!guides?.length) return null;
   return (
     <section className="sec-tight"><div className="w">
-      <div className="guides-blk rv"><b>Guides on this topic</b>
+      <div className="guides-blk" data-reveal="up"><b>Guides on this topic</b>
         <ul>{guides.map((g) => <li key={g.slug}><Link href={`/guides/${g.slug}`}>{g.title} <span className="arrow">→</span></Link></li>)}</ul></div>
     </div></section>
   );
@@ -188,9 +186,9 @@ export function Related({ eyebrow, head, items, ind }: { eyebrow: string; head: 
   return (
     <section className="sec"><div className="w">
       <Head eyebrow={eyebrow} title={head} />
-      <div className="rgrid">
+      <div className="rgrid" data-stagger="up">
         {items.map((r) => (
-          <Link key={r.name} href={r.href} className="rc rv" data-cursor="Open">
+          <Link key={r.name} href={r.href} className="rc" data-cursor="Open">
             <span className="k">{r.k}</span><h4>{r.name}</h4><p>{r.p}</p><span className="go">Explore →</span>
           </Link>
         ))}
@@ -205,9 +203,9 @@ export function CaseStudy({ c }: { c: NonNullable<Page["caseStudy"]> }) {
   return (
     <section className="sec-tight"><div className="panel case-panel" style={{ ["--cg" as string]: b.accent } as React.CSSProperties}><div className="w sec">
       <div className="case-grid">
-        <div className="case-copy rv">
+        <div className="case-copy">
           <Eyebrow>{c.label}</Eyebrow>
-          <h2 className="h2">{c.h}</h2>
+          <h2 className="h2" data-split="lines">{c.h}</h2>
           <span className="ex-chip">Example project · illustrative numbers</span>
           <dl>
             <dt>The problem</dt><dd>{c.problem}</dd>
@@ -216,7 +214,7 @@ export function CaseStudy({ c }: { c: NonNullable<Page["caseStudy"]> }) {
           <div className="case-metrics">{c.metrics.map(([n, l]) => <div key={l}><b>{n}</b><small>{l}</small></div>)}</div>
           <blockquote className="case-q">“{c.quote}”<cite>{c.by}</cite></blockquote>
         </div>
-        <div className="case-vis" data-nosnippet>
+        <div className="case-vis" data-nosnippet data-reveal="clip">
           <div className="case-a"><Viz spec={c.viz} /></div>
           <div className="case-b"><Viz spec={c.viz2} /></div>
         </div>
@@ -229,13 +227,13 @@ export function CtaSection({ h, lead, steps, wa, bookTitle }: { h: string; lead:
   const [a, b] = h.split(/\s(?=\d+ minutes)/);
   return (
     <section className="sec-tight" id="book"><div className="panel"><div className="w cta-panel">
-      <div className="rv">
-        <h2 className="cta-h">{b ? <>{a} <em>{b.match(/^\d+ minutes/)?.[0]}</em>{b.replace(/^\d+ minutes/, "")}</> : h}</h2>
+      <div>
+        <h2 className="cta-h" data-split="lines">{b ? <>{a} <em>{b.match(/^\d+ minutes/)?.[0]}</em>{b.replace(/^\d+ minutes/, "")}</> : h}</h2>
         <p className="lead">{lead}</p>
-        <ol className="cta-steps">{steps.map((s) => <li key={s}>{s}</li>)}</ol>
+        <ol className="cta-steps" data-stagger="up">{steps.map((s) => <li key={s}>{s}</li>)}</ol>
         <WaBtn text={wa} />
       </div>
-      <div className="rv"><Booking title={bookTitle} /></div>
+      <div data-reveal="up" data-delay="0.15"><Booking title={bookTitle} /></div>
     </div></div></section>
   );
 }
@@ -244,7 +242,7 @@ export function Journey({ j }: { j: NonNullable<Page["journey"]> }) {
   return (
     <section className="sec" id="journey"><div className="w">
       <Head eyebrow="What we build" title={j.head} lead={j.lead} />
-      <Tabs autoplay={7000} numbered arrows items={j.steps.map((s, i) => ({
+      <div data-reveal="up"><Tabs autoplay={7000} numbered arrows items={j.steps.map((s, i) => ({
         label: s.tab,
         content: (
           <div className={`jr-stage s${i % 5}`}>
@@ -261,7 +259,7 @@ export function Journey({ j }: { j: NonNullable<Page["journey"]> }) {
             </div>
           </div>
         ),
-      }))} />
+      }))} /></div>
       <div style={{ marginTop: 18 }}><span className="ex-chip" style={{ background: "var(--soft)", color: "var(--mute)" }}>Example project · illustrative numbers</span></div>
     </div></section>
   );

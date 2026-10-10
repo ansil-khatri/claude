@@ -8,7 +8,7 @@ export function Stage({ stage }: { stage: StageT }) {
   const { main, side, cards } = stage;
   const sidePhone = side?.t === "phone";
   return (
-    <div className="stage" data-nosnippet aria-hidden>
+    <div className="stage" data-nosnippet aria-hidden data-intro data-reveal="clip">
       <div className="stage-glow" />
       <div className="stage-main"><Viz spec={main} /></div>
       {side && (
