@@ -28,6 +28,7 @@ export function SiteMock({ k }: { k: string }) {
   const b = BRANDS[k];
   return (
     <div className="bm" style={theme(b)}>
+      <div className="bm-page">
       <div className="bm-ann">{b.chip} · {b.area}</div>
       <div className="bm-nav">
         <span className="bm-logo">{b.name}</span>
@@ -51,6 +52,10 @@ export function SiteMock({ k }: { k: string }) {
         {b.items.map((it) => (
           <div className="bm-card" key={it.n}><b>{it.n}</b><span>{it.p}</span>{it.d && <small>{it.d}</small>}</div>
         ))}
+      </div>
+      <div className="bm-quote"><b>★★★★★ {b.rating}</b><p>“Booked in under a minute, and they sent a WhatsApp reminder the day before.”</p><small>{b.reviews} · {b.area}</small></div>
+      <div className="bm-cta"><div className="mk-h1">{b.headline[0]}</div><span className="bm-btn">Book now</span></div>
+      <div className="bm-foot"><span className="bm-logo">{b.name}</span><span>{b.area}</span>{b.phone && <span>{b.phone}</span>}<span>EN · ع</span></div>
       </div>
     </div>
   );
