@@ -160,10 +160,8 @@ import { MORE_12_22 } from "./guides-12-22";
 import { MORE_23_33 } from "./guides-23-33";
 import { MORE_34_44 } from "./guides-34-44";
 import { MORE_45_55 } from "./guides-45-55";
-import { CLUSTER_GUIDES } from "./guides-cluster";
 const ALL_MORE = { ...MORE, ...MORE_12_22, ...MORE_23_33, ...MORE_34_44, ...MORE_45_55 };
 for (const g of GUIDES) { const m = ALL_MORE[g.slug]; if (m) Object.assign(g, m); }
-GUIDES.push(...CLUSTER_GUIDES);
 // Guide #1: timeline figure (dates per the Ministry of Finance, as last checked in CHECKED)
 {
   const g1 = GUIDES.find((g) => g.n === 1);

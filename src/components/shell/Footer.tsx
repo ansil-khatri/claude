@@ -1,43 +1,31 @@
 import Link from "next/link";
-import { INDUSTRIES, SERVICES } from "@content/catalog";
-import { footerLine, site, waLink } from "@/config/site";
-import { WaBtn } from "@/components/ui/Buttons";
+import { MONEY, CLUSTERS, MAIN_NAV } from "@content/v3/nav";
+import { site, waLink, footerLine } from "@/config/site";
+import { Logo } from "./Nav";
 import { FooterFit } from "./Motion";
 
+const COLS = ["commerce", "web", "automation"] as const;
 export function Footer() {
   return (
-    <footer className="footer" id="footer">
+    <footer className="footer themed t-dark" id="footer">
       <FooterFit />
       <div className="w footer-in">
-        <div className="footer-grid">
-          <div>
-            <Link href="/" className="logo"><span className="logo-mark" />{site.brand}</Link>
-            <p className="about">Apps, websites and software for businesses in Dubai &amp; UAE, and white-label development for agencies.</p>
-            <WaBtn text="Hi, I'd like to talk about a project" />
-            <p className="about" style={{ marginTop: 18 }}><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <div className="foot-top">
+          <div className="foot-cta">
+            <span className="label">Start a project</span>
+            <p className="display h3">Tell us what you sell. We&apos;ll tell you how we&apos;d build it.</p>
+            <div className="foot-btns"><Link className="btn btn-p" href="/contact" data-magnetic>Book a call <i className="arr">→</i></Link><a className="btn btn-o btn-wa" href={waLink("Hi, I'd like to talk about a project")} target="_blank" rel="noopener" data-wa="1">WhatsApp us</a></div>
           </div>
-          <div><h5>Start here</h5><ul>
-            {[["/pricing", "Pricing in AED"], ["/process", "How we work"], ["/work", "Work"], ["/guides", "Guides"], ["/guides/uae-e-invoicing", "E-invoicing 2027"], ["/guides/website-cost-dubai", "Website cost in Dubai"], ["/guides/app-development-cost-dubai", "App cost in Dubai"], ["/guides/shopify-store-cost-uae", "Shopify store cost"], ["/tools", "Free tools"], ["/about", "About"], ["/contact", "Contact"]].map(([h, l]) => <li key={h}><Link href={h}>{l}</Link></li>)}
-          </ul></div>
-          <div><h5>Services</h5><ul>
-            {SERVICES.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`}>{s.name}</Link></li>)}
-            <li><Link href="/agencies">White-label for agencies</Link></li>
-          </ul></div>
-          <div><h5>Industries</h5><ul>
-            {INDUSTRIES.map((s) => <li key={s.slug}><Link href={`/industries/${s.slug}`}>{s.name}</Link></li>)}
-            <li><Link href="/abu-dhabi">Abu Dhabi</Link></li>
-            <li><Link href="/sharjah">Sharjah</Link></li>
-          </ul></div>
-          <div><h5>Tools</h5><ul>
-            {[["/tools/talabat-commission-calculator", "Talabat commission"], ["/tools/payment-gateway-fee-calculator", "Gateway fees"], ["/tools/e-invoicing-readiness-check", "E-invoicing check"], ["/tools/app-cost-calculator", "App cost"]].map(([h, l]) => <li key={h}><Link href={h}>{l}</Link></li>)}
-          </ul></div>
+          <div className="foot-grid">
+            {COLS.map((c) => (
+              <div key={c}><h5>{CLUSTERS[c].title}</h5><ul>{MONEY.filter((m) => m.cluster === c).map((m) => <li key={m.slug}><Link href={`/${m.slug}`}>{m.short}</Link></li>)}</ul></div>
+            ))}
+            <div><h5>Company</h5><ul>{MAIN_NAV.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}<li><Link href="/process">How we work</Link></li><li><Link href="/contact">Contact</Link></li><li><Link href="/tools/shopify-store-cost-calculator">Store cost calculator</Link></li><li><a href="/llms.txt">llms.txt</a></li></ul></div>
+          </div>
         </div>
-        <p className="about" style={{ maxWidth: "none", fontSize: 13, color: "#8f8f96" }}>{footerLine}</p>
-        <div className="wm-clip"><div className="wordmark" aria-hidden>{site.brand}</div></div>
-        <div className="legal">
-          <span>© {new Date().getFullYear()} {site.brand}. Prices exclude 5% VAT.</span>
-          <span><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link><Link href="/legal/cookies">Cookies</Link><a href={waLink("Hi")} rel="noopener">WhatsApp</a></span>
-        </div>
+        <p className="foot-line">{footerLine}</p>
+        <div className="foot-mark" aria-hidden><span>{site.brand}</span></div>
+        <div className="foot-legal"><span>© {new Date().getFullYear()} {site.brand}. Prices exclude 5% VAT. Concept builds are labelled and are not client work.</span><span><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link><Link href="/legal/cookies">Cookies</Link><a href="/feed.xml">RSS</a></span></div>
       </div>
     </footer>
   );

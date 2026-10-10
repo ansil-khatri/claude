@@ -1,5 +1,8 @@
 import { markdownFor } from "@/lib/markdown";
+import { allRoutes } from "@/lib/routes";
 
+export const dynamicParams = false;
+export const generateStaticParams = () => allRoutes().filter((r) => r !== "/").map((r) => ({ slug: r.slice(1).split("/") }));
 export async function GET(_: Request, { params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
   const md = markdownFor(slug);

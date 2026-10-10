@@ -44,7 +44,7 @@ export function Analytics() {
       {choice === null && (
         <div className="consent" role="dialog" aria-label="Cookie consent">
           <p>We use analytics cookies to see which pages help. Nothing loads until you say yes. <a href="/legal/cookies">Cookie policy</a></p>
-          <div><button className="btn btn-sm btn-line" onClick={() => decide("no")}>No thanks</button><button className="btn btn-sm btn-lime" onClick={() => decide("yes")}>Accept</button></div>
+          <div><button className="btn btn-sm btn-o" onClick={() => decide("no")}>No thanks</button><button className="btn btn-sm btn-p" onClick={() => decide("yes")}>Accept</button></div>
         </div>
       )}
     </>

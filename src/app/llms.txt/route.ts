@@ -1,3 +1,3 @@
-import { llms } from "@/lib/llms";
+import { llmsTxt } from "@/lib/markdown";
 export const dynamic = "force-static";
-export const GET = () => new Response(llms("llms.txt"), { headers: { "content-type": "text/plain; charset=utf-8" } });
+export const GET = () => new Response(llmsTxt(), { headers: { "content-type": "text/plain; charset=utf-8" } });
