@@ -16,10 +16,10 @@ export const post: Post = {
   keywords: ["custom shopify theme", "premium shopify theme", "shopify theme cost", "shopify theme development dubai"],
   links: [
     { href: "/custom-shopify-theme-development-dubai", label: "Custom Shopify theme development" },
-    { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
     { href: "/blog/choose-shopify-agency-dubai", label: "How to choose a Shopify agency" },
     { href: "/blog/shopify-store-cost-uae", label: "What a Shopify store costs in the UAE" },
     { href: "/work/oud-atelier", label: "Concept build: Oud Atelier" },
+    { href: "/tools/shopify-store-cost-calculator", label: "Shopify store cost calculator" },
   ],
   body: [
     { h2: "What the two options actually are" },

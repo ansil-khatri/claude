@@ -14,9 +14,10 @@ export const post: Post = {
   keywords: ["whatsapp auto reply for business", "whatsapp business api uae", "whatsapp away message", "whatsapp chatbot dubai"],
   links: [
     { href: "/whatsapp-automation-dubai", label: "WhatsApp automation in Dubai" },
-    { href: "/ai-assistant-for-business-dubai", label: "AI assistant for business in Dubai" },
-    { href: "/blog/erp-vs-excel-uae", label: "ERP vs Excel for UAE businesses" },
-    { href: "/business-automation-dubai", label: "Business automation in Dubai" },
+    { href: "/blog/whatsapp-business-api-cost-uae", label: "WhatsApp Business API cost in the UAE" },
+    { href: "/blog/whatsapp-orders-without-excel", label: "Take WhatsApp orders without Excel" },
+    { href: "/work/opsdesk-erp", label: "OpsDesk ERP concept build" },
+    { href: "/tools/whatsapp-reply-roi", label: "WhatsApp reply ROI calculator" },
   ],
   body: [
     { h2: "Two products with one name" },

@@ -138,14 +138,8 @@ export const page: MoneyPage = {
     { q: "Will my WooCommerce site work in Arabic?", a: "Yes. WordPress supports right-to-left layouts well. We build Arabic into the theme and translate checkout and emails, so the store reads naturally in both languages." },
     { q: "Do I need a care plan?", a: "If nobody on your team is assigned to updates, backups and monitoring, yes. A care plan from AED 790 a month does that work. You can decline it if you have your own technical team." },
   ],
-  related: [
-    "/wordpress-agency-dubai",
-    "/ecommerce-website-development-dubai",
-    "/shopify-agency-dubai",
-    "/custom-wordpress-theme-development-dubai",
-    "/shopify-migration-dubai",
-  ],
-  posts: ["wordpress-vs-shopify-dubai", "website-cost-dubai", "ecommerce-seo-dubai"],
+  related: ["/wordpress-agency-dubai", "/ecommerce-website-development-dubai", "/shopify-agency-dubai", "/custom-wordpress-theme-development-dubai", "/wordpress-maintenance-dubai", "/shopify-migration-dubai"],
+  posts: ["wordpress-vs-shopify-dubai", "woocommerce-to-shopify-uae", "wordpress-security-maintenance-uae", "website-cost-dubai"],
   cases: ["haya-modest"],
   cta: {
     h: "Planning a WooCommerce store?",

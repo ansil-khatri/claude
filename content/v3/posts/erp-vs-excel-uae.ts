@@ -14,10 +14,10 @@ export const post: Post = {
   keywords: ["erp vs excel uae", "erp software dubai", "replace excel with erp", "custom erp uae", "erp cost uae"],
   links: [
     { href: "/erp-software-dubai", label: "ERP software in Dubai" },
-    { href: "/business-automation-dubai", label: "Business automation in Dubai" },
-    { href: "/blog/whatsapp-auto-reply-for-business", label: "WhatsApp auto-reply for business" },
+    { href: "/blog/custom-erp-vs-odoo-zoho", label: "Custom ERP or Odoo and Zoho" },
+    { href: "/blog/e-invoicing-uae-small-business", label: "E-invoicing in the UAE for small businesses" },
     { href: "/work/opsdesk-erp", label: "OpsDesk ERP concept build" },
-    { href: "/pricing", label: "Pricing" },
+    { href: "/tools/erp-vs-excel-checker", label: "ERP vs Excel checker" },
   ],
   body: [
     { h2: "Excel is not the enemy" },

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MONEY, CLUSTERS, MAIN_NAV } from "@content/v3/nav";
+import { INDUSTRIES } from "@content/v3/industries";
 import { site, waLink, footerLine } from "@/config/site";
 import { Logo } from "./Nav";
 import { FooterFit } from "./Motion";
@@ -20,7 +21,8 @@ export function Footer() {
             {COLS.map((c) => (
               <div key={c}><h5>{CLUSTERS[c].title}</h5><ul>{MONEY.filter((m) => m.cluster === c).map((m) => <li key={m.slug}><Link href={`/${m.slug}`}>{m.short}</Link></li>)}</ul></div>
             ))}
-            <div><h5>Company</h5><ul>{MAIN_NAV.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}<li><Link href="/process">How we work</Link></li><li><Link href="/contact">Contact</Link></li><li><Link href="/tools/shopify-store-cost-calculator">Store cost calculator</Link></li><li><a href="/llms.txt">llms.txt</a></li></ul></div>
+            <div><h5>Industries</h5><ul>{INDUSTRIES.slice(0, 8).map((i) => <li key={i.slug}><Link href={`/industries/${i.slug}`}>{i.name}</Link></li>)}</ul></div>
+            <div><h5>Company</h5><ul>{MAIN_NAV.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}<li><Link href="/process">How we work</Link></li><li><Link href="/contact">Contact</Link></li><li><Link href="/free-website-audit">Free website audit</Link></li><li><Link href="/tools/shopify-store-cost-calculator">Store cost calculator</Link></li><li><Link href="/tools/website-cost-calculator">Website cost calculator</Link></li><li><a href="/llms.txt">llms.txt</a></li></ul></div>
           </div>
         </div>
         <p className="foot-line">{footerLine}</p>

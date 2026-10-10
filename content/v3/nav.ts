@@ -15,6 +15,13 @@ export const MONEY: NavItem[] = [
   { slug: "whatsapp-automation-dubai", label: "WhatsApp automation in Dubai", short: "WhatsApp automation", cluster: "automation", blurb: "Auto-reply and order updates, in Arabic and English." },
   { slug: "ai-assistant-for-business-dubai", label: "AI assistant for business", short: "AI assistant", cluster: "automation", blurb: "Answers from your catalogue, hands off to people." },
   { slug: "business-automation-dubai", label: "Business automation in Dubai", short: "Business automation", cluster: "automation", blurb: "Replace copy-paste with workflows." },
+  { slug: "shopify-store-setup-dubai", label: "Shopify store setup in Dubai", short: "Shopify store setup", cluster: "commerce", blurb: "A store set up properly, from AED 6,900." },
+  { slug: "online-store-for-small-business-uae", label: "Online store for a small business", short: "Online store, small business", cluster: "commerce", blurb: "Start selling online without the jargon." },
+  { slug: "website-for-small-business-dubai", label: "Website for a small business", short: "Small business website", cluster: "web", blurb: "A clear site that brings enquiries." },
+  { slug: "website-redesign-dubai", label: "Website redesign in Dubai", short: "Website redesign", cluster: "web", blurb: "Refresh it without losing your rankings." },
+  { slug: "wordpress-maintenance-dubai", label: "WordPress maintenance in Dubai", short: "WordPress maintenance", cluster: "web", blurb: "Updates, backups and security from AED 590." },
+  { slug: "e-invoicing-software-uae", label: "E-invoicing software for the UAE", short: "E-invoicing", cluster: "automation", blurb: "Get your invoices ready for the UAE rules." },
+  { slug: "inventory-management-software-dubai", label: "Inventory management software", short: "Inventory software", cluster: "automation", blurb: "Stock that matches the shelf." },
 ];
 export const CLUSTERS = {
   commerce: { title: "Commerce", blurb: "Shopify and e-commerce" },
@@ -23,8 +30,10 @@ export const CLUSTERS = {
 } as const;
 export const money = (slug: string) => MONEY.find((m) => m.slug === slug);
 export const MAIN_NAV = [
+  { href: "/industries", label: "Industries" },
   { href: "/work", label: "Work" },
   { href: "/pricing", label: "Pricing" },
   { href: "/blog", label: "Journal" },
+  { href: "/tools", label: "Tools" },
   { href: "/about", label: "About" },
 ];

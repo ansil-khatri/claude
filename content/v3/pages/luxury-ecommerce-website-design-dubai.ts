@@ -109,6 +109,18 @@ export const page: MoneyPage = {
       ],
     },
     {
+      k: "bento",
+      eyebrow: "Who we are not for",
+      h: "A luxury build is not right for everyone.",
+      lead: "Some brands are better served by a simpler route first.",
+      tiles: [
+        { t: "Budgets below AED 29,000 for a bespoke look", p: "A refined premium theme on our launch tier, from AED 9,900, is the sensible start. Move to custom when the brand has earned it." },
+        { t: "Brands that want to copy a heritage house", p: "We will not copy another brand. We design from your own product, story and customer." },
+        { t: "Stores that want motion on every page", p: "Heavy animation slows phones and hides the product. We use movement sparingly." },
+        { t: "Brands with thin photography", p: "Luxury layouts show every weakness in an image. We can brief photographers, but the images must be strong." },
+      ],
+    },
+    {
       k: "pricing",
       eyebrow: "08 · Pricing",
       h: "Two ways to build a luxury store.",
@@ -130,13 +142,8 @@ export const page: MoneyPage = {
     { q: "Does heavy design slow the site down?", a: "It does not have to. We set a performance budget before design starts, compress media carefully and limit third-party code. Motion is used sparingly and never blocks loading." },
     { q: "Who writes and photographs the content?", a: "Our core scope covers design, build and integration. We can brief photographers and copywriters or work with your existing creative team, and we provide a shot list and content structure so assets fit the design." },
   ],
-  related: [
-    "/shopify-plus-agency-dubai",
-    "/custom-shopify-theme-development-dubai",
-    "/ecommerce-website-development-dubai",
-    "/shopify-agency-dubai",
-  ],
-  posts: ["luxury-ecommerce-website-design", "custom-shopify-theme-vs-premium-theme", "headless-commerce-do-you-need-it", "shopify-arabic-store"],
+  related: ["/shopify-plus-agency-dubai", "/custom-shopify-theme-development-dubai", "/ecommerce-website-development-dubai", "/shopify-agency-dubai"],
+  posts: ["luxury-ecommerce-website-design", "custom-shopify-theme-vs-premium-theme", "headless-commerce-do-you-need-it", "arabic-website-cost-dubai"],
   cases: ["maison-verre", "chrono-gulf"],
   cta: {
     h: "Let us design the store your brand deserves.",

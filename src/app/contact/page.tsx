@@ -4,6 +4,7 @@ import { webPageLd, breadcrumbLd } from "@/lib/schema";
 import { CONTACT } from "@content/v3/site";
 import { site, waLink } from "@/config/site";
 import { Booking } from "@/components/ui/Booking";
+import { QuoteForm } from "@/components/ui/QuoteForm";
 import { WaBtn } from "@/components/ui/Buttons";
 import { PageHero } from "@/components/sections/Blocks";
 
@@ -26,7 +27,7 @@ export default function Contact() {
           <div className="chan">{channels.map((c) => <div key={c.label}><span>{c.label}</span><b>{c.value}</b><small>{c.note}</small></div>)}</div>
           <div style={{ marginTop: 30 }}><WaBtn text="Hi, I'd like to talk about a project" /></div>
         </div>
-        <Booking />
+        <div style={{ display: "grid", gap: 22 }}><QuoteForm /><Booking /></div>
       </div></section>
     </>
   );

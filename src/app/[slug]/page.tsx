@@ -11,6 +11,7 @@ import { Faq } from "@/components/ui/Faq";
 import { BookBtn, WaBtn } from "@/components/ui/Buttons";
 import { Visual } from "@/components/mock/Visual";
 import { Crumbs, CtaBand, SectionView, SecHead } from "@/components/sections/Blocks";
+import { Trust } from "@/components/ui/Trust";
 import { GlowCanvas } from "@/components/scenes/GlowCanvas";
 
 export const dynamicParams = false;
@@ -47,6 +48,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </div>
       </header>
       <section className="sec-s themed t-dark"><div className="w"><p className="answer-box" data-reveal>{p.answer}</p></div></section>
+      <section className="sec-s themed t-dark"><div className="w"><Trust /></div></section>
       {p.sections.map((s, i) => <SectionView key={i} s={s} i={i} brand={brand} />)}
       {cases.length > 0 && (
         <section className="sec themed t-dark"><div className="w">

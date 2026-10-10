@@ -14,6 +14,21 @@ for (const p of urls) {
   if (h1 !== 1) e.push(`h1 x${h1}`);
   if (!/<link rel="canonical"/.test(html)) e.push("no canonical");
   if (!/application\/ld\+json/.test(html)) e.push("no jsonld");
+  const body = html.replace(/<(script|style|nav|footer|header)[\s\S]*?<\/\1>/g, "");
+  const kind = /^\/blog\/|^\/industries\/|^\/[a-z0-9-]+-(dubai|uae)$/.test(p) ? "content" : "";
+  if (kind) {
+    const links = new Set([...body.matchAll(/href="(\/[^"#?]*)/g)].map((m) => m[1]).filter((h) => h !== p && !/^\/(_next|api)/.test(h)));
+    if (links.size < 6) e.push(`only ${links.size} internal links (need 6)`);
+    const ans = (html.match(/class="answer-box"[^>]*>([^<]*)</) || [])[1];
+    if (ans !== undefined) { const w = ans.trim().split(/\s+/).length; if (w < 35 || w > 75) e.push(`answer box ${w} words`); } else e.push("no answer box");
+    if (p.startsWith("/blog/") && ![...links].some((h) => /^\/[a-z0-9-]+-(dubai|uae)$/.test(h))) e.push("post has no link to a money page");
+  }
+  if (kind) {
+    const text = body.replace(/<[^>]+>/g, " ");
+    if (/\u2014/.test(text)) e.push("em dash in copy");
+    const bad = text.match(/\b(leverage|synergy|cutting-edge|seamless(ly)?|game-changer|unlock the power)\b/i); if (bad) e.push(`banned word "${bad[0]}"`);
+    if (/\b(No\.? ?1|number one|top-rated|award-winning|best agency in)\b/i.test(text) && !p.includes("choose-shopify-agency")) e.push("superlative claim");
+  }
   if (/\[owner to confirm|\[lawyer to write/.test(html) && !p.startsWith("/legal") && p !== "/about") e.push("placeholder text");
   if (titles.has(t)) e.push("dup title " + titles.get(t)); titles.set(t, p);
   if (descs.has(d)) e.push("dup desc " + descs.get(d)); descs.set(d, p);

@@ -11,6 +11,7 @@ import { Footer } from "@/components/shell/Footer";
 import { Motion } from "@/components/shell/Motion";
 import { WaFloat } from "@/components/shell/WaFloat";
 import { Analytics } from "@/components/shell/Analytics";
+import { ConvertBar } from "@/components/ui/ConvertBar";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { orgGraph } from "@/lib/schema";
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main">{children}</main>
         </div>
         <Footer />
+        <ConvertBar />
         <WaFloat />
         <Motion />
         <Analytics />

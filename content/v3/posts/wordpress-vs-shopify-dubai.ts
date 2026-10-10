@@ -17,10 +17,10 @@ export const post: Post = {
   keywords: ["wordpress vs shopify dubai", "woocommerce vs shopify", "wordpress or shopify uae", "best platform for website dubai"],
   links: [
     { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
-    { href: "/wordpress-agency-dubai", label: "WordPress agency in Dubai" },
-    { href: "/woocommerce-development-dubai", label: "WooCommerce development" },
+    { href: "/blog/shopify-vs-wix-uae", label: "Shopify vs Wix in the UAE" },
     { href: "/blog/website-cost-dubai", label: "How much a website costs in Dubai" },
-    { href: "/blog/custom-shopify-theme-vs-premium-theme", label: "Custom vs premium Shopify theme" },
+    { href: "/work/northbridge-corporate", label: "Northbridge corporate concept build" },
+    { href: "/tools/website-cost-calculator", label: "Website cost calculator" },
   ],
   body: [
     { h2: "The honest short answer" },

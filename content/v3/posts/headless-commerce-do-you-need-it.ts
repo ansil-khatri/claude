@@ -14,7 +14,6 @@ export const post: Post = {
   keywords: ["headless commerce", "shopify hydrogen", "headless shopify dubai", "headless vs custom theme"],
   links: [
     { href: "/shopify-plus-agency-dubai", label: "Shopify Plus and headless agency in Dubai" },
-    { href: "/custom-shopify-theme-development-dubai", label: "Custom Shopify theme development" },
     { href: "/blog/custom-shopify-theme-vs-premium-theme", label: "Custom theme vs premium theme" },
     { href: "/blog/shopify-vs-shopify-plus-uae", label: "Shopify vs Shopify Plus in the UAE" },
     { href: "/work/maison-verre", label: "Maison Verre concept build" },

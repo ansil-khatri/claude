@@ -14,8 +14,8 @@ export const post: Post = {
   keywords: ["luxury ecommerce website design", "luxury website design dubai", "luxury shopify store", "luxury brand website"],
   links: [
     { href: "/luxury-ecommerce-website-design-dubai", label: "Luxury e-commerce website design in Dubai" },
-    { href: "/custom-shopify-theme-development-dubai", label: "Custom Shopify theme development" },
     { href: "/blog/headless-commerce-do-you-need-it", label: "Headless commerce: do you need it?" },
+    { href: "/blog/arabic-website-cost-dubai", label: "What an Arabic website costs in Dubai" },
     { href: "/work/maison-verre", label: "Maison Verre concept build" },
     { href: "/work/oud-atelier", label: "Oud Atelier concept build" },
   ],

@@ -14,10 +14,10 @@ export const post: Post = {
   keywords: ["ecommerce seo dubai", "ecommerce seo uae", "arabic seo shopify", "product schema", "faceted navigation seo"],
   links: [
     { href: "/ecommerce-website-development-dubai", label: "E-commerce website development in Dubai" },
-    { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
-    { href: "/blog/shopify-arabic-store", label: "How to build an Arabic Shopify store" },
     { href: "/blog/shopify-migration-seo-checklist", label: "Shopify migration SEO checklist" },
+    { href: "/blog/website-not-showing-on-google-dubai", label: "Why your website is not showing on Google" },
     { href: "/work/oud-atelier", label: "Oud Atelier concept build" },
+    { href: "/free-website-audit", label: "Free website audit" },
   ],
   body: [
     { h2: "Start with collections, not products" },

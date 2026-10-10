@@ -141,3 +141,5 @@
 .nf { min-height: 100svh; display: grid; align-content: center; gap: 28px; padding-top: 120px; }
 
 .ph-grid h1 { font-size: clamp(38px, 4.6vw, 84px); margin-top: 22px; }
+.chk { display: grid; gap: 10px; } .chk .opt { text-align: left; line-height: 1.35; padding: 16px 18px; font-size: 16px; }
+.calc-out p { font-size: 17px; line-height: 1.5; }

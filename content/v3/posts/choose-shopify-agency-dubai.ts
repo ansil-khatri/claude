@@ -17,10 +17,10 @@ export const post: Post = {
   keywords: ["shopify agency dubai", "choose shopify agency", "shopify developer uae", "shopify agency checklist"],
   links: [
     { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
-    { href: "/custom-shopify-theme-development-dubai", label: "Custom Shopify theme development" },
-    { href: "/pricing", label: "Pricing" },
+    { href: "/blog/freelancer-vs-agency-dubai", label: "Freelancer or agency in Dubai" },
     { href: "/blog/shopify-store-cost-uae", label: "What a Shopify store costs in the UAE" },
     { href: "/work/maison-verre", label: "Concept build: Maison Verre" },
+    { href: "/free-website-audit", label: "Free website audit" },
   ],
   body: [
     { h2: "Start with what you are actually buying" },

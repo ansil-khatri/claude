@@ -4,7 +4,7 @@ export const page: MoneyPage = {
   slug: "wordpress-agency-dubai",
   cluster: "web",
   keyword: "wordpress agency in dubai",
-  title: "WordPress Agency in Dubai: Custom Sites from AED 7,900",
+  title: "WordPress Agency in Dubai, Bilingual Sites from AED 7,900",
   desc: "A WordPress agency in Dubai building fast, secure, bilingual sites with custom blocks and editors your team enjoys using. Fixed prices from AED 7,900.",
   kicker: "WordPress agency · Dubai",
   h1: ["A WordPress agency in Dubai", "that builds for the people who edit the site."],
@@ -115,7 +115,7 @@ export const page: MoneyPage = {
   ],
   faq: [
     { q: "Why not just use a template and save money?", a: "Sometimes you should. If you need a simple presence quickly, our AED 7,900 tier is exactly that, built carefully. A custom build pays off when the site must carry a serious brand for years, when several people edit it, or when speed and accessibility matter." },
-    { q: "Are page builders like Elementor bad?", a: "No. They suit teams that redesign pages often. The trade-offs are heavier pages and content tied to the builder's markup. If your site is mostly stable and editors add content more than they redesign, custom blocks are lighter and safer." },
+    { q: "Why is my website not showing on Google?", a: "Common causes are a new site Google has not crawled yet, pages blocked by a setting, slow or broken pages, or thin content. We can check this in a short audit. We cannot promise rankings, only fix the causes we can see." },
     { q: "Can my team really edit it without us?", a: "That is the design goal. Editors work with blocks and fields built for your content, we train them in a live session, and you get a written guide. If something needs a developer, our care plan covers small changes." },
     { q: "Do you build in Arabic as well as English?", a: "Yes. Arabic is built as a proper right-to-left layout with suitable typography, not mirrored by a plugin. The Arabic add-on is priced in your quote, and we ask for professionally translated copy." },
     { q: "Is WordPress secure enough for a company site?", a: "It can be, when it is maintained. We keep plugins few, restrict admin access, require two-factor sign-in and apply updates on a schedule. No platform is risk-free, so we also keep tested backups." },
@@ -123,8 +123,8 @@ export const page: MoneyPage = {
     { q: "What does a care plan include?", a: "From AED 790 a month: core, theme and plugin updates, backups, uptime and security monitoring, and a set allowance of small content or layout changes. We will quote the exact scope for your site." },
     { q: "Should I choose WordPress or Shopify?", a: "If your site is about content, services and enquiries, WordPress fits. If you sell a large catalogue and want a mature checkout, Shopify is usually better. We cover the decision in our comparison guide." },
   ],
-  related: ["/custom-wordpress-theme-development-dubai", "/woocommerce-development-dubai", "/website-design-dubai", "/shopify-agency-dubai", "/ecommerce-website-development-dubai"],
-  posts: ["wordpress-vs-shopify-dubai", "website-cost-dubai", "ecommerce-seo-dubai"],
+  related: ["/custom-wordpress-theme-development-dubai", "/woocommerce-development-dubai", "/website-design-dubai", "/website-for-small-business-dubai", "/wordpress-maintenance-dubai", "/website-redesign-dubai", "/shopify-agency-dubai"],
+  posts: ["wordpress-vs-shopify-dubai", "website-cost-dubai", "website-not-showing-on-google-dubai", "wordpress-security-maintenance-uae"],
   cases: ["northbridge-corporate"],
   cta: {
     h: "Tell us about your site",

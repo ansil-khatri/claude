@@ -16,9 +16,10 @@ export const post: Post = {
   keywords: ["shopify migration seo", "migrate to shopify seo checklist", "shopify 301 redirects", "replatform seo"],
   links: [
     { href: "/shopify-migration-dubai", label: "Shopify migration in Dubai" },
-    { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
     { href: "/blog/ecommerce-seo-dubai", label: "E-commerce SEO in Dubai" },
-    { href: "/blog/wordpress-vs-shopify-dubai", label: "WordPress vs Shopify in Dubai" },
+    { href: "/blog/woocommerce-to-shopify-uae", label: "Moving from WooCommerce to Shopify" },
+    { href: "/work/maison-verre", label: "Maison Verre concept build" },
+    { href: "/free-website-audit", label: "Free website audit" },
   ],
   body: [
     { h2: "What actually causes ranking loss" },

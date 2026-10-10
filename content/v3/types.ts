@@ -72,3 +72,24 @@ export type Case = {
   services: string[];              // money page slugs
   posts: string[];
 };
+
+/** Industry landing page (/industries/<slug>). Written in the owner's words; links to money pages, one concept case and posts. */
+export type Industry = {
+  slug: string; name: string;               // "Perfume and oud brands"
+  keyword: string;                          // primary phrase, lowercase
+  title: string;                            // <= 60 chars, no brand
+  desc: string;                             // 120-158 chars
+  kicker: string;                           // mono label, e.g. "Perfume and oud · Online store"
+  h1: [string, string];
+  sub: string;
+  answer: string;                           // 40-60 words, includes an AED figure
+  situation: string[];                      // 2-3 short paragraphs in the owner's words
+  problems: { t: string; p: string; visual: Visual }[];  // 3 typical problems, each with a mockup
+  build: { t: string; p: string }[];        // 4-5 things we build for this sector
+  price: { label: string; amt: string; note: string }[]; // 2-3 AED price bands from the price book
+  services: string[];                       // money page slugs (2-4)
+  case?: string;                            // case slug (concept build)
+  posts: string[];                          // blog slugs (2-4)
+  faq: Faq[];                               // 5-6
+  cta: { h: string; lead: string; wa: string };
+};

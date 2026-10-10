@@ -4,7 +4,7 @@ export const page: MoneyPage = {
   slug: "shopify-migration-dubai",
   cluster: "commerce",
   keyword: "shopify migration dubai",
-  title: "Shopify Migration Dubai | Move Without Losing SEO",
+  title: "Shopify Migration Dubai, Keep Your SEO | From AED 4,500",
   desc: "Move to Shopify from WooCommerce, Magento, Wix or Salla. Full data transfer, redirect map, SEO preservation and a tested cutover, priced in AED.",
   kicker: "Shopify migration · Dubai",
   h1: ["Shopify migration in Dubai", "with your traffic and orders intact."],
@@ -137,7 +137,7 @@ export const page: MoneyPage = {
     { q: "What if something goes wrong at launch?", a: "We keep a rollback plan and leave the old store intact until you confirm everything is healthy. DNS can point back if needed." },
   ],
   related: ["/shopify-agency-dubai", "/shopify-plus-agency-dubai", "/woocommerce-development-dubai", "/custom-shopify-theme-development-dubai", "/ecommerce-website-development-dubai"],
-  posts: ["shopify-migration-seo-checklist", "shopify-vs-salla", "wordpress-vs-shopify-dubai", "ecommerce-seo-dubai"],
+  posts: ["shopify-migration-seo-checklist", "woocommerce-to-shopify-uae", "shopify-vs-wix-uae", "shopify-vs-salla", "wordpress-vs-shopify-dubai"],
   cases: ["maison-verre", "oud-atelier"],
   cta: {
     h: "Get a free audit of your current store.",

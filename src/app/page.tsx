@@ -17,6 +17,7 @@ import { MONEY, CLUSTERS } from "@content/v3/nav";
 import { CASES } from "@content/v3/cases";
 import { POSTS, CLUSTER_LABEL } from "@content/v3/posts";
 import { CBRANDS } from "@content/v3/brands";
+import { INDUSTRIES } from "@content/v3/industries";
 import { HOME_FAQ, WHY, TECH } from "@content/v3/site";
 
 export const metadata = meta({
@@ -90,6 +91,12 @@ export default function Home() {
               <Link key={m.slug} href={`/${m.slug}`} className="svc"><div><b>{m.label}</b></div><span>{m.blurb}</span><span className="tlink">Read more →</span></Link>
             ))}</div></div>
         ))}
+      </div></section>
+      {/* ---- industries ---- */}
+      <section className="sec themed t-paper"><div className="w">
+        <SecHead eyebrow="Industries" h="Built for how your sector sells." lead="Perfume, fashion, clinics, trading, real estate. Each has its own problems and its own price band." />
+        <div className="svc-grid" data-stagger>{INDUSTRIES.slice(0, 8).map((i) => <Link key={i.slug} href={`/industries/${i.slug}`} className="svc"><div><b>{i.name}</b></div><span>{i.sub}</span><span className="tlink">See what we build →</span></Link>)}</div>
+        <div style={{ marginTop: 30, display: "flex", gap: 12, flexWrap: "wrap" }}><Link className="btn btn-k" href="/industries">All industries <i className="arr">→</i></Link><Link className="btn btn-o" href="/free-website-audit">Free website audit</Link><Link className="btn btn-o" href="/tools">Free calculators</Link></div>
       </div></section>
       {/* ---- software scene ---- */}
       <section className="sec themed t-dark"><div className="w">

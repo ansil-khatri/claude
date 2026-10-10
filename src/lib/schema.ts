@@ -62,3 +62,12 @@ export const caseLd = (c: Case) => ({
 export const appLd = (name: string, path: string, desc: string) => ({
   "@context": "https://schema.org", "@type": "WebApplication", name, url: url(path), description: desc, applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "AED" }, provider: { "@id": ORG },
 });
+
+export function industryLd(i: import("@content/v3/types").Industry) {
+  const price = (i.price[0]?.amt ?? "").replace(/[^\d]/g, "");
+  return {
+    "@context": "https://schema.org", "@type": "Service", "@id": url(`/industries/${i.slug}#service`), name: i.title, serviceType: i.keyword, description: i.desc, url: url(`/industries/${i.slug}`),
+    provider: { "@id": ORG }, areaServed: AREA, audience: { "@type": "BusinessAudience", audienceType: i.name },
+    ...(price ? { offers: { "@type": "Offer", priceCurrency: "AED", price, valueAddedTaxIncluded: false } } : {}),
+  };
+}

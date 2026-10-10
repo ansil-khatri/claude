@@ -16,9 +16,10 @@ export const post: Post = {
   keywords: ["shopify plus uae", "shopify vs shopify plus", "shopify plus dubai", "shopify plus cost"],
   links: [
     { href: "/shopify-plus-agency-dubai", label: "Shopify Plus agency in Dubai" },
-    { href: "/shopify-agency-dubai", label: "Shopify agency in Dubai" },
     { href: "/blog/headless-commerce-do-you-need-it", label: "Do you need headless commerce?" },
+    { href: "/blog/shopify-fees-uae", label: "Shopify fees in the UAE" },
     { href: "/blog/shopify-store-cost-uae", label: "What a Shopify store costs in the UAE" },
+    { href: "/work/maison-verre", label: "Maison Verre concept build" },
   ],
   body: [
     { h2: "The short version" },
